@@ -1,7 +1,7 @@
 <?php
     namespace Views;
 
-    class HomeView extends Views{
+    class HomeView extends View{
         
     }
 

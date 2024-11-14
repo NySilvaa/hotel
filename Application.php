@@ -4,17 +4,18 @@
             if(isset($_GET['url'])){
                 $url = explode('/', $_GET['url'])[0];
                 $url = ucfirst($url);
-                $class = "CONTROLLERS\\".$url."Controller";
+                $class = "Controllers\\".$url."Controller";
             }else{
-                $class = "CONTROLLERS\\HomeController";
+                $class = "Controllers\\HomeController";
                 $url = "Home";
             }
 
-            $view = "VIEWS\\".$url."View";
-            $model = "MODEL\\".$url."Model";
+            $view = "Views\\".$url."View";
+            $model = "Model\\".$url."Model";
 
-            $controller = new $class($view, $model);
-            $controller->index();
+            $controller = new $class(new $view, new $model);
+            $controller->index();    
+            
         }
     }
 ?>
