@@ -6,8 +6,6 @@
         const DEFAULT_FOOTER = "footer.php";
 
         public function render($body, $header = null, $footer = null){
-            if($header == null)
-                include('pages-dft/'.self::DEFAULT_HEADER);
 
             include('pages/'.$body.'.php');
 

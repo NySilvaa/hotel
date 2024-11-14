@@ -9,6 +9,8 @@
 
     spl_autoload_register($autoload);
 
+    define('PATH_INTERATIONS', 'http://localhost/hotel/Views/assets/');
+
     $app = new Application();
     $app->run();
 

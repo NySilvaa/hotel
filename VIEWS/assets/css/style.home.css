@@ -1,0 +1,150 @@
+@font-face {
+    font-family: Poppins;
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Qairo;
+    src: url('../fonts/QAIRO.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background-color: #f2e8df;
+}
+
+.container{
+    max-width: 1200px;
+    padding: 0 2%;
+    margin: 0 auto;
+}
+
+.txt-white{
+    color: #f2e8df;
+}
+
+a{text-decoration: none;}
+
+main#entrada{
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    & video{
+        position: absolute;
+        left: 0; top: 0;
+        width: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    & .overlay{
+        width: 100%;
+        min-height: 100vh;
+        position: absolute;
+        left: 0; top: 0;
+        background-color: rgb(20 20 20 / 0.8);
+        z-index: 1;
+    }
+
+    & .container, .navigation{
+        position: relative;
+        z-index: 2;
+    }
+
+    & nav.navigation{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2%;
+        margin: 0 auto;
+
+        & figure.logo > a{
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+    
+        & .name-center h2{
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 7px;
+            text-align: center;
+            font-family: Qairo;
+        }
+
+        & .name-center a{
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        & .idiomas{
+            font-size: 0.9rem;
+
+            & a:hover{
+                color: #403027 ;
+            }
+        }
+    }
+}
+
+main#entrada .container{
+    & section.chamada{
+        margin-top: 120px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        & .text-chamada{
+            width: 60%;
+            padding-right: 20px;
+
+            & h1{
+                font-family: Quairo;
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+            }
+
+            & a{
+                display: inline-block;
+                padding: 8px 18px;
+                font-size: 0.9rem;
+                border-radius: 3px;
+                border: 2px solid #f2e8df;
+                margin-top: 8px;
+                transition: 0.4s;
+
+                &:hover{
+                    background-color: #f2e8df;
+                    color: #403027;
+                }
+            }
+        }
+
+        & .checks-form{
+            width: 40%;
+            text-align: center;
+
+            
+            & form{
+                display: inline-block;
+                padding: 15px 20px;
+                background-color: #f2e8df;
+                max-width: 350px;
+            
+                &  .checks{
+                    display: flex;
+                    justify-content: space-around;
+                }
+            }
+        }
+    }
+}
