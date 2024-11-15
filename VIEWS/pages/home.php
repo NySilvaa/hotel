@@ -9,7 +9,23 @@
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.home.css">
     <title>Home | Explore as nossas diversas opções</title>
 </head>
-<body>
+<body> 
+    <section class="menu-below">
+        <a href="#" class="book-accomodation">Book Accommodation</a>
+
+        <nav class="navigation-menu-below">
+            <ul>
+                <li><a href="#">Our rooms</a></li>
+                <li><a href="#">Swimming Pools</a></li>
+                <li><a href="#">Food and drinks</a></li>
+                <li><a href="#">Meeting rooms</a></li>
+                <li><a href="#">Events and weddings</a></li>
+            </ul>
+        </nav>
+
+        <a href="#" class="hamburguer">a</a>
+    </section>
+
     <main id="entrada">
         <video src="<?php echo PATH_INTERATIONS;?>images/bg-video.mp4" autoplay muted loop></video>
         <div class="overlay"></div>
@@ -36,7 +52,8 @@
 
                     <div class="checks-form">
                         <form action="" method="post">
-                            <select name="hotel" id="" disabled="disabled">
+                            <select name="option" id="">
+                                <option value="Teste">Teste</option>
                                 <option value="Teste">Teste</option>
                                 <option value="Teste">Teste</option>
                                 <option value="Teste">Teste</option>
@@ -64,8 +81,11 @@
 
                             <div class="choose-rooms">
                                 <p>Guests per room</p>
-                                <input type="number" name="guest" id="" min="1" max="8">
-
+                                <div class="count-guests-room">
+                                    <span class="sub"></span>
+                                    <span class="count">1</span>
+                                    <span class="add"></span>
+                                </div>
                                 <a href="#">Multiples Rooms?</a>
                             </div>
 
@@ -76,20 +96,145 @@
             </div><!-- /.container -->  
     </main>
 
-    <section class="menu-below">
-        <a href="#" class="book-accomodation">Book Accommodation</a>
+    <section class="diferenciais">
+        <div class="container">
+           <div class="diferenciais-wrapper">
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
 
-        <nav class="navigation-menu-below">
-            <ul>
-                <li><a href="#">Our rooms</a></li>
-                <li><a href="#">Swimming Pools</a></li>
-                <li><a href="#">Food and drinks</a></li>
-                <li><a href="#">Meeting rooms</a></li>
-                <li><a href="#">Events and weddings</a></li>
-            </ul>
-        </nav>
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
 
-        <a href="#">Menu hamburguer</a>
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
+
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img4.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
+
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
+
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
+
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img4.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
+
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
+
+                <div class="box-diferenciais">
+                    <div class="box-diferenciais--img">
+                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
+                    </div>
+                    <h2>Our Rooms</h2>
+                    <a href="#">Explore</a>
+                </div><!-- /.box-diferenciais -->
+           </div><!-- /.diferenciais-wrapper -->   
+        </div><!--container-->
     </section>
-</body>
-</html>
+
+   <section class="room-highlight">
+    <div class="container">
+        <div class="room-highlight-top">
+            <div class="bg-highlight">
+                <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
+            </div>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Dolorum quasi asperiores sunt rerum aut delectus, 
+                fuga itaque expedita perspiciatis molestiae animi quia.</p>
+        </div><!-- /.room-highlight-top -->
+        
+        <div class="main-highlight">
+            <div class="txt-highlight">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque aliquid alias vel consequatur placeat repellendus consequuntur et ut minima voluptatem, inventore earum molestias voluptates excepturi magnam quisquam sed? Repellendus, voluptatibus!</p>
+                <a href="#">Book Now</a>
+                <a href="#">Explore the room</a>
+            </div>
+
+            <div class="bg-main1">
+                <div class="bg-main-wp">
+                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img5.jpg" alt=""></figure>
+                </div>
+            </div>
+        </div><!-- /.main-highlight -->
+    </div>
+   </section>
+
+   <section class="about-us">
+        <div class="container">
+            <div class="box-about-us">
+                <h2>Sustainability</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ex qui numquam tempore dicta velit repudiandae nemo, vel molestiae soluta odio! Asperiores, minima laboriosam consectetur consequuntur illo a error provident!</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+
+            <div class="box-about-us">
+                <h2>Sustainability</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ex qui numquam tempore dicta velit repudiandae nemo, vel molestiae soluta odio! Asperiores, minima laboriosam consectetur consequuntur illo a error provident!</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+   </section>
+
+   <section class="video-promotional">
+    <div class="container">
+        <div class="video-promotional-wp">
+            <video src="<?php echo PATH_INTERATIONS;?>images/bg-video2.mp4" autoplay muted loop></video>
+            <p>Experiences</p>
+
+            <h2>Experience the better from summer</h2>
+            <a href="#" class="btn">Explore</a>
+        </div>
+        <!-- /.video-promotional-wp -->
+    </div>
+   </section>
+
+   <section class="img-grattitude">
+        <div class="container">
+            <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
+            <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img5.jpg" alt="" srcset=""></figure>
+            <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
+        </div>
+   </section>
