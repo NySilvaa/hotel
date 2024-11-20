@@ -6,12 +6,13 @@
     <meta name="description" content="hotel de luxo">
     <meta name="keywords" content="hotel;luxo;reservas;front-end;back-end;viagens;">
     <meta name="author" content="Nycolas silva">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.home.css">
     <title>Home | Explore as nossas diversas opções</title>
 </head>
 <body> 
     <section class="menu-below">
-        <a href="#" class="book-accomodation">Book Accommodation</a>
+        <a href="#" class="book-accomodation" id="book-accomodation">Book Accommodation <i class="bx bx-bookmark"></i></a>
 
         <nav class="navigation-menu-below">
             <ul>
@@ -23,77 +24,86 @@
             </ul>
         </nav>
 
-        <a href="#" class="hamburguer">a</a>
+        <a href="#" class="hamburguer"><i class='bx bx-menu'></i></a>
     </section>
 
     <main id="entrada">
         <video src="<?php echo PATH_INTERATIONS;?>images/bg-video.mp4" autoplay muted loop></video>
         <div class="overlay"></div>
 
-            <nav class="navigation">
-                <figure class="logo"><a href="#" class="txt-white">Logomarca</a></figure>
+        <nav class="navigation">
+            <figure class="logo"><a href="#" class="txt-white"><i class='bx bxs-drink' ></i></a></figure>
 
-                <div class="name-center">
-                    <h2 class="txt-white">Roros Hotel</h2>
-                    <a href="#" class="txt-white">Roroshotelle - Roros Hotel</a>
+            <div class="name-center">
+                <h2 class="txt-white">Roros Hotel</h2>
+                <a href="#" class="txt-white">Roroshotelle - Roros Hotel</a>
+            </div>
+
+            <div class="idiomas txt-white">
+                <a href="#" class="port txt-white">Por</a> | <a href="#" class="eng txt-white">Eng</a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <section class="chamada">
+                <div class="text-chamada">
+                    <h1 class="txt-white">A Destination for Relaxation <br> Adventure and Memories</h1>
+                    <a href="#" class="txt-white">See our rooms</a>
                 </div>
 
-                <div class="idiomas txt-white">
-                    <a href="#" class="port txt-white">Por</a> | <a href="#" class="eng txt-white">Eng</a>
-                </div>
-            </nav>
+                <div class="checks-form">
+                    <div id="calendar"></div>
+                    
+                    <form action="<?php echo PATH_PAGES; ?>rooms" method="post">
+                        <div class="select-options-rooms">
+                        <i class='bx bx-caret-down' id="btn-select"></i>
 
-            <div class="container">
-                <section class="chamada">
-                    <div class="text-chamada">
-                        <h1 class="txt-white">A Destination for Relaxation <br> Adventure and Memories</h1>
-                        <a href="#" class="txt-white">See our rooms</a>
-                    </div>
+                        <select name="option" id="select">
+                            <option value="Escolha uma Opção" selected disabled>Choose the Option</option>
+                            <option value="Roro's Hotel">Roro's Hotel</option>
+                            <option value="Airbnb">Airbnb</option>
+                            <option value="Pousada">Pousada</option>
+                            <option value="Roro's Rooms">Roro's Rooms</option>
+                        </select>
+                        </div>
 
-                    <div class="checks-form">
-                        <form action="" method="post">
-                            <select name="option" id="">
-                                <option value="Teste">Teste</option>
-                                <option value="Teste">Teste</option>
-                                <option value="Teste">Teste</option>
-                                <option value="Teste">Teste</option>
-                            </select>
+                        <div class="checks">
+                            <div class="check-in">
+                                <p>Check-in Date</p>
 
-                            <div class="checks">
-                                <div class="check-in">
-                                    <p>Check-in Date</p>
-
-                                    <div class="date">
-                                        <h3>10.</h3>
-                                        <p>Octuber <br> 2024</p>
-                                    </div>
+                                <div class="date">
+                                    <h3 id="day-check-in"></h3>
+                                    <p id="month-check-in">November <br> 2024</p>
+                                    <i class='bx bx-caret-down'></i>
                                 </div>
-
-                                <div class="check-out">
-                                    <p>Check-out Date</p>
-
-                                    <div class="date">
-                                        <h3>10.</h3>
-                                        <p>November <br> 2024</p>
-                                    </div>
-                                </div>
-                            </div><!--checks -->
-
-                            <div class="choose-rooms">
-                                <p>Guests per room</p>
-                                <div class="count-guests-room">
-                                    <span class="sub"></span>
-                                    <span class="count">1</span>
-                                    <span class="add"></span>
-                                </div>
-                                <a href="#">Multiples Rooms?</a>
                             </div>
 
-                            <button type="submit">View rooms and prices </button>
-                        </form>
-                    </div>
-                </section>
-            </div><!-- /.container -->  
+                            <div class="check-out">
+                                <p>Check-out Date</p>
+
+                                <div class="date">
+                                    <h3 id="day-check-out">10.</h3>
+                                    <p id="month-check-out">November <br> 2024</p>
+                                    <i class='bx bx-caret-down'></i>
+                                </div>
+                            </div>
+                        </div><!--checks -->
+
+                        <div class="choose-rooms">
+                            <p>Guests per room</p>
+                            <div class="count-guests-room">
+                                <span class="sub" id="sub"><i class="bx bx-minus"></i></span>
+                                <input type="number" name="count" id="count" value="1" min="1" max="5">
+                                <span class="add" id="add"><i class='bx bx-plus'></i></span>
+                            </div>
+                            <a href="#">Multiples Rooms?</a>
+                        </div>
+
+                        <button type="submit">View rooms and prices <i class='bx bx-caret-right'></i></button>
+                    </form>
+                </div>
+            </section>
+        </div><!-- /.container -->  
     </main>
 
     <section class="diferenciais">
@@ -104,7 +114,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -112,7 +122,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -120,7 +130,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -128,7 +138,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img4.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -136,7 +146,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -144,7 +154,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -152,7 +162,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img4.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -160,7 +170,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -168,7 +178,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore</a>
+                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
                 </div><!-- /.box-diferenciais -->
            </div><!-- /.diferenciais-wrapper -->   
         </div><!--container-->
@@ -189,8 +199,8 @@
         <div class="main-highlight">
             <div class="txt-highlight">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque aliquid alias vel consequatur placeat repellendus consequuntur et ut minima voluptatem, inventore earum molestias voluptates excepturi magnam quisquam sed? Repellendus, voluptatibus!</p>
-                <a href="#">Book Now</a>
-                <a href="#">Explore the room</a>
+                <a href="#">Book Now <i class='bx bx-bookmark' ></i></a>
+                <a href="#">Explore the room <i class='bx bx-world'></i></a>
             </div>
 
             <div class="bg-main1">

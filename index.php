@@ -1,5 +1,5 @@
 <?php
-
+    ob_start();
     $autoload = function($class){
         $class = str_replace('\\','/', $class);
 
@@ -10,8 +10,10 @@
     spl_autoload_register($autoload);
 
     define('PATH_INTERATIONS', 'http://localhost/hotel/Views/assets/');
+    define('PATH_PAGES', 'http://localhost/hotel/');
 
     $app = new Application();
     $app->run();
 
+    ob_end_flush();
 ?>
