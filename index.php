@@ -9,6 +9,8 @@
 
     spl_autoload_register($autoload);
 
+    date_default_timezone_set("America/Sao_Paulo");
+
     define('PATH_INTERATIONS', 'http://localhost/hotel/Views/assets/');
     define('PATH_PAGES', 'http://localhost/hotel/');
 

@@ -1,4 +1,4 @@
-function showButtonBookAccomodation(){
+const showButtonBookAccomodation = ()=>{
     const btnBookAccomodation = document.getElementById('book-accomodation');
     
     document.addEventListener('scroll', ()=>{
@@ -10,12 +10,10 @@ function showButtonBookAccomodation(){
             btnBookAccomodation.style.display = 'none';
         }
     })
-}
-
+};
 showButtonBookAccomodation();
 
-
-function chooseRoomsPerGuests(){
+const chooseRoomsPerGuests = ()=>{
     const add = document.getElementById('add');
     const sub = document.getElementById('sub');
     const count = document.getElementById('count');
@@ -35,11 +33,10 @@ function chooseRoomsPerGuests(){
 
     if(valueCount == '')
         count.value = 1
-}
-
+};
 chooseRoomsPerGuests();
 
-// FUNÇÕES PARA O CALENDÁRIO DE RESERVA
+// FUNÇÕES PARA O CALENDÁRIO DE RESERVAS
 !function() {
   var today = moment();
 
@@ -343,26 +340,46 @@ const checkOutSection = document.querySelector('.check-out');
 let getDay = ''
 let monthTitleCalendar = ''
 
+const months = [
+  'January',
+   'February',
+   'March',
+   'April',
+   'May',
+   'June',
+   'July',
+   'August',
+   'September',
+   'October',
+   'November',
+   'December'
+];
+
+// FUNÇÃO PARA MOSTRAR O CALENDÁRIO PARA SELECIONAR AS DATAS DE CHECKS
 const showCalendar = ()=>{
     const dateSection = document.querySelectorAll('.date');
 
     dateSection.forEach(element=>{
         element.addEventListener('click', ()=>{
-            let dateSectionCheck = element.parentNode.getAttribute('class').split(' ');
+        let dateSectionCheck = element.parentNode.getAttribute('class').split(' ');
 
           // FUNÇÃO PARA CASO O USUÁRIO RESOLVA MUDAR A DATA DE CHECK-IN OU CHECK-OUT
             if(dateSectionCheck[1] == 'selected')
-              element.parentNode.classList.remove('selected')
+              element.parentNode.classList.remove('selected');
           
-            calendar.classList.add('active')
+            calendar.classList.add('active');
         })
     })
 }
-showCalendar()
+showCalendar();
 
-// SETAR A DATA ATUAL NO CHECK-IN
-const date = new Date()
+// SETAR A DATA ATUAL NO CHECK-IN E A PRÓXIMA DATA NO CHECK-OUT
+const date = new Date();
 dayCheckIn.innerText = date.getDate();
+dayCheckOut.innerText = date.getDate();
+
+monthCheckIn.innerText = (months[date.getMonth() + 1] > 12) ? ` ${months[1]} ${date.getFullYear()}` : ` ${months[date.getMonth()]} ${date.getFullYear()}`; // MÊS ATUAL
+monthCheckOut.innerText = (months[date.getMonth() + 1] > 12) ? ` ${months[1]} ${date.getFullYear()}` : ` ${months[date.getMonth()+1]} ${date.getFullYear()}`; // MÊS SEGUINTE
 
 // FUNÇÃO PARA PEGAR O MÊS E TROCAR DENTRO DOS CAMPOS DE CHECKS
 const getMonth = (month)=>{
@@ -385,26 +402,83 @@ const changeDay = ()=>{
             dayCheckIn.innerText = item.innerText
             checkInSection.classList.add('selected')
             calendar.classList.remove('active') 
+
+            if(item.parentNode.getAttribute('class').split(' ')[1] === 'other')
+              daysOther(Number(item.innerText), monthCheckIn);
           }else{
             dayCheckOut.innerText = item.innerText
             checkOutSection.classList.add('selected')
             calendar.classList.remove('active')
+           
+            if(item.parentNode.getAttribute('class').split(' ')[1] === 'other')
+              daysOther(Number(item.innerText), monthCheckOut);
           }
         })
   })
 };
 changeDay();
 
+// FUNÇÃO NEXT MONTH
 rightArrow.addEventListener('click', ()=>{
     monthTitleCalendar = document.querySelector('.header h1').innerText
     getMonth(monthTitleCalendar)
+    createAttrHeaderMonth(monthTitleCalendar)
 
-    setTimeout(changeDay, 600);
+    setTimeout(()=>{
+      changeDay()
+    }, 600);
 });
 
+// FUNÇÃO PREVIOUS MONTH
 leftArrow.addEventListener('click', ()=>{
   monthTitleCalendar = document.querySelector('.header h1').innerText
   getMonth(monthTitleCalendar);
 
-  setTimeout(changeDay, 600)
+  setTimeout(()=>{
+    changeDay();
+    createAttrHeaderMonth(monthTitleCalendar);
+  }, 600)
 });
+
+// CRIAR ATRIBUTO DO MÊS PARA MONITORAR E INTERAÇÃO DE OUTRAS FUNÇÕES
+const createAttrHeaderMonth = (month)=>{
+  const headerMonth = document.querySelector('#calendar .header h1');
+  let currentMonthAttr = month.split(' ')[0]
+
+  for (let i = 0; i < months.length; i++) {
+    if(months[i] === currentMonthAttr)
+      headerMonth.setAttribute('data-month', i+1);
+  }
+}
+createAttrHeaderMonth(months[date.getMonth() + 1]);
+
+// FUNÇÃO PARA CASO O USUÁRIO ESCOLHA UMA DATA QUE NÃO SEJA NAQUELE MÊS ATUAL EM QUE ESTEJA SENDO MOSTRADO PARA ELE
+const daysOther = (day, checkSection)=>{
+  const monthsObj = {
+    1: 'January',
+    2: 'February',
+    3:  'March',
+    4:  'April',
+    5:  'May',
+    6:  'June',
+    7:  'July',
+    8: 'August',
+    9:  'September',
+    10: 'October',
+    11:  'November',
+    12:  'December'
+  };
+
+  const headerMonth = document.querySelector('#calendar .header h1');
+  let headerTittle = headerMonth.getAttribute('data-month');
+  let headerYearTittle = headerMonth.innerText.split(' ')[1]
+
+  if((day >= 24 && day <= 30) || (day >= 25 && day <= 31)){
+    // MÊS ANTERIOR
+    checkSection.innerText = monthsObj[Number(headerTittle -1)] + " " + headerYearTittle;
+  }else if(day >= 1 && day <= 7){
+    // PRÓXIMO MÊS
+    if(Number(headerTittle +1) > 12)
+      checkSection.innerText = monthsObj[1] + " " + (Number(headerYearTittle) +1);
+  }
+}

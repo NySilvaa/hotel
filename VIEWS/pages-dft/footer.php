@@ -31,6 +31,8 @@
 
 <script defer src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.home.js"></script>
+<script defer src="<?php echo PATH_INTERATIONS; ?>js/ajax.home.js"></script>
 </body>
 </html>

@@ -11,8 +11,9 @@
     <title>Home | Explore as nossas diversas opções</title>
 </head>
 <body> 
+
     <section class="menu-below">
-        <a href="#" class="book-accomodation" id="book-accomodation">Book Accommodation <i class="bx bx-bookmark"></i></a>
+        <a href="#" class="book-accomodation txt-white" id="book-accomodation">Book Accommodation <i class="bx bx-bookmark"></i></a>
 
         <nav class="navigation-menu-below">
             <ul>
@@ -54,7 +55,7 @@
                 <div class="checks-form">
                     <div id="calendar"></div>
                     
-                    <form action="<?php echo PATH_PAGES; ?>rooms" method="post">
+                    <form action="<?php echo PATH_PAGES; ?>rooms/" method="post" id="form-book">
                         <div class="select-options-rooms">
                         <i class='bx bx-caret-down' id="btn-select"></i>
 
@@ -68,13 +69,14 @@
                         </div>
 
                         <div class="checks">
-                            <div class="check-in">
+                            <div class="check-in selected">
                                 <p>Check-in Date</p>
 
                                 <div class="date">
                                     <h3 id="day-check-in"></h3>
-                                    <p id="month-check-in">November <br> 2024</p>
+                                    <p id="month-check-in"> <br> </p>
                                     <i class='bx bx-caret-down'></i>
+                                    <input type="hidden" name="date-check-in" value="">
                                 </div>
                             </div>
 
@@ -82,9 +84,10 @@
                                 <p>Check-out Date</p>
 
                                 <div class="date">
-                                    <h3 id="day-check-out">10.</h3>
-                                    <p id="month-check-out">November <br> 2024</p>
+                                    <h3 id="day-check-out"></h3>
+                                    <p id="month-check-out"> <br></p>
                                     <i class='bx bx-caret-down'></i>
+                                    <input type="hidden" name="date-check-out" value="">
                                 </div>
                             </div>
                         </div><!--checks -->
@@ -99,7 +102,7 @@
                             <a href="#">Multiples Rooms?</a>
                         </div>
 
-                        <button type="submit">View rooms and prices <i class='bx bx-caret-right'></i></button>
+                        <button type="submit" name="prices">View rooms and prices <i class='bx bx-caret-right'></i></button>
                     </form>
                 </div>
             </section>
@@ -199,7 +202,7 @@
         <div class="main-highlight">
             <div class="txt-highlight">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque aliquid alias vel consequatur placeat repellendus consequuntur et ut minima voluptatem, inventore earum molestias voluptates excepturi magnam quisquam sed? Repellendus, voluptatibus!</p>
-                <a href="#">Book Now <i class='bx bx-bookmark' ></i></a>
+                <a href="#" class="txt-white">Book Now <i class='bx bx-bookmark' ></i></a>
                 <a href="#">Explore the room <i class='bx bx-world'></i></a>
             </div>
 
@@ -215,7 +218,7 @@
    <section class="about-us">
         <div class="container">
             <div class="box-about-us">
-                <h2>Sustainability</h2>
+                <h2 class="txt-white">Sustainability</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ex qui numquam tempore dicta velit repudiandae nemo, vel molestiae soluta odio! Asperiores, minima laboriosam consectetur consequuntur illo a error provident!</p>
                 <a href="#" class="btn">Read More</a>
             </div>
@@ -234,7 +237,7 @@
             <video src="<?php echo PATH_INTERATIONS;?>images/bg-video2.mp4" autoplay muted loop></video>
             <p>Experiences</p>
 
-            <h2>Experience the better from summer</h2>
+            <h2 class="txt-white">Experience the better from summer</h2>
             <a href="#" class="btn">Explore</a>
         </div>
         <!-- /.video-promotional-wp -->
