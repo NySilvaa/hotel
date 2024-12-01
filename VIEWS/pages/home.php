@@ -1,3 +1,9 @@
+<?php
+    use \Model\HomeModel;
+
+    $homeModel = new HomeModel();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,6 +17,14 @@
     <title>Home | Explore as nossas diversas opções</title>
 </head>
 <body> 
+    <?php
+         if(isset($_POST['prices'])){
+           if($homeModel->valuesInvalid($_POST)){
+            // PASSOU PELA VERIFICAÇÃO
+                header("Location: ".PATH_PAGES."rooms/");
+           }
+        }
+    ?>
 
     <section class="menu-below">
         <a href="#" class="book-accomodation txt-white" id="book-accomodation">Book Accommodation <i class="bx bx-bookmark"></i></a>
@@ -55,7 +69,7 @@
                 <div class="checks-form">
                     <div id="calendar"></div>
                     
-                    <form action="<?php echo PATH_PAGES; ?>rooms/" method="post" id="form-book">
+                    <form action="" method="post" id="form-book">
                         <div class="select-options-rooms">
                         <i class='bx bx-caret-down' id="btn-select"></i>
 

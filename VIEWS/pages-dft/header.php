@@ -17,12 +17,12 @@
     <header id="header">
         <div class="container">
             <nav class="navigation">
-                <figure class="logo"><a href="#" class="txt-white"><i class='bx bxs-drink' ></i> <h3>Roro's Hotel</h3></a></figure>
+                <figure class="logo"><a href="/hotel" class="txt-white"><i class='bx bxs-drink' ></i> <h3>Roro's Hotel</h3></a></figure>
 
                 
                 <ul id="nav-menu">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Search</a></li>
+                    <li><a href="#" class="active">Search</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">About us</a></li>
                     <li><a href="#" class="btn">Sign Up | Login</a></li>
