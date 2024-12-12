@@ -23,12 +23,7 @@
             foreach ($post as $key => $value) {
                 if($key == "prices")
                 continue;
-
-                if(($key == 'date-check-in' && $value < date('d/m/Y')) || ($key == 'date-check-out' && $value < date('d/m/Y'))){
-                    self::messageBook('error', 'Data Inválida', 'Não são permitidas datas retroativas.');
-                    return false;
-                    break;
-                }
+          
 
                 if($value == ''){
                     self::messageBook('error', 'Valores Inválidos', 'Valores vazios não são permitidos');

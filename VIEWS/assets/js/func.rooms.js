@@ -1,106 +1,105 @@
-let control = true;
+window.onload = ()=>{
+    let control = true;
 
-const favoriteBook = ()=>{
-    const btnFavorite = document.querySelectorAll('.favorite');
+    const favoriteBook = ()=>{
+        const btnFavorite = document.querySelectorAll('.favorite');
 
-    btnFavorite.forEach(item=>{
-        item.addEventListener('click', (e)=>{
-            e.preventDefault();
-           let icon = item.firstElementChild
-
-          if(control){
-            icon.classList.remove('bx-heart');
-            icon.classList.add('bxs-heart');
-            control = false;
-          }else{
-            icon.classList.add('bx-heart');
-            icon.classList.remove('bxs-heart');
-            control = true;
-          }
-        })
-    })
-}
-
-favoriteBook()
-
-const showModal = ()=>{
-    const dataBox = document.querySelectorAll('.data-book-box');
-    const fieldCountry = document.getElementById('destiny-country');
-
-    dataBox.forEach(item=>{
-        let input = item.childNodes[3]
-
-        input.addEventListener('click', ()=>{
-            const modal = input.parentNode.lastElementChild
+        btnFavorite.forEach(item=>{
+            item.addEventListener('click', (e)=>{
+                e.preventDefault();
+            let icon = item.firstElementChild
 
             if(control){
-                modal.classList.add('show');
-                fieldCountry.focus()
-                chooseCountry()
+                icon.classList.remove('bx-heart');
+                icon.classList.add('bxs-heart');
                 control = false;
             }else{
-                modal.classList.remove('show');
+                icon.classList.add('bx-heart');
+                icon.classList.remove('bxs-heart');
                 control = true;
             }
+            })
         })
-    })
-}
+    };
+    favoriteBook();
 
-showModal()
+    const showModal = ()=>{
+        const dataBox = document.querySelectorAll('.data-book-box');
+        const fieldCountry = document.getElementById('destiny-country');
 
-const showOptions = (arr, value)=>{
-    const searchField = document.getElementById(value)
-    const listEl = document.getElementById('list-country')
-    searchField.addEventListener('input', inputHandler)
+        dataBox.forEach(item=>{
+            let input = item.childNodes[3]
+            
+            input.addEventListener('click', ()=>{
+            let modal = input.parentNode.lastElementChild;
+            hideModal(modal);
 
-    fillList()
+                if(control){
+                    modal.classList.toggle('show');
+                    fieldCountry.focus();
+                    chooseCountry();
+                    control = false;
+                }else{
+                    modal.classList.toggle('show');
+                    control = true;
+                }
+            })
 
-    function fillList (list = arr){
-        listEl.innerHTML = ""
+        })
+    };
+    showModal();
 
-        for (let i = 0; i < list.length; i++) {
-            let listItems = document.createElement('li')
-            listItems.innerHTML = list[i]
-            listEl.appendChild(listItems)
+    const hideModal = (modal)=>{
+        setTimeout(() => {
+            document.querySelector('body').addEventListener('click', ()=>{
+                modal.classList.remove('show');
+                control = true;
+            });
+
+            modal.addEventListener('click', (e)=>{e.stopPropagation()});
+            modal.parentNode.addEventListener('click', (e)=>{e.stopPropagation()});
+        }, 600);    
+
+    };
+
+    const showOptions = (arr, value)=>{
+        const searchField = document.getElementById(value)
+        const listEl = document.getElementById('list-country')
+        searchField.addEventListener('input', inputHandler)
+
+        fillList()
+
+        function fillList (list = arr){
+            listEl.innerHTML = ""
+
+            for (let i = 0; i < list.length; i++) {
+                let listItems = document.createElement('li')
+                listItems.innerHTML = list[i]
+                listEl.appendChild(listItems)
+            }
         }
-    }
 
-    function inputHandler(){
-        const filteredList = arr.filter(el =>{
-            const listItem = el.toLowerCase()
-            const searchWord = searchField.value.toLowerCase();
+        function inputHandler(){
+            const filteredList = arr.filter(el =>{
+                const listItem = el.toLowerCase()
+                const searchWord = searchField.value.toLowerCase();
 
-            return listItem.includes(searchWord)
-        })
+                return listItem.includes(searchWord)
+            })
 
-            fillList(filteredList)
-    }
-};
+                fillList(filteredList)
+        }
+    };
 
-let listOption = ""
+    let listOption = "";
 
-const chooseCountry = ()=>{
-    const countries = ["Brasil", "Estados Unidos", "Canadá", "Argentina", "China", "Japão", "Alemanha", "França", "Itália", "Espanha", "Reino Unido", "Rússia", "Índia", "Austrália", "África do Sul", "México"];
-    const fieldCountry = document.getElementById('destiny-country');
-    const fieldCity = document.getElementById('destiny-city');
-
-    if(fieldCountry.getAttribute('class').split(" ")[2] !== 'selected')
+    const chooseCountry = ()=>{
+        const countries = ["Brasil", "Estados Unidos", "Canadá", "Argentina", "China", "Japão", "Alemanha", "França", "Itália", "Espanha", "Reino Unido", "Rússia", "Índia", "Austrália", "África do Sul", "México"];
+        const fieldCountry = document.getElementById('destiny-country');
+        const fieldCity = document.getElementById('destiny-city');
+        
         showOptions(countries, 'destiny-country'); // User ainda está escolhendo as opções de países
 
-        listOption = document.querySelectorAll('ul#list-country li')
-
-        listOption.forEach(element=>{
-            element.addEventListener('click', ()=>{
-                let countryChoosed = element.innerText;
-                fieldCountry.value = countryChoosed;
-                element.parentNode.innerText = '';
-                fieldCity.focus();
-                showCity(countryChoosed);
-                fieldCountry.classList.add('selected');
-            });
-        });
-
-        fieldCountry.addEventListener('change', ()=>{
             listOption = document.querySelectorAll('ul#list-country li')
 
             listOption.forEach(element=>{
@@ -113,54 +112,57 @@ const chooseCountry = ()=>{
                     fieldCountry.classList.add('selected');
                 });
             });
-        })
-}
 
-const showCity = (country)=>{
-    const citiesByCountry = {
-        "Brasil": ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
-        "Estados Unidos": ["Nova York", "Los Angeles", "Chicago", "Houston"],
-        "Canadá": ["Toronto", "Montreal", "Vancouver", "Calgary"],
-        "Argentina": ["Buenos Aires", "Córdoba", "Rosario", "Mendoza"],
-        "China": ["Pequim", "Xangai", "Cantão", "Shenzhen"],
-        "Japão": ["Tóquio", "Osaka", "Kyoto", "Yokohama"],
-        "Alemanha": ["Berlim", "Munique", "Hamburgo", "Colônia"],
-        "França": ["Paris", "Marselha", "Lyon", "Nice"],
-        "Itália": ["Roma", "Milão", "Veneza", "Florença"],
-        "Espanha": ["Madrid", "Barcelona", "Valência", "Sevilha"],
-        "Reino Unido": ["Londres", "Manchester", "Birmingham", "Glasgow"],
-        "Rússia": ["Moscou", "São Petersburgo", "Novosibirsk", "Cazã"],
-        "Índia": ["Nova Delhi", "Mumbai", "Calcutá", "Bangalore"],
-        "Austrália": ["Sydney", "Melbourne", "Brisbane", "Perth"],
-        "África do Sul": ["Cidade do Cabo", "Johannesburgo", "Durban", "Pretória"],
-        "México": ["Cidade do México", "Guadalajara", "Monterrey", "Puebla"]
+            fieldCountry.addEventListener('change', ()=>{
+                listOption = document.querySelectorAll('ul#list-country li')
+
+                listOption.forEach(element=>{
+                    element.addEventListener('click', ()=>{
+                        let countryChoosed = element.innerText;
+                        fieldCountry.value = countryChoosed;
+                        element.parentNode.innerText = '';
+                        fieldCity.focus();
+                        showCity(countryChoosed);
+                        fieldCountry.classList.add('selected');
+                    });
+                });
+            })
     };
 
-    showOptions(citiesByCountry[country], 'destiny-city')
-    chooseCity()
-}
+    const showCity = (country)=>{
+        const citiesByCountry = {
+            "Brasil": ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+            "Estados Unidos": ["Nova York", "Los Angeles", "Chicago", "Houston"],
+            "Canadá": ["Toronto", "Montreal", "Vancouver", "Calgary"],
+            "Argentina": ["Buenos Aires", "Córdoba", "Rosario", "Mendoza"],
+            "China": ["Pequim", "Xangai", "Cantão", "Shenzhen"],
+            "Japão": ["Tóquio", "Osaka", "Kyoto", "Yokohama"],
+            "Alemanha": ["Berlim", "Munique", "Hamburgo", "Colônia"],
+            "França": ["Paris", "Marselha", "Lyon", "Nice"],
+            "Itália": ["Roma", "Milão", "Veneza", "Florença"],
+            "Espanha": ["Madrid", "Barcelona", "Valência", "Sevilha"],
+            "Reino Unido": ["Londres", "Manchester", "Birmingham", "Glasgow"],
+            "Rússia": ["Moscou", "São Petersburgo", "Novosibirsk", "Cazã"],
+            "Índia": ["Nova Delhi", "Mumbai", "Calcutá", "Bangalore"],
+            "Austrália": ["Sydney", "Melbourne", "Brisbane", "Perth"],
+            "África do Sul": ["Cidade do Cabo", "Johannesburgo", "Durban", "Pretória"],
+            "México": ["Cidade do México", "Guadalajara", "Monterrey", "Puebla"]
+        };
 
-const chooseCity = ()=>{
-    const locationField = document.getElementById('location');
-    const destinyCity = document.getElementById('destiny-city');
+        showOptions(citiesByCountry[country], 'destiny-city')
+        chooseCity()
+    };
 
-    destinyCity.addEventListener('keyup', ()=>{
-        locationField.setAttribute('value', destinyCity.value);
-    });
+    const chooseCity = ()=>{
+        const locationField = document.getElementById('location');
+        const destinyCity = document.getElementById('destiny-city');
 
-        listOption = document.querySelectorAll('ul#list-country li')
-    
-        listOption.forEach(element=>{
-            element.addEventListener('click', ()=>{
-                destinyCity.value = element.innerText;
-                locationField.setAttribute('value', element.innerText);
-                element.parentNode.innerText = '';
-            })
-        })
+        destinyCity.addEventListener('keyup', ()=>{
+            locationField.setAttribute('value', destinyCity.value);
+        });
 
-        destinyCity.addEventListener('change', ()=>{
             listOption = document.querySelectorAll('ul#list-country li')
-    
+        
             listOption.forEach(element=>{
                 element.addEventListener('click', ()=>{
                     destinyCity.value = element.innerText;
@@ -168,5 +170,17 @@ const chooseCity = ()=>{
                     element.parentNode.innerText = '';
                 })
             })
-        })
+
+            destinyCity.addEventListener('change', ()=>{
+                listOption = document.querySelectorAll('ul#list-country li')
+        
+                listOption.forEach(element=>{
+                    element.addEventListener('click', ()=>{
+                        destinyCity.value = element.innerText;
+                        locationField.setAttribute('value', element.innerText);
+                        element.parentNode.innerText = '';
+                    })
+                })
+            })
+    };
 }

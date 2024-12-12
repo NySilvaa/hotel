@@ -378,8 +378,8 @@ const date = new Date();
 dayCheckIn.innerText = date.getDate();
 dayCheckOut.innerText = date.getDate();
 
-monthCheckIn.innerText = (months[date.getMonth() + 1] > 12) ? ` ${months[1]} ${date.getFullYear()}` : ` ${months[date.getMonth()]} ${date.getFullYear()}`; // MÊS ATUAL
-monthCheckOut.innerText = (months[date.getMonth() + 1] > 12) ? ` ${months[1]} ${date.getFullYear()}` : ` ${months[date.getMonth()+1]} ${date.getFullYear()}`; // MÊS SEGUINTE
+monthCheckIn.innerText = (date.getMonth() + 1 > 12) ? ` ${months[0]} ${Number(date.getFullYear() + 1)}` : ` ${months[date.getMonth()]} ${date.getFullYear()}`; // MÊS ATUAL
+monthCheckOut.innerText = (date.getMonth() + 2 > 12) ? ` ${months[0]} ${Number(date.getFullYear() + 1)}` : ` ${months[date.getMonth()+1]} ${Number(date.getFullYear())}`;;  // MÊS SEGUINTE
 
 // FUNÇÃO PARA PEGAR O MÊS E TROCAR DENTRO DOS CAMPOS DE CHECKS
 const getMonth = (month)=>{
@@ -391,8 +391,11 @@ const getMonth = (month)=>{
     monthCheckOut.innerText = month
 };
 
+// FUNÇÃO PARA ESCOLHER O DIA
 const changeDay = ()=>{
   getDay = document.querySelectorAll('.day-number');
+  const fieldCheckIn = document.querySelector('[date-check-in]');
+  const fieldCheckOut = document.querySelector('[date-check-out]');
 
       getDay.forEach(item=>{
         item.addEventListener('click', ()=>{
@@ -400,6 +403,7 @@ const changeDay = ()=>{
 
           if(checkInSectionClass !== 'selected'){
             dayCheckIn.innerText = item.innerText
+            fieldCheckIn.setAttribute('value', item.innerText);
             checkInSection.classList.add('selected')
             calendar.classList.remove('active') 
 

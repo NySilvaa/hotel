@@ -1,12 +1,5 @@
 <?php
    use \Model\HomeModel;
-
-   if(isset($_POST['findOutDestiny'])){
-      echo '<pre>';
-      print_r($_POST);
-      echo '</pre>';
-     }
-  
 ?>
 
 <section class="data-user-book">
@@ -42,10 +35,14 @@
 
             <div class="data-book-box">
                 <label for="person" class="book-title">Person</label>
-                <input type="text" id="person" name="person" placeholder="Choose the Count"  value="<?php echo $_SESSION['count']; ?> Person"/>
+                <input type="text" id="person" name="person" placeholder="Choose the Count"  value="<?php 
+                                    if(!isset($_POST['count-person']))
+                                        echo $_SESSION['count'];
+                                    else
+                                        echo recoverPost('count-person-field'); ?> Person"/>
 
                 <div class="modal">
-                        <form class="form">
+                        <form class="form" method="post">
                         <div class="separator">
                             <hr class="line">
                             <p>Select the Count of People</p>
@@ -54,10 +51,15 @@
                         <div class="credit-card-info--form">
                             <div class="input_container">
                                 <label for="password_field" class="input_label">Person </label>
-                                <input id="password_field" class="input_field" type="text" name="input-name" title="Inpit title" placeholder="Type the count of person">
+                                <input id="password_field" class="input_field" type="text" name="count-person-field" title="Inpit title" placeholder="Type the count of person">
                             </div>
                         </div>
-                            <button class="purchase--btn">Registrar {Número} Pessoas</button>
+                            <button class="purchase--btn" name="count-person">Registrar <?php 
+                                    if(!isset($_POST['count-person']))
+                                        echo $_SESSION['count'];
+                                    else
+                                        echo recoverPost('count-person-field');
+                            ?> Pessoas</button>
                         </form>
                 </div>
             </div><!-- /.data-book-box -->
@@ -99,7 +101,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
@@ -123,7 +125,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
@@ -147,7 +149,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
@@ -171,7 +173,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
@@ -195,7 +197,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
@@ -219,7 +221,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
@@ -243,7 +245,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
@@ -267,7 +269,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
@@ -291,7 +293,7 @@
 
                 <div class="hotels-description">
                     <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, South Jakarta</p>
+                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
                     <div class="classification">
                         <span class="stars"><i class="bx bxs-star"></i></span>
                         <span class="stars"><i class="bx bxs-star"></i></span>
