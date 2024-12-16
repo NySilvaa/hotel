@@ -62,43 +62,11 @@ window.onload = ()=>{
 
     };
 
-    const showOptions = (arr, value)=>{
-        const searchField = document.getElementById(value)
-        const listEl = document.getElementById('list-country')
-        searchField.addEventListener('input', inputHandler)
-
-        fillList()
-
-        function fillList (list = arr){
-            listEl.innerHTML = ""
-
-            for (let i = 0; i < list.length; i++) {
-                let listItems = document.createElement('li')
-                listItems.innerHTML = list[i]
-                listEl.appendChild(listItems)
-            }
-        }
-
-        function inputHandler(){
-            const filteredList = arr.filter(el =>{
-                const listItem = el.toLowerCase()
-                const searchWord = searchField.value.toLowerCase();
-
-                return listItem.includes(searchWord)
-            })
-
-                fillList(filteredList)
-        }
-    };
-
-    let listOption = "";
+    // let listOption = "";
 
     const chooseCountry = ()=>{
-        const countries = ["Brasil", "Estados Unidos", "Canadá", "Argentina", "China", "Japão", "Alemanha", "França", "Itália", "Espanha", "Reino Unido", "Rússia", "Índia", "Austrália", "África do Sul", "México"];
         const fieldCountry = document.getElementById('destiny-country');
         const fieldCity = document.getElementById('destiny-city');
-        
-        showOptions(countries, 'destiny-country'); // User ainda está escolhendo as opções de países
 
             listOption = document.querySelectorAll('ul#list-country li')
 
@@ -106,52 +74,65 @@ window.onload = ()=>{
                 element.addEventListener('click', ()=>{
                     let countryChoosed = element.innerText;
                     fieldCountry.value = countryChoosed;
+                    
+                    $.ajax({
+                        type: "GET",
+                        url: "http://localhost/hotel/rooms/",
+                        data: {paisEscolhido: countryChoosed},
+                        success: function (response) {
+                           let secao = $(response).find('#list-country').html();
+
+                           $("#list-country").html(secao);
+                           chooseCity();
+                        }
+                    });
+
                     element.parentNode.innerText = '';
                     fieldCity.focus();
-                    showCity(countryChoosed);
+                    //showCity(countryChoosed);
+                  
                     fieldCountry.classList.add('selected');
                 });
             });
 
-            fieldCountry.addEventListener('change', ()=>{
-                listOption = document.querySelectorAll('ul#list-country li')
+            // fieldCountry.addEventListener('change', ()=>{
+            //     listOption = document.querySelectorAll('ul#list-country li')
 
-                listOption.forEach(element=>{
-                    element.addEventListener('click', ()=>{
-                        let countryChoosed = element.innerText;
-                        fieldCountry.value = countryChoosed;
-                        element.parentNode.innerText = '';
-                        fieldCity.focus();
-                        showCity(countryChoosed);
-                        fieldCountry.classList.add('selected');
-                    });
-                });
-            })
+            //     listOption.forEach(element=>{
+            //         element.addEventListener('click', ()=>{
+            //             let countryChoosed = element.innerText;
+            //             fieldCountry.value = countryChoosed;
+            //             element.parentNode.innerText = '';
+            //             fieldCity.focus();
+            //             showCity(countryChoosed);
+            //             fieldCountry.classList.add('selected');
+            //         });
+            //     });
+            // })
     };
 
-    const showCity = (country)=>{
-        const citiesByCountry = {
-            "Brasil": ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
-            "Estados Unidos": ["Nova York", "Los Angeles", "Chicago", "Houston"],
-            "Canadá": ["Toronto", "Montreal", "Vancouver", "Calgary"],
-            "Argentina": ["Buenos Aires", "Córdoba", "Rosario", "Mendoza"],
-            "China": ["Pequim", "Xangai", "Cantão", "Shenzhen"],
-            "Japão": ["Tóquio", "Osaka", "Kyoto", "Yokohama"],
-            "Alemanha": ["Berlim", "Munique", "Hamburgo", "Colônia"],
-            "França": ["Paris", "Marselha", "Lyon", "Nice"],
-            "Itália": ["Roma", "Milão", "Veneza", "Florença"],
-            "Espanha": ["Madrid", "Barcelona", "Valência", "Sevilha"],
-            "Reino Unido": ["Londres", "Manchester", "Birmingham", "Glasgow"],
-            "Rússia": ["Moscou", "São Petersburgo", "Novosibirsk", "Cazã"],
-            "Índia": ["Nova Delhi", "Mumbai", "Calcutá", "Bangalore"],
-            "Austrália": ["Sydney", "Melbourne", "Brisbane", "Perth"],
-            "África do Sul": ["Cidade do Cabo", "Johannesburgo", "Durban", "Pretória"],
-            "México": ["Cidade do México", "Guadalajara", "Monterrey", "Puebla"]
-        };
+    // const showCity = (country)=>{
+    //     const citiesByCountry = {
+    //         "Brasil": ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+    //         "Estados Unidos": ["Nova York", "Los Angeles", "Chicago", "Houston"],
+    //         "Canadá": ["Toronto", "Montreal", "Vancouver", "Calgary"],
+    //         "Argentina": ["Buenos Aires", "Córdoba", "Rosario", "Mendoza"],
+    //         "China": ["Pequim", "Xangai", "Cantão", "Shenzhen"],
+    //         "Japão": ["Tóquio", "Osaka", "Kyoto", "Yokohama"],
+    //         "Alemanha": ["Berlim", "Munique", "Hamburgo", "Colônia"],
+    //         "França": ["Paris", "Marselha", "Lyon", "Nice"],
+    //         "Itália": ["Roma", "Milão", "Veneza", "Florença"],
+    //         "Espanha": ["Madrid", "Barcelona", "Valência", "Sevilha"],
+    //         "Reino Unido": ["Londres", "Manchester", "Birmingham", "Glasgow"],
+    //         "Rússia": ["Moscou", "São Petersburgo", "Novosibirsk", "Cazã"],
+    //         "Índia": ["Nova Delhi", "Mumbai", "Calcutá", "Bangalore"],
+    //         "Austrália": ["Sydney", "Melbourne", "Brisbane", "Perth"],
+    //         "África do Sul": ["Cidade do Cabo", "Johannesburgo", "Durban", "Pretória"],
+    //         "México": ["Cidade do México", "Guadalajara", "Monterrey", "Puebla"]
+    //     };
 
-        showOptions(citiesByCountry[country], 'destiny-city')
-        chooseCity()
-    };
+    //     chooseCity()
+    // };
 
     const chooseCity = ()=>{
         const locationField = document.getElementById('location');
@@ -183,4 +164,5 @@ window.onload = ()=>{
                 })
             })
     };
+
 }

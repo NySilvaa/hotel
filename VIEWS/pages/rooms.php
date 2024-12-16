@@ -1,5 +1,9 @@
 <?php
    use \Model\HomeModel;
+   use \Model\RoomsModel;
+
+   $homeModel = new HomeModel();
+    $rooms = new RoomsModel();
 ?>
 
 <section class="data-user-book">
@@ -25,7 +29,47 @@
                                 <label for="destiny" class="input_label">Para Onde Está Indo?</label>
                                 <input id="destiny-country" class="input_field destiny-country" type="text" name="destiny-country" title="Inpit title" placeholder="The Country">
                                 <input id="destiny-city" class="input_field destiny-location" type="text" name="destiny" title="Inpit title" placeholder="Your Destiny">
-                                <ul id="list-country"></ul>
+                                <div class="div-teste">
+                                <ul id="list-country">
+                                    <?php 
+                                        if(!isset($_GET['paisEscolhido'])){
+                                            // O USUÁRIO ESTÁ NA PRIMEIRA ETAPA AINDA
+                                            if($rooms->listCountry() === false){
+                                                // DEU ERRO AO ESCOLHER O PAÍS
+                                                $homeModel->messageBook("error", "País Inválido", "Houve um Erro ao Selecionar o País para a sua Reserva");
+                                                return false;
+                                            }else{
+                                             $roomsCountrys = $rooms->listCountry();
+
+                                             foreach ($roomsCountrys as $key => $value) {
+                                    ?>
+                                        <li><figure><img src="<?php echo $value[2]; ?>" alt="" srcset=""></figure><?php echo $value[1]; ?> (<?php echo $value[0]; ?>)</li>
+                                    <?php 
+                                       } }} // FIM DO FOREACH E DO IF
+                                        else{
+                                            $paisEscolhido = strip_tags($_GET['paisEscolhido']);
+                                            $paisEscolhido = $paisEscolhido.str_replace("%20", " ", $paisEscolhido);
+                                            $paisFormatado = "";
+
+                                            for ($i=0; $i < $paisEscolhido; $i++) { 
+                                                // PEGA APENAS O NOME DO PAÍS, SEM A SIGLA
+                                                if($paisEscolhido[$i] == "(")
+                                                    break;
+
+                                                $paisFormatado .= $paisEscolhido[$i];
+                                            }
+
+                                            $paisFormatado = trim($paisFormatado); // DEIXA TUDO EM MINÚSCULO E REMOVE OS ESPAÇOS EM BRANCO DO INÍCIO E DO FIM
+                                            if($rooms->listCitys($paisFormatado) === false){
+                                                $homeModel->messageBook("error", "Cidade Inválida", "Houve um Erro ao Selecionar a Cidade para a sua Reserva");
+                                                return false;
+                                            }else{
+                                                $roomsCitys = $rooms->listCitys(ucfirst($paisFormatado));
+                                                 foreach ($roomsCitys as $key => $value) { ?>
+                                                <li><figure><img src="<?php echo $value[3] ?>" alt="" srcset=""></figure> <?php echo strtoupper($value[0]); ?></li>
+                                      <?php }}}?>
+                                </ul>
+                                </div>
                             </div>
                         </div>
                             <button class="purchase--btn" name="findOutDestiny">Verificar Lugares Disponíveis</button>
@@ -89,25 +133,40 @@
 
 <main id="hotels">
     <div class="container">
-        <h2 class="hotels--title">Hotels in <p><?php echo recoverPost('destiny'); ?></p></h2>
-        <span class="count-hotels">Foram encontrados <p>280</p> Premium Hotels</span>
+        <?php
+            if(isset($_SESSION['count-hotels'])){ ?>
+                <h2 class="hotels--title">Hotels in <p><?php echo recoverPost('destiny'); ?></p></h2>
+                <span class="count-hotels">Foram encontrados <p><?php echo 4; ?></p> Premium Hotels</span>
+        <?php  }?>
 
-        <div class="hotels-wp">
+        <div class="hotels-wp"  <?php if(!isset($_SESSION['count-hotels']) && !isset($_POST['destiny'])){echo 'style="display:block;"'; }?>>
+            <?php if(!isset($_SESSION['count-hotels']) && !isset($_POST['destiny'])){ ?>
+                    <h2 style="text-align: center; width: 100%; margin: 50px 0 10px 0; color: #403027;">Selecione o Local para Onde Deseja Viajar!!!</h2>
+                    <p style="text-align:center; font-size: 0.9rem; color:#8e644b;">Clique no Campo <b>Location</b> no Canto Superior Esquerdo e <br> Explore as Nossas Opções.</p>
+            <?php }else{
+                if(isset($_POST['destiny'])){
+                    if($rooms->listHotels($_POST['destiny']) == false){
+                        $homeModel->messageBook("error", "Falha na Reserva", "Erro ao buscar os resultados. Tente novamente mais tarde.");
+                        return false;
+                    }else{
+                        $listHotels = $rooms->listHotels(strip_tags($_POST['destiny']));
+                        
+                        foreach ($listHotels as $value) {
+            ?>
             <div class="hotels-box">
                 <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
+                    <figure><img src="<?php echo $value[5]; ?>" alt="Foto do Hotel" srcset=""></figure>
                     <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
                 </div>
 
                 <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
+                    <h3 class="tittle-name-hotel"><?php echo $value[0]; ?></h3>
+                    <p class="location-hotel"><?php echo $value[1]." - ". $value[2]; ?></p>
                     <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
+                        <?php
+                            for ($i=0; $i < (int)$value[3]; $i++)
+                                echo '<span class="stars"><i class="bx bxs-star"></i></span>';
+                        ?>
                     </div>
                     <p class="visitors">(1219 Visitantes)</p>
                 </div>
@@ -116,200 +175,90 @@
                     <a href="#">Explorar Quarto</a>
                 </div>
             </div><!-- /.hotels-box -->
-
-            <div class="hotels-box">
-                <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
-                    <a href="" class="favorite"><i class="bx bx-heart"></i></a>
-                </div>
-
-                <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
-                    <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                    </div>
-                    <p class="visitors">(1219 Visitantes)</p>
-                </div>
-
-                <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
-                </div>
-            </div><!-- /.hotels-box -->
-
-            <div class="hotels-box">
-                <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
-                    <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
-                </div>
-
-                <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
-                    <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                    </div>
-                    <p class="visitors">(1219 Visitantes)</p>
-                </div>
-
-                <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
-                </div>
-            </div><!-- /.hotels-box -->
-
-            <div class="hotels-box">
-                <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
-                    <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
-                </div>
-
-                <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
-                    <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                    </div>
-                    <p class="visitors">(1219 Visitantes)</p>
-                </div>
-
-                <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
-                </div>
-            </div><!-- /.hotels-box -->
-
-            <div class="hotels-box">
-                <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
-                    <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
-                </div>
-
-                <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
-                    <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                    </div>
-                    <p class="visitors">(1219 Visitantes)</p>
-                </div>
-
-                <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
-                </div>
-            </div><!-- /.hotels-box -->
-
-            <div class="hotels-box">
-                <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
-                    <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
-                </div>
-
-                <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
-                    <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                    </div>
-                    <p class="visitors">(1219 Visitantes)</p>
-                </div>
-
-                <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
-                </div>
-            </div><!-- /.hotels-box -->
-
-            <div class="hotels-box">
-                <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
-                    <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
-                </div>
-
-                <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
-                    <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                    </div>
-                    <p class="visitors">(1219 Visitantes)</p>
-                </div>
-
-                <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
-                </div>
-            </div><!-- /.hotels-box -->
-
-            <div class="hotels-box">
-                <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
-                    <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
-                </div>
-
-                <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
-                    <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                    </div>
-                    <p class="visitors">(1219 Visitantes)</p>
-                </div>
-
-                <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
-                </div>
-            </div><!-- /.hotels-box -->
-
-            <div class="hotels-box">
-                <div class="hotels-img">
-                    <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg" alt="" srcset=""></figure>
-                    <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
-                </div>
-
-                <div class="hotels-description">
-                    <h3 class="tittle-name-hotel">Harmony Suites</h3>
-                    <p class="location-hotel">Blisful Street, <?php echo recoverPost('destiny-country')?></p>
-                    <div class="classification">
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                        <span class="stars"><i class="bx bxs-star"></i></span>
-                    </div>
-                    <p class="visitors">(1219 Visitantes)</p>
-                </div>
-
-                <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
-                </div>
-            </div><!-- /.hotels-box -->
+            <?php } // FIM DO FOREACH
+                } // FIM DO ELSE DO MÉTODO LISTHOTELS
+            } // FIM DO IF DO POST DESTINY
+        } //FIM DO ELSE DA SESSIO COUNT-HOTELS ?>
         </div><!-- /.hotels-wp -->
     </div><!-- /.container -->
     
     <!-- TO DO: FAZER UM SISTEMA DE PAGINAÇÃO ---->
 </main>
+
+
+<!--
+
+```json
+{
+  "nome": "Hotel Exemplo",
+  "descricao": "Um hotel luxuoso no coração da cidade.",
+  "endereco": {
+    "rua": "Rua das Flores",
+    "numero": 123,
+    "bairro": "Centro",
+    "cidade": "São Paulo",
+    "pais": "Brasil",
+    "cep": "01000-000",
+    "latitude": -23.55052,
+    "longitude": -46.633308
+  },
+  "contato": {
+    "telefone": "+55 11 98765-4321",
+    "email": "contato@hotelexemplo.com"
+  },
+  "disponibilidade": true,
+  "quartos": [
+    {
+      "tipo": "Casal",
+      "preco": 250,
+      "disponiveis": 10,
+      "descricao": "Quarto para casal com cama king size."
+    },
+    {
+      "tipo": "Família",
+      "preco": 400,
+      "disponiveis": 5,
+      "descricao": "Quarto para família com 2 camas queen size."
+    }
+  ],
+  "amenidades": ["Wi-Fi gratuito", "Piscina", "Academia", "Café da manhã incluso"],
+  "avaliacoes": {
+    "media": 4.5,
+    "comentarios": [
+      {
+        "cliente": "João Silva",
+        "comentario": "Ótima estadia!",
+        "nota": 5
+      },
+      {
+        "cliente": "Maria Oliveira",
+        "comentario": "Muito confortável.",
+        "nota": 4
+      }
+    ]
+  },
+  "politicas": {
+    "checkin": "14:00",
+    "checkout": "12:00",
+    "cancelamento": "Gratuito até 24 horas antes da chegada.",
+    "animais": "Permitido (custo adicional)."
+  },
+  "classificacao": 4,
+  "moeda": "BRL",
+  "imagens": [
+    "link_para_imagem1.jpg",
+    "link_para_imagem2.jpg"
+  ],
+  "proximidades": [
+    {
+      "nome": "Museu da Cidade",
+      "distancia": "1 km"
+    },
+    {
+      "nome": "Praia Central",
+      "distancia": "500 m"
+    }
+  ],
+  "metodos_pagamento": ["Cartão de Crédito", "PIX", "Dinheiro"]
+}
+-->

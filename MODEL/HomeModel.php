@@ -58,7 +58,7 @@
             }
         }
 
-        private function messageBook($status, $title, $mesage){
+        public function messageBook($status, $title, $mesage){
             echo '
                 <div class="card-message" >
                     <div class="card '.$status.'">

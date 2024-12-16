@@ -367,13 +367,26 @@ span.count-hotels{
 }
 
 #list-country{
-  text-align: center;
   list-style: none;
-  margin-top: 10px;
-
+  margin: 10px auto;
+  text-align: left;
+  
   & li{
     margin-bottom: 8px;
     cursor: pointer;
+    padding: 5px 0;
+    font-size: 0.9rem;
+    
+    & figure{
+      vertical-align: middle;
+      display: inline-block;
+      margin-right: 10px;
+
+      & img{
+        max-width: 25px;
+        height: 20px;
+      }
+    }
 
     &:hover{
       background-color: #eee;

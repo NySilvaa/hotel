@@ -31,11 +31,11 @@
 
         <nav class="navigation-menu-below">
             <ul>
-                <li><a href="#">Our rooms</a></li>
-                <li><a href="#">Swimming Pools</a></li>
-                <li><a href="#">Food and drinks</a></li>
-                <li><a href="#">Meeting rooms</a></li>
-                <li><a href="#">Events and weddings</a></li>
+                <li><a href="#ourRooms">Our rooms</a></li>
+                <li><a href="#filials">Filials</a></li>
+                <li><a href="#sustainability">Sustainability</a></li>
+                <li><a href="#events">Events and weddings</a></li>
+                <li><a href="#meetingRooms">Meeting rooms</a></li>
             </ul>
         </nav>
 
@@ -63,7 +63,7 @@
             <section class="chamada">
                 <div class="text-chamada">
                     <h1 class="txt-white">A Destination for Relaxation <br> Adventure and Memories</h1>
-                    <a href="#" class="txt-white">See our rooms</a>
+                    <a href="<?php echo PATH_PAGES; ?>rooms/" class="txt-white">See our rooms</a>
                 </div>
 
                 <div class="checks-form">
@@ -123,7 +123,7 @@
         </div><!-- /.container -->  
     </main>
 
-    <section class="diferenciais">
+    <section class="diferenciais" id="ourRooms">
         <div class="container">
            <div class="diferenciais-wrapper">
                 <div class="box-diferenciais">
@@ -201,7 +201,7 @@
         </div><!--container-->
     </section>
 
-   <section class="room-highlight">
+   <section class="room-highlight" id="filials">
     <div class="container">
         <div class="room-highlight-top">
             <div class="bg-highlight">
@@ -229,7 +229,7 @@
     </div>
    </section>
 
-   <section class="about-us">
+   <section class="about-us" id="sustainability">
         <div class="container">
             <div class="box-about-us">
                 <h2 class="txt-white">Sustainability</h2>
@@ -245,7 +245,7 @@
         </div>
    </section>
 
-   <section class="video-promotional">
+   <section class="video-promotional" id="events">
     <div class="container">
         <div class="video-promotional-wp">
             <video src="<?php echo PATH_INTERATIONS;?>images/bg-video2.mp4" autoplay muted loop></video>
@@ -258,7 +258,7 @@
     </div>
    </section>
 
-   <section class="img-grattitude">
+   <section class="img-grattitude" id="meetingRooms">
         <div class="container">
             <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
             <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img5.jpg" alt="" srcset=""></figure>
