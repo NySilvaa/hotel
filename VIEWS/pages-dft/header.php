@@ -8,8 +8,12 @@
     <meta name="author" content="Nycolas silva">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.home.css">
-    <?php if($_GET['url'] == 'rooms/'){ ?>
+    <?php if(@$_GET['url'] !== '' || @$_GET['url'] !== 'Home'){ ?>
         <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.rooms.css">
+    <?php } ?>
+
+    <?php if(@$_GET['url'] == 'register/' || @$_GET['url'] == 'login/'){ ?>
+        <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.register.css">
     <?php } ?>
     <title>Rooms | Explore as nossas diversas opções</title>
 </head>
@@ -18,16 +22,14 @@
         <div class="container">
             <nav class="navigation">
                 <figure class="logo"><a href="/hotel" class="txt-white"><i class='bx bxs-drink' ></i> <h3>Roro's Hotel</h3></a></figure>
-
                 
                 <ul id="nav-menu">
                     <li><a href="<?php echo PATH_PAGES; ?>">Home</a></li>
                     <li><a href="#" class="active">Search</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">About us</a></li>
-                    <li><a href="#" class="btn">Sign Up | Login</a></li>
+                    <li><a href="<?php echo PATH_PAGES; ?>register/" class="btn">Sign Up | Login</a></li>
                 </ul>
             </nav>
-        </div>
-        <!-- /.container -->
+        </div><!-- /.container -->
     </header>

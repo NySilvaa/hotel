@@ -40,7 +40,11 @@
 
 <?php if(@$_GET['url'] == 'rooms/'){ ?>
     <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.rooms.js"></script>
-    <script defer src="<?php echo PATH_INTERATIONS; ?>js/ajax.rooms.js"></script>
+    <!-- <script defer src="<?php // echo PATH_INTERATIONS; ?>js/ajax.rooms.js"></script> -->
+<?php } ?>
+
+<?php if(@$_GET['url'] == 'register/'){ ?>
+    <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.register.js"></script>
 <?php } ?>
 </body>
 </html>

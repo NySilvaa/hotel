@@ -1,0 +1,223 @@
+section.register-wp{
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  gap: 20px;
+  width: 75%;
+  margin: 50px auto 0 auto;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  background: #f2e8df;
+  -webkit-box-shadow: 12px 12px 24px #cec5be, -12px -12px 24px #e8e1e1;
+  box-shadow: 12px 12px 24px #cec5be, -12px -12px 24px #e8e1e1;
+}
+
+section.forms{padding: 30px;}
+
+section.forms figure{
+  margin: 20px 0 0 25px;
+
+  & a{
+      color: #2b2b2b;
+      font-size: 1.1rem;
+
+      & h3{display: inline-block;}
+  }
+}
+
+h2.tittle-form{
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 40px 0 5px 0;
+}
+
+p.desc-form{
+    color: #8c8c8c;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.loading-bar{
+  margin: 30px auto 15px auto;
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+
+  &::before{
+    content: '';
+    position: absolute;
+    left: 40px; top: 50%;
+    transform: translateY(-50%);
+    width: 74%;
+    height: 5px;
+    background-color: #afaeae;
+  } 
+
+  & span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #afaeae;
+    z-index: 1;
+
+    &.active{background-color: #b38972;}
+  }
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+    border-radius: 20px;
+  }
+  
+  .form button {align-self: flex-end;}
+
+  .flex-column > label {
+    color: #403027;
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+  
+  .inputForm {
+    border: 1.5px solid #bdb0a4;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+    background-color: #8e644b;
+  }
+
+  .inputForm > svg{
+    width: 20px;
+    color: #EFEFEF;
+  }
+  
+  .input {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: #e1d9d9;
+    color: #533e31;
+    padding-left: 8px;
+    font-size: 0.9rem;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #403027;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    color: #403027;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    color: #403027;  
+ }
+ 
+ :-ms-input-placeholder {  
+    color: #403027;  
+ }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  .inputForm:focus-within {
+    border: 1.5px solid #403027;
+  }
+  
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .flex-row > div > label:not(.check) {
+    font-size: 0.8rem;
+    color: #8c8c8c;
+  }
+  
+  .flex-row > input[type=checkbox]{display: none;}
+  
+  .flex-row label.check::before{
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    border: 1px solid #8c8c8c;
+    vertical-align: middle;
+    margin-top: -1px;
+    cursor: pointer;
+  }
+
+  .flex-row input[type=checkbox]:checked ~ label.check:before{background-color: #8e644b;}
+  
+  .span {
+    font-size: 0.9rem;
+    margin-left: 5px;
+    color: #8e644b;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #403027;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .p {
+    text-align: center;
+    color: #9b9086;
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+  
+  .flex-row .btn {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #403027;
+    background-color: #8e644b;
+    color: #f1f1f1;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    border: 1px solid #533e31;
+    background-color: #b38972;
+  }
+
+  section.bg-form-video{
+    & video{
+      object-fit: cover;
+    }
+  }
+  

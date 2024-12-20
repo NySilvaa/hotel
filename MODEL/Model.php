@@ -7,7 +7,7 @@
         private const URL = 'mongodb+srv://nysilva003:eIY52oWFtaI3Psze@cluster-teste.kfeid.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-teste';
         
         public function __construct(){
-            self::connectionDB();
+            //self::connectionDB();
         }
         
         static function connectionDB(){
