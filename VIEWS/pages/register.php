@@ -15,7 +15,7 @@
                 <p class="desc-form">Sign Up Now and Unlock Exclusive Access </p>
 
                 <div class="loading-bar" data-section="<?php echo $generateFieldsForm[0]; ?>" data-completude="25">
-                    <span class="active"></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
                 </div>
 
                 <form class="form" method="post" id="formRegister">
@@ -25,10 +25,7 @@
                             $registerModel->createFieldsForms($generateFieldsForm[1][$generateFieldsForm[0]]);
                     ?>
 
-                    <div class="flex-row">
-                        <span class="span">Forgot password?</span>
-                    </div>
-                    <button class="button-submit">Next Step</button>
+                    <button class="button-submit" id="btnForm"></button>
                     <p class="p">Already have an account? <a href="<?php echo PATH_PAGES; ?>login/" class="span">Sign In</a></p>
                     <p class="p line">Or With</p>
 

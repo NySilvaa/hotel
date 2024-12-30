@@ -12,6 +12,10 @@
         <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.rooms.css">
     <?php } ?>
 
+    <?php if(@$_GET['url'] == "aboutUs/"){ ?>
+        <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.aboutus.css">
+    <?php } ?>
+
     <?php if(@$_GET['url'] == 'register/' || @$_GET['url'] == 'login/'){ ?>
         <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.register.css">
     <?php } ?>
@@ -27,7 +31,7 @@
                     <li><a href="<?php echo PATH_PAGES; ?>">Home</a></li>
                     <li><a href="#" class="active">Search</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="<?php echo PATH_PAGES; ?>aboutUs/">About us</a></li>
                     <li><a href="<?php echo PATH_PAGES; ?>register/" class="btn">Sign Up | Login</a></li>
                 </ul>
             </nav>

@@ -1,34 +1,60 @@
-
 const formRegister = document.getElementById('formRegister');
 const loadingBar = document.querySelector('.loading-bar'); 
-const barBeforeLoading = document.styleSheets[3].cssRules[4].cssRules[0];
 const dots = document.querySelectorAll('.loading-bar span');
-let attr = loadingBar.getAttribute('data-completude');
-let control = 0;
+const barBeforeLoading = document.styleSheets[3].cssRules[5].cssRules[0];
+const btnForm = document.getElementById('btnForm');
 
-formRegister.addEventListener('submit', ()=>{
-    window.addEventListener('load', function(){
-        checkAttr();
-    })
-})
+function fillOutDots (currentStep){
+    dots.forEach((dot, index)=>{
+        if(index < currentStep){
+            dot.classList.add('active');
+        }else
+        dot.classList.remove('active');
+    });
 
-
-const checkAttr = ()=>{
-    if(attr > 100)
-        attr = 100
-    else{        
-        fillOutDots();
-        loadingBar.setAttribute('data-completude', Number(attr) +25);
-        attr = loadingBar.getAttribute('data-completude')
-    }
-};
-
-const fillOutDots = ()=>{
-    if(control < 4){
-        dots[control].classList.add('active');
-        barBeforeLoading.style.background = `linear-gradient(to right, #b38972 ${35 * control}%, #afaeae 10%)`
-        control++;
+    if(currentStep != 1){
+        let contador = --currentStep;
+        barBeforeLoading.style.background = `linear-gradient(to right, #b38972 ${35 * contador}%, #afaeae 10%)`;
     }
 }
 
+document.addEventListener("DOMContentLoaded", ()=>{
+    let currentStep = sessionStorage.getItem("currentStep") || 1;
 
+    fillOutDots(currentStep);
+    
+    formRegister.addEventListener('submit', ()=>{
+        const nextStep = parseInt(currentStep) + 1
+        sessionStorage.setItem("currentStep", nextStep);
+    });
+
+    let Currentlyvalue = String(currentStep)
+
+    switch (Currentlyvalue) {
+        case "1":
+            btnForm.innerText = "Start Sign Up";    
+        break;
+
+        case "2":
+            btnForm.innerText = "You're Going Well";    
+        break;
+
+        case "3":
+            btnForm.innerText = "Almost There...";    
+        break;
+
+        case "4":
+            btnForm.innerText = "Finish Sign Up";    
+        break;
+    
+        default:
+            break;
+    }
+});
+
+// FUNÇÕES DE MÁSCARAS DOS FORMULÁRIOS
+$('#cpf').mask("999.999.999-99");
+$('#data-de-nascimento').mask("99/99/9999");
+$("#cep").mask("00.000-000");
+$("#telefone-celular").mask("(99) 9 9999-9999");
+$("#rg").mask("99.999.999-9")

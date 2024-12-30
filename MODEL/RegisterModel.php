@@ -49,53 +49,97 @@
             ];
 
             $valuePlaceholder = [
-                "Name" => "Ex.: João da Silva",
-                "CPF" => "Digite Apenas os Números. (Ex.: 000.000.000-00)",
-                "RG" => "Digite Apenas os Números. (Ex.: 00.000.000-0 / 00.000.000-00)",
+                "Nome" => "Ex.: João da Silva",
+                "CPF" => "Ex.: 000.000.000-00",
+                "RG" => "Ex.: 00.000.000-0 / 00.000.000-00",
                 "CEP" => "Ex.: 00.000-000",
+                "Data de Nascimento" => "00/00/0000",
+                "Gênero" => "Male / Female / Other",
                 "Logradouro" => "Ex: Rua Tancredo Neves",
                 "Nº" => "Ex.: Nº 44",
                 "Complemento" => "Ex.: Apt. Santa Maria, Bloco B12",
                 "E-mail" => "Ex.: email@dominio.com",
-                "Telefone Celular" => "Digite Apenas os Números. Ex.: (00) 0 0000-0000"
+                "Telefone Celular" => "Ex.: (00) 0 0000-0000"
             ];
 
             foreach ($fields[$nameField] as $value) {
                 switch ($nameField) {
                     case 'Dados Pessoais':
-                        echo '
-                            <div class="flex-column">
-                            <label>'.$value.'</label>
-                        </div>
-                        <div class="inputForm">
-                            '.$icons[$nameField][$value].'
-                            <input type="text" class="input" placeholder="Digite O valor esperado" name="answer" />
-                        </div>
-                        '; 
+                        $id = str_replace(" ", "-", $value);
+
+                        if(isset($valuePlaceholder[$value])){
+                            echo '
+                                <div class="flex-column">
+                                    <label>'.$value.'</label>
+                                </div>
+                                <div class="inputForm">
+                                    '.$icons[$nameField][$value].'
+                                    <input type="text" class="input" id="'.strtolower($id).'" placeholder="'.$valuePlaceholder[$value].'" name="answer" />
+                                </div>
+                            '; 
+                        }else{
+                            echo '
+                                <div class="flex-column">
+                                    <label>'.$value.'</label>
+                                </div>
+                                <div class="inputForm">
+                                    '.$icons[$nameField][$value].'
+                                    <input type="text" class="input" id="'.strtolower($id).'" placeholder="" name="answer" />
+                                </div>
+                            '; 
+                        }
                     break;
 
                     case 'Dados de Contato':
-                        echo '
-                            <div class="flex-column">
-                            <label>'.$value.'</label>
-                        </div>
-                        <div class="inputForm">
-                            '.$icons[$nameField][$value].'
-                            <input type="text" class="input" placeholder="Digite O valor esperado" name="answer" />
-                        </div>
-                        '; 
+                        $id = str_replace(" ", "-", $value);
+
+                        if(isset($valuePlaceholder[$value])){
+                            echo '
+                                <div class="flex-column">
+                                    <label>'.$value.'</label>
+                                </div>
+                                <div class="inputForm">
+                                    '.$icons[$nameField][$value].'
+                                    <input type="text" class="input" id="'.strtolower($id).'" placeholder="'.$valuePlaceholder[$value].'" name="answer" />
+                                </div>
+                            '; 
+                        }else{
+                            echo '
+                                <div class="flex-column">
+                                    <label>'.$value.'</label>
+                                </div>
+                                <div class="inputForm">
+                                    '.$icons[$nameField][$value].'
+                                    <input type="text" class="input" id="'.strtolower($id).'" placeholder="" name="answer" />
+                                </div>
+                            '; 
+                        }
                     break;
                     
                     case 'Endereço':
-                        echo '
-                            <div class="flex-column">
-                            <label>'.$value.'</label>
-                        </div>
-                        <div class="inputForm">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                            <input type="text" class="input" placeholder="Digite O valor esperado" name="answer" />
-                        </div>
-                        '; 
+                        $id = str_replace(" ", "-", $value);
+
+                        if(isset($valuePlaceholder[$value])){
+                            echo '
+                                <div class="flex-column">
+                                    <label>'.$value.'</label>
+                                </div>
+                                <div class="inputForm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                                    <input type="text" class="input" id="'.strtolower($id).'" placeholder="'.$valuePlaceholder[$value].'" name="answer" />
+                                </div>
+                            '; 
+                        }else{
+                            echo '
+                                <div class="flex-column">
+                                    <label>'.$value.'</label>
+                                </div>
+                                <div class="inputForm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                                    <input type="text" class="input" id="'.strtolower($id).'" placeholder="Ex: São Paulo" name="answer" />
+                                </div>
+                            '; 
+                        }
                     break;
 
                     case 'Senha':
@@ -105,7 +149,7 @@
                         </div>
                         <div class="inputForm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            <input type="password" class="input" placeholder="Enter your Password" />
+                            <input type="password" class="input" name="passwordRegister" id="password" placeholder="Create your Password" />
                         </div>';
                     break;
 

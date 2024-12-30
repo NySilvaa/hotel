@@ -40,11 +40,11 @@
 
 <?php if(@$_GET['url'] == 'rooms/'){ ?>
     <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.rooms.js"></script>
-    <!-- <script defer src="<?php // echo PATH_INTERATIONS; ?>js/ajax.rooms.js"></script> -->
 <?php } ?>
 
 <?php if(@$_GET['url'] == 'register/'){ ?>
     <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.register.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <?php } ?>
 </body>
 </html>

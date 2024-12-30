@@ -112,29 +112,17 @@ p.desc-form{
     font-size: 0.9rem;
   }
 
-  ::-webkit-input-placeholder {
-    color: #403027;
- }
+  ::-webkit-input-placeholder {color: #8c8c8c;}
  
- :-moz-placeholder { /* Firefox 18- */
-    color: #403027;  
- }
+ :-moz-placeholder { /* Firefox 18- */color: #8c8c8c;  }
  
- ::-moz-placeholder {  /* Firefox 19+ */
-    color: #403027;  
- }
+ ::-moz-placeholder {  /* Firefox 19+ */color: #8c8c8c;  }
  
- :-ms-input-placeholder {  
-    color: #403027;  
- }
+ :-ms-input-placeholder {  color: #8c8c8c;  }
   
-  .input:focus {
-    outline: none;
-  }
+  .input:focus {outline: none;}
   
-  .inputForm:focus-within {
-    border: 1.5px solid #403027;
-  }
+  .inputForm:focus-within {border: 1.5px solid #403027;}
   
   .flex-row {
     display: flex;
