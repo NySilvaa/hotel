@@ -18,7 +18,7 @@ const chooseRoomsPerGuests = ()=>{
     const sub = document.getElementById('sub');
     const count = document.getElementById('count');
 
-    let valueCount = count.value
+    let valueCount = count.val3ue
     let newValueCount = Number(valueCount);
 
     add.addEventListener('click', ()=>{
@@ -355,24 +355,6 @@ const months = [
    'December'
 ];
 
-// FUNÇÃO PARA MOSTRAR O CALENDÁRIO PARA SELECIONAR AS DATAS DE CHECKS
-const showCalendar = ()=>{
-    const dateSection = document.querySelectorAll('.date');
-
-    dateSection.forEach(element=>{
-        element.addEventListener('click', ()=>{
-        let dateSectionCheck = element.parentNode.getAttribute('class').split(' ');
-
-          // FUNÇÃO PARA CASO O USUÁRIO RESOLVA MUDAR A DATA DE CHECK-IN OU CHECK-OUT
-            if(dateSectionCheck[1] == 'selected')
-              element.parentNode.classList.remove('selected');
-          
-            calendar.classList.add('active');
-        })
-    })
-}
-showCalendar();
-
 // SETAR A DATA ATUAL NO CHECK-IN E A PRÓXIMA DATA NO CHECK-OUT
 const date = new Date();
 dayCheckIn.innerText = date.getDate();
@@ -380,6 +362,24 @@ dayCheckOut.innerText = date.getDate();
 
 monthCheckIn.innerText = (date.getMonth() + 1 > 12) ? ` ${months[0]} ${Number(date.getFullYear() + 1)}` : ` ${months[date.getMonth()]} ${date.getFullYear()}`; // MÊS ATUAL
 monthCheckOut.innerText = (date.getMonth() + 2 > 12) ? ` ${months[0]} ${Number(date.getFullYear() + 1)}` : ` ${months[date.getMonth()+1]} ${Number(date.getFullYear())}`;;  // MÊS SEGUINTE
+
+// FUNÇÃO PARA MOSTRAR O CALENDÁRIO PARA SELECIONAR AS DATAS DE CHECKS
+const showCalendar = ()=>{
+    const dateSection = document.querySelectorAll('.date');
+    
+    dateSection.forEach(element=>{
+      element.addEventListener('click', ()=>{
+        let dateSectionCheck = element.parentNode.getAttribute('class').split(' ');
+        
+        // FUNÇÃO PARA CASO O USUÁRIO RESOLVA MUDAR A DATA DE CHECK-IN OU CHECK-OUT
+        if(dateSectionCheck[1] == 'selected')
+          element.parentNode.classList.remove('selected');
+        
+        calendar.classList.add('active');
+        })
+    })
+}
+showCalendar();
 
 // FUNÇÃO PARA PEGAR O MÊS E TROCAR DENTRO DOS CAMPOS DE CHECKS
 const getMonth = (month)=>{
@@ -394,8 +394,8 @@ const getMonth = (month)=>{
 // FUNÇÃO PARA ESCOLHER O DIA
 const changeDay = ()=>{
   getDay = document.querySelectorAll('.day-number');
-  const fieldCheckIn = document.querySelector('[date-check-in]');
-  const fieldCheckOut = document.querySelector('[date-check-out]');
+  const fieldCheckIn = document.querySelector('[name=date-check-in]');
+  const fieldCheckOut = document.querySelector('[name=date-check-out]');
 
       getDay.forEach(item=>{
         item.addEventListener('click', ()=>{
@@ -445,7 +445,7 @@ leftArrow.addEventListener('click', ()=>{
 });
 
 // CRIAR ATRIBUTO DO MÊS PARA MONITORAR E INTERAÇÃO DE OUTRAS FUNÇÕES
-const createAttrHeaderMonth = (month)=>{
+function createAttrHeaderMonth(month){
   const headerMonth = document.querySelector('#calendar .header h1');
   let currentMonthAttr = month.split(' ')[0]
 
@@ -454,10 +454,9 @@ const createAttrHeaderMonth = (month)=>{
       headerMonth.setAttribute('data-month', i+1);
   }
 }
-createAttrHeaderMonth(months[date.getMonth() + 1]);
 
 // FUNÇÃO PARA CASO O USUÁRIO ESCOLHA UMA DATA QUE NÃO SEJA NAQUELE MÊS ATUAL EM QUE ESTEJA SENDO MOSTRADO PARA ELE
-const daysOther = (day, checkSection)=>{
+const daysOther= (day, checkSection)=>{
   const monthsObj = {
     1: 'January',
     2: 'February',
@@ -482,7 +481,45 @@ const daysOther = (day, checkSection)=>{
     checkSection.innerText = monthsObj[Number(headerTittle -1)] + " " + headerYearTittle;
   }else if(day >= 1 && day <= 7){
     // PRÓXIMO MÊS
-    if(Number(headerTittle +1) > 12)
       checkSection.innerText = monthsObj[1] + " " + (Number(headerYearTittle) +1);
   }
 }
+
+// FUNÇÃO DE SLIDE DA PÁGINA HOME
+const boxDiferenciais = document.querySelectorAll('.box-diferenciais')
+const btnRightOurRooms = document.querySelector('.btn-right-our-rooms');
+const btnLeftOurRooms = document.querySelector('.btn-left-our-rooms');
+let controlerSlide = 0;
+
+const moveSlide = (n)=>{
+  controlerSlide += n;
+
+  if(controlerSlide > 0)
+    btnLeftOurRooms.style.display = 'inline-block'
+  
+  if(controlerSlide < 0)
+    controlerSlide = boxDiferenciais.length - 1;
+  
+  if(controlerSlide > 4){
+    controlerSlide = 0;
+    btnLeftOurRooms.style.display = 'none';
+  }
+
+  updateSlide();
+}
+
+const updateSlide = ()=>{
+  const ourRoomsWp = document.querySelector('.diferenciais-wrapper');
+  const slideWidth = boxDiferenciais[controlerSlide].clientWidth;
+
+  ourRoomsWp.style.transform = `translateX(${-slideWidth * controlerSlide}px)`;
+}
+
+btnRightOurRooms.addEventListener('click', ()=>{
+  moveSlide(1);
+});
+
+
+btnLeftOurRooms.addEventListener('click', ()=>{
+  moveSlide(-1);
+});

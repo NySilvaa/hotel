@@ -67,6 +67,8 @@
                 </div>
 
                 <div class="checks-form">
+                    <div id="tooltip-books">
+                    </div>
                     <div id="calendar"></div>
                     
                     <form action="" method="post" id="form-book">
@@ -125,6 +127,8 @@
 
     <section class="diferenciais" id="ourRooms">
         <div class="container">
+            <button class="btn-left-our-rooms"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button>
+            <button class="btn-right-our-rooms"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
            <div class="diferenciais-wrapper">
                 <div class="box-diferenciais">
                     <div class="box-diferenciais--img">
@@ -248,7 +252,7 @@
    <section class="video-promotional" id="events">
     <div class="container">
         <div class="video-promotional-wp">
-            <video src="<?php echo PATH_INTERATIONS;?>images/bg-video2.mp4" autoplay muted loop></video>
+            <video src="<?php echo PATH_INTERATIONS;?>images/bg-video2.mp4" autoplay muted loop width="90%"></video>
             <p>Experiences</p>
 
             <h2 class="txt-white">Experience the better from summer</h2>

@@ -254,6 +254,68 @@ main#entrada .container{
     }
 }
 
+#tooltip-books{
+  transition: 1s;
+  opacity: 0;
+  width: 200px;
+  min-height: 60px;
+  --background: #fefbff;
+  --inner-shadow: #d1a48b;
+  --inner-outline: #403027;
+  --inner-outline-bottom: #fafcfe;
+  --inner-outline-middle: #ba896e;
+  --inner-outline-outer-top: #fefcff;
+  --inner-outline-outer-bottom-1: #55331f;
+  --inner-outline-outer-bottom-2: #8e644b;
+  --inner-outline-outer-bottom-3: #412717;
+  ;
+  --line-1: #8676c9;
+  --line-2: #5c69ca;
+  background: var(--background);
+  min-width: 300px;
+  gap: 0.4em;
+  align-items: center;
+  top: -1.7em;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.6em 0.8em;
+  border-radius: 0.7em;
+  box-shadow: inset 0px 1px 8px 1px var(--inner-shadow),
+    0px 2px 0px 0px var(--inner-outline-bottom),
+    0px -2px 0px 0px var(--inner-outline),
+    -2px -2px 0px 0px var(--inner-outline),
+    2px -2px 0px 0px var(--inner-outline),
+    0px 0px 0px 6px var(--inner-outline-middle),
+    0px -2px 0px 7px var(--inner-outline-outer-top),
+    0px 4px 0px 7px var(--inner-outline-outer-bottom-1),
+    0px 7px 0px 7px var(--inner-outline-outer-bottom-2),
+    0px 10px 0px 7px var(--inner-outline-outer-bottom-3);
+  border-radius: 15px;
+  padding: 10px;
+  position: relative;
+
+  & p{
+    font-size: 0.9rem;
+    color: #8e644b;
+    text-align: center;
+  }
+
+  &::before{
+    content: "";
+    position: absolute;
+    height: 1em;
+    width: 1em;
+    bottom: -0.2em;
+    left: 50%;
+    transform: translate(-50%) translateY(2px) rotate(45deg);
+    background: var(--background);
+    border-radius: 0.2em;
+    box-shadow: 1px 1px 0px white, 5px 5px 0px #ba896e,
+      9px 9px 0px #412717, 12px 12px 0px #8e644b,
+      14px 14px 0px #412717;
+  }
+}
+
 .checks-form{
     width: 40%;
     text-align: center;
@@ -440,12 +502,43 @@ main#entrada .container{
 .diferenciais .container{
     overflow-x: hidden;
     margin-top: 40px;
+    position: relative;
+}
+
+.btn-right-our-rooms,
+.btn-left-our-rooms{
+  background-color: transparent;
+  backdrop-filter: blur(2px);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 80px;
+  color: #fff;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 999;
+  cursor: pointer;
+  transition: 0.4s;
+
+  &:hover{background-color: #efefef4e;}
+}
+
+.btn-left-our-rooms{
+  left: 20px;
+  display: none;
+}
+
+.btn-right-our-rooms{
+  right: 20px; 
 }
 
 .diferenciais-wrapper{
     width: 200%;
     display: flex;
-    gap: 20px;
+    transition: 1s;
 }
 
 .box-diferenciais{
@@ -635,7 +728,6 @@ section.video-promotional{
     
     & .video-promotional-wp{
         position: relative; 
-        height: 600px;
         overflow: hidden;
         padding: 30px;
     }

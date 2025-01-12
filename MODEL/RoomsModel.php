@@ -33,11 +33,11 @@
             $bandeira = "";
 
             // PUXAR A BANDEIRA DO PAÍS ESCOLHIDO
-            foreach ($bandeiraDB as $key => $value)
+            foreach ($bandeiraDB as $value)
                 $bandeira .= $value['bandeira'];
             
             // PUXAR OS VALORES DO PAÍS ESCOLHIDO
-            foreach ($citysDB as $key => $value) 
+            foreach ($citysDB as $value) 
                 $citys[] = [$value['name'], $value['estado'], $value['avaliacao'], $bandeira];
 
             return (count($citys) !== 0) ? $citys : false;
@@ -49,8 +49,8 @@
 
             $citys = $controller->countrys->selectCollection('hotels')->find(['cidade'=> trim($city)]);
             $newCitys = [];
-                foreach ($citys as $key => $value) {
-                    $newCitys[] = [$value["nome"], $value['endereco']['rua'], $value['pais'], $value['classificacao'], $value['disponibilidade'], $value['imagens'][0]];
+                foreach ($citys as $value) {
+                    $newCitys[] = [$value["nome"], $value['endereco']['rua'], $value['pais'], $value['classificacao'], $value['disponibilidade'], $value['imagens'][0], $value["_id"]];
                 }
     
                 if(count($newCitys) !== 0){

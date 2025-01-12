@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="btn-hotel">
-                    <a href="#">Explorar Quarto</a>
+                    <a href="<?php echo PATH_PAGES; ?>hospedagem?<?php echo $value[6] ?>">Explorar Quarto</a>
                 </div>
             </div><!-- /.hotels-box -->
             <?php } // FIM DO FOREACH

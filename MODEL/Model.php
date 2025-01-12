@@ -1,6 +1,7 @@
 <?php
     namespace Model;
     use MongoDB\Driver\ServerApi;
+    use Exception;
     require "vendor/autoload.php";
 
     abstract class Model{

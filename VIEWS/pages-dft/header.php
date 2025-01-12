@@ -29,8 +29,7 @@
                 
                 <ul id="nav-menu">
                     <li><a href="<?php echo PATH_PAGES; ?>">Home</a></li>
-                    <li><a href="#" class="active">Search</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" class="active">Rooms</a></li>
                     <li><a href="<?php echo PATH_PAGES; ?>aboutUs/">About us</a></li>
                     <li><a href="<?php echo PATH_PAGES; ?>register/" class="btn">Sign Up | Login</a></li>
                 </ul>

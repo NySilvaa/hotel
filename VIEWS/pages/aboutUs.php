@@ -171,8 +171,7 @@
                                 <svg
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="tooltip-icon"
-                                >
+                                    class="tooltip-icon">
                                     <defs>
                                     <linearGradient id="gradient" x2="0" y2="1">
                                         <stop offset="0%" stop-color="#96a1e8"></stop>
