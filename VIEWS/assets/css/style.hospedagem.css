@@ -1,0 +1,402 @@
+section.hotel .container, section.avaliacoes .container{max-width: 1280px;}
+
+nav.hotel-tittle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h2{
+        font-size: 2.2rem;
+        color: #403027;
+        letter-spacing: 1px;
+        margin: 30px 0;
+    }
+}
+
+.btn-actions-tittle{
+    & a{
+        font-size: 1rem;
+        color: #55331f;
+        margin: 0 12px;
+
+        &:hover{color: #8e644b;}
+        
+        & svg{vertical-align: top;}
+    }
+}
+
+section.img-hotel{
+    display: flex;
+    gap: 12px;
+
+    & figure{overflow: hidden;}
+}
+
+figure.img-main{
+    width: 50%;
+
+    & img{
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        cursor: pointer;
+    }
+}
+
+.img-hotel-complements{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    gap: 12px;
+
+    & figure.img-complement{
+        width: 48%;
+
+        & img{
+            height: 100%;
+            transition: 0.4s;
+            cursor: pointer;
+
+            &:hover{
+                scale: 1.05;
+            }
+        }
+
+        &:nth-of-type(2){
+            border-top-right-radius: 20px;
+        }
+
+        &:last-of-type{
+            border-bottom-right-radius: 20px;
+        }
+        
+    }
+}
+
+.hotel-description{
+    margin-top: 40px;
+
+    & h3.desc-main{
+        font-size: 1.6rem;
+        color: #403027;
+    }
+
+    & p.description{
+        color: #44434b;
+        font-size: 1rem;
+    }
+}
+
+.classification{
+    margin-top: 20px;
+
+    & span{
+        font-size: 1.2rem;
+        color: #403027;
+        font-weight: 600;
+
+        & svg{vertical-align: top;}
+    }
+
+    & a{
+        color: #403027;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+h3.tittle-info-hotel{
+    font-size: 1.6rem;
+    color: #403027;
+    letter-spacing: 1px;
+    margin-top: 40px;
+}
+
+.section-description-hotel{border-top: 2px solid #aaa;}
+
+.sessao-info-hotel{
+    margin-top: 30px;
+    display: flex;
+    position: relative;
+    gap: 5%;
+}
+
+.user-info{
+    padding: 30px 10px;
+
+    & figure{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #44434b;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    & figure, & p{display: inline-block;}
+
+    & p{
+        color: #44434b;
+        font-weight: 600;
+        font-size: 1.2rem;
+        line-height: 20px;
+        vertical-align: middle;
+    }
+
+    & span{
+        color: #797878;
+        font-size: 0.8rem;
+        font-weight: normal;
+    }
+}
+
+.amenidades-wp{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    & .amenidades-box{
+        width: 48%;
+        margin-bottom: 20px;
+
+        & figure{
+            display: inline-block;
+            vertical-align: middle;
+
+            & svg{color: #8e644b;}
+        }
+
+        & p{display: inline-block; color: #403027;}
+    }
+}
+
+.sobre-hotel{
+    & p{
+        font-size: 0.9rem;
+        max-width: 600px;
+        text-align: justify;
+        color: #44434b;
+        margin: 15px 0 30px 0;
+    }
+}
+
+.info-hotel{width: 62%;}
+
+.proximidades-hotel-wp{margin-top: 20px;}
+
+.proximidades-hotel-box{
+    margin-bottom: 15px;
+
+    & figure, & p{display: inline-block; vertical-align: top;}
+
+    & svg{color: #8e644b;}
+
+    & p{
+        font-size: 1.1rem;
+        color: #55331f;
+    }
+
+    & span{
+        font-size: 0.8rem;
+        color: #585858;
+        font-weight: normal;
+        margin-left: 35px;
+    }
+}
+
+.info-check{
+    width: 38%;
+
+    & .info-checks-user{
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 30px;
+        text-align: center;
+
+        & .info-user{
+            display: flex;
+            flex-wrap: wrap;
+
+            & a{
+                display: inline-block;
+                width: 50%;
+                border-collapse: collapse;
+                padding: 15px 20px;
+                text-align: left;
+                font-size: 1rem;
+                color: #623f2b;
+
+                &:not(a:last-of-type){
+                    background-color: #ffeae4;
+                }
+                
+                &:first-of-type{
+                    border-top-left-radius: 15px;
+                    border-left: 2px solid #8e644b;
+                    border-right: 2px solid #8e644b;
+                    border-top: 2px solid #8e644b;
+                }
+
+                &:nth-of-type(2){
+                    border-top-right-radius: 15px;
+                    border-top: 2px solid #8e644b;
+                    border-right: 2px solid #8e644b;
+                }
+
+                &:last-child{
+                    border: 2px solid #8e644b;
+                    width: 100%;
+                    border-bottom-right-radius: 15px;
+                    border-bottom-left-radius: 15px;
+
+                    & p{display: inline-block;}
+
+                    & svg{
+                        float: right;
+                    }
+                }
+
+                & span{
+                    font-weight: 600;
+                    color: #5d4437;
+                    text-transform: uppercase;
+                    text-align: left;
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+        & span.aviso{
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: #C13515;
+
+            & svg{vertical-align: middle;}
+        }
+
+        & button{
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 10px;
+            background-color: #8e644b;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    }
+
+    & a.denuncia{
+        display: inline-block;
+        color: #44434b;
+        margin-top: 30px;
+        font-weight: 600;
+
+        & svg{vertical-align: middle;}
+    }
+}
+
+.box-aviso-info{
+    margin-top: 40px;
+    border: 2px solid #aaa;
+    border-radius: 20px;
+    padding: 25px 20px;
+
+    & h4{
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        color: #623f2b;
+        font-weight: 700;
+    }
+
+    & p{
+        font-size: 0.9rem;
+        color: #585858;
+        margin-top: 10px;
+        text-align: justify;
+    }
+
+}
+
+section.avaliacoes{
+    margin-top: 60px;
+
+    & h2.avaliacoes-tittle{
+        font-size: 1.5rem;
+        color: #403027;
+        letter-spacing: 1px;
+        display: inline-block;
+    }
+
+    & h2{vertical-align: middle;}
+
+    & svg{vertical-align: top;}
+}
+
+
+.coments{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.coments-box{
+    width: 48%;
+    margin-top: 30px;
+
+    & figure{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #44434b;
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+    & figure, & p{vertical-align: middle;}
+
+    & p{
+        font-size: 1.1rem;
+        color: #44434b;
+        display: inline-block;
+    }
+
+    & p > span{
+        font-size: 0.8rem;
+        font-weight: normal;
+        color: #636363;
+    }
+}
+
+.coments-box-description{
+    margin-top: 20px;
+
+    & svg{color: #55331f;}
+
+    & span.data{
+        color: #313131;
+        margin: 0 10px;
+    }
+
+    & span.periodo{
+        color: #585858;
+        font-size: 0.9rem;
+    }
+
+    & p{
+        max-width: 500px;
+        text-align: justify;
+        font-size: 1rem;
+        color: #585858;
+        margin: 20px 0 10px 0;
+    }
+
+    & a{color: #403027; text-decoration: underline;}
+}

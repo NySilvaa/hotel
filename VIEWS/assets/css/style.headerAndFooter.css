@@ -1,0 +1,102 @@
+header#header{
+    padding: 20px 0;
+    border-bottom: 2px solid #d4c7bc;
+
+    & .container .navigation{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & .logo a{
+        color: #403027;
+        font-size: 1.8rem;
+
+        & i{vertical-align: middle;}
+        
+        & h3{
+          font-size: 1.5rem; 
+          display: inline-block;
+        }
+      }
+
+      & ul#nav-menu{
+        list-style: none;
+
+        li{
+          display: inline-block;
+          font-size: 0.9rem;
+          margin: 0 15px;
+
+          & a{
+            color: #403027;
+            position: relative;
+
+            &::before{
+              content: '';
+              width: 0;
+              height: 2px;
+              background-color: #8e644b;
+              position: absolute;
+              bottom: -4px;
+              left: 50%; 
+              border-radius: 5px;
+              transform: translateX(-50%);
+              transition: 0.25s;
+            }
+
+            &:hover:before, &.active::before{
+              width: 40%;
+            }
+
+            &.active, &:hover{
+              color: #8e644b;
+            }
+          }
+          a.btn{
+            &:hover{
+              background-color: #8e644b;
+              color: #F2F2F2;
+            }
+
+            &:hover:before{width: 0;}
+          }
+        }
+      }
+    }
+}
+
+footer{
+    margin: 70px 0;
+
+    & .container{
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        place-items: center;
+        
+        & h2{
+            font-family: Qairo;
+            text-align: center;
+            color: #8e644b;
+            margin-bottom: 50px;
+            grid-column: 1/4;
+            font-size: 1.7rem;
+        }
+
+        & ul{
+            list-style: none;
+            
+            & li{
+                margin-bottom: 5px;
+                text-align: left;
+            
+                & a{
+                    color: #403027;
+                    font-size: 0.8rem;
+
+                    &:hover{color: #8e644b;}
+                }
+            }
+        }
+    }
+}

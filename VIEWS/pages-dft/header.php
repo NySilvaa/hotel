@@ -1,3 +1,9 @@
+<?php
+    use \Model\HospedagemModel;
+
+    $hostModel = new HospedagemModel();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,19 +13,18 @@
     <meta name="keywords" content="hotel;luxo;reservas;front-end;back-end;viagens;">
     <meta name="author" content="Nycolas silva">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.home.css">
-    <?php if(@$_GET['url'] !== '' || @$_GET['url'] !== 'Home'){ ?>
-        <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.rooms.css">
-    <?php } ?>
-
-    <?php if(@$_GET['url'] == "aboutUs/"){ ?>
-        <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.aboutus.css">
-    <?php } ?>
-
-    <?php if(@$_GET['url'] == 'register/' || @$_GET['url'] == 'login/'){ ?>
-        <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.register.css">
-    <?php } ?>
-    <title>Rooms | Explore as nossas diversas opções</title>
+    <link rel="stylesheet" href="<?php echo PATH_INTERATIONS; ?>css/style.home.css">
+    <link rel="stylesheet" href="<?php echo PATH_INTERATIONS; ?>css/style.headerAndFooter.css">
+    <link rel="stylesheet" href="<?php echo chooseCSSForPage(); ?>">
+    <title><?php 
+    if(@$_GET['url'] == "hospedagem"){
+        $listNameHotel = $hostModel->getHotelById()["Nome"];
+        
+        if(isset($listNameHotel) && $listNameHotel !== "")
+            echo $listNameHotel." | Realize sua Reserva ainda Hoje - Roro's Hotel"; 
+    }else
+        echo changeNameWithAPage();
+        ?></title>
 </head>
 <body> 
     <header id="header">
