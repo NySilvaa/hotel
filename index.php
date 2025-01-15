@@ -65,7 +65,7 @@
             break;
 
             default:
-
+                return PATH_INTERATIONS."css/style.error-page.css";
             break;
         }
     }

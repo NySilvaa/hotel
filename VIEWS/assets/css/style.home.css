@@ -418,7 +418,9 @@ main#entrada .container{
             cursor: pointer;
             font-size: 0.8rem;
             text-align: center;
-            vertical-align: top;
+            vertical-align: middle;
+
+            & svg{vertical-align: middle;}
 
             &:hover{background-color: #ad9d8d;}
         }
@@ -426,12 +428,14 @@ main#entrada .container{
         & input#count{
             background-color: transparent;
             display: inline-block;
-            width: 30px;
+            width: 10px;
             text-align: center;
             outline: 0;
             border: 0;
             margin: 0 10px;
+            appearance: none;
             vertical-align: middle;
+            font-weight: 600;
         }
     }
 
@@ -509,13 +513,14 @@ main#entrada .container{
 .btn-left-our-rooms{
   background-color: transparent;
   backdrop-filter: blur(2px);
-  border: 2px solid #fff;
+  border: 2px solid #55331f;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   text-align: center;
   line-height: 80px;
   color: #fff;
+  background: rgb(85 51 31);
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
@@ -523,7 +528,7 @@ main#entrada .container{
   cursor: pointer;
   transition: 0.4s;
 
-  &:hover{background-color: #efefef4e;}
+  &:hover{background-color: rgb(54, 34, 23);}
 }
 
 .btn-left-our-rooms{
@@ -650,19 +655,24 @@ section.room-highlight{
             border: 2px solid #8e644b;
             transition: 0.4s;
             color: #403027;
-            margin-right: 15px;
-            margin-bottom: 10px;
-    
-            &:hover{
-                background-color: #8e644b;
-            }
+            margin-bottom: 0 15px 10px 0;
 
             & i{font-size: 0.9rem; vertical-align: middle;}
-        }
 
-        & a:first-of-type{
+            &:first-of-type{
+              background-color: #8e644b;
+              color: #f2e8df;
+  
+              &:hover{
+                background-color: #55331f;
+                border-color: #55331f;
+              }
+          }
+  
+          &:last-of-type:hover{
             background-color: #8e644b;
             color: #f2e8df;
+          }
         }
     }
 }
@@ -713,14 +723,23 @@ section.room-highlight{
 
     & h2{color: #f2e8df;}
 
-    & a{color: #f2e8df;}
+    & a{
+      color: #f2e8df;
+    
+      &:hover{background-color: #8e644b;}
+    }
 }
 .box-about-us:last-of-type{
     background-color: #8e644b;
 
     & h2{color: #403027;}
 
-    & a{border-color: #403027; color: #f2e8df;}
+    & a{
+      border-color: #403027; 
+      color: #f2e8df;
+    
+      &:hover{background-color: #403027;}
+    }
 }
 
 section.video-promotional{
@@ -744,13 +763,13 @@ section.video-promotional{
     
     & p{
         text-align: center;
-        font-size: 1rem;
+        font-size: 1.2rem;
         letter-spacing: 1px;
         color: #403027;
     }
     
     & h2{
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-family: Qairo;
         position: absolute;
         top: 40%; left: 8%;
@@ -761,6 +780,8 @@ section.video-promotional{
         color: #f7f2ed;
         position: absolute;
         top: 51%; left: 8%;
+
+        &:hover{background-color: #f2e8df; color: #412717;}
     }
 }
 

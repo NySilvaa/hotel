@@ -13,7 +13,9 @@
     <meta name="keywords" content="hotel;luxo;reservas;front-end;back-end;viagens;">
     <meta name="author" content="Nycolas silva">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="<?php echo PATH_INTERATIONS; ?>images/ico/cisne.ico" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.home.css">
+    <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.headerAndFooter.css">
     <title>Home | Explore as nossas diversas opções</title>
 </head>
 <body> 
@@ -47,7 +49,7 @@
         <div class="overlay"></div>
 
         <nav class="navigation">
-            <figure class="logo"><a href="#" class="txt-white"><i class='bx bxs-drink' ></i></a></figure>
+            <figure class="logo"><a href="#" class="txt-white"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" stroke="#fff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-origami"><path d="M12 12V4a1 1 0 0 1 1-1h6.297a1 1 0 0 1 .651 1.759l-4.696 4.025"/><path d="m12 21-7.414-7.414A2 2 0 0 1 4 12.172V6.415a1.002 1.002 0 0 1 1.707-.707L20 20.009"/><path d="m12.214 3.381 8.414 14.966a1 1 0 0 1-.167 1.199l-1.168 1.163a1 1 0 0 1-.706.291H6.351a1 1 0 0 1-.625-.219L3.25 18.8a1 1 0 0 1 .631-1.781l4.165.027"/></svg></a></figure>
 
             <div class="name-center">
                 <h2 class="txt-white">Roros Hotel</h2>
@@ -63,7 +65,7 @@
             <section class="chamada">
                 <div class="text-chamada">
                     <h1 class="txt-white">A Destination for Relaxation <br> Adventure and Memories</h1>
-                    <a href="<?php echo PATH_PAGES; ?>rooms/" class="txt-white">See our rooms</a>
+                    <a href="<?php echo PATH_PAGES; ?>rooms/" class="txt-white">See our rooms <svg style="vertical-align: middle; margin-left:5px;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bed-double"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v6"/><path d="M2 18h20"/></svg></a>
                 </div>
 
                 <div class="checks-form">
@@ -111,14 +113,14 @@
                         <div class="choose-rooms">
                             <p>Guests per room</p>
                             <div class="count-guests-room">
-                                <span class="sub" id="sub"><i class="bx bx-minus"></i></span>
-                                <input type="number" name="count" id="count" value="1" min="1" max="5">
-                                <span class="add" id="add"><i class='bx bx-plus'></i></span>
+                                <span class="sub" id="sub"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"/></svg></span>
+                                <input type="text" name="count" id="count" value="1" min="1" max="5">
+                                <span class="add" id="add"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
                             </div>
                             <a href="#">Multiples Rooms?</a>
                         </div>
 
-                        <button type="submit" name="prices">View rooms and prices <i class='bx bx-caret-right'></i></button>
+                        <button type="submit" name="prices">View rooms and prices <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></button>
                     </form>
                 </div>
             </section>
@@ -135,7 +137,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -143,7 +145,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -151,7 +153,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -159,7 +161,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img4.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -167,7 +169,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -175,7 +177,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -183,7 +185,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img4.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -191,7 +193,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
 
                 <div class="box-diferenciais">
@@ -199,7 +201,7 @@
                         <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
                     </div>
                     <h2>Our Rooms</h2>
-                    <a href="#">Explore <i class='bx bx-caret-right'></i></a>
+                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
            </div><!-- /.diferenciais-wrapper -->   
         </div><!--container-->
@@ -221,7 +223,7 @@
             <div class="txt-highlight">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque aliquid alias vel consequatur placeat repellendus consequuntur et ut minima voluptatem, inventore earum molestias voluptates excepturi magnam quisquam sed? Repellendus, voluptatibus!</p>
                 <a href="#" class="txt-white">Book Now <i class='bx bx-bookmark' ></i></a>
-                <a href="#">Explore the room <i class='bx bx-world'></i></a>
+                <a href="#">Explore the room <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
             </div>
 
             <div class="bg-main1">
@@ -238,13 +240,13 @@
             <div class="box-about-us">
                 <h2 class="txt-white">Sustainability</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ex qui numquam tempore dicta velit repudiandae nemo, vel molestiae soluta odio! Asperiores, minima laboriosam consectetur consequuntur illo a error provident!</p>
-                <a href="#" class="btn">Read More</a>
+                <a href="<?php echo PATH_PAGES; ?>aboutUs/" class="btn">Read More <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-left:2px;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></a>
             </div>
 
             <div class="box-about-us">
                 <h2>Sustainability</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ex qui numquam tempore dicta velit repudiandae nemo, vel molestiae soluta odio! Asperiores, minima laboriosam consectetur consequuntur illo a error provident!</p>
-                <a href="#" class="btn">Read More</a>
+                <a href="<?php echo PATH_PAGES; ?>aboutUs/" class="btn">Read More <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-left:2px;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></a>
             </div>
         </div>
    </section>
@@ -256,7 +258,7 @@
             <p>Experiences</p>
 
             <h2 class="txt-white">Experience the better from summer</h2>
-            <a href="#" class="btn">Explore</a>
+            <a href="<?php echo PATH_PAGES; ?>rooms/" class="btn">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
         </div>
         <!-- /.video-promotional-wp -->
     </div>

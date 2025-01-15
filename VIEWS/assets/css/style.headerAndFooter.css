@@ -10,12 +10,12 @@ header#header{
       & .logo a{
         color: #403027;
         font-size: 1.8rem;
-
-        & i{vertical-align: middle;}
         
         & h3{
           font-size: 1.5rem; 
           display: inline-block;
+
+          & svg{vertical-align: middle; position: relative; top: -3px;}
         }
       }
 

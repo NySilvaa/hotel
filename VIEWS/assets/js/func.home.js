@@ -13,12 +13,13 @@ const showButtonBookAccomodation = ()=>{
 };
 showButtonBookAccomodation();
 
+// FUNÇÃO DE CONTAGEM DE PESSOAS POR QUARTO
 const chooseRoomsPerGuests = ()=>{
     const add = document.getElementById('add');
     const sub = document.getElementById('sub');
     const count = document.getElementById('count');
 
-    let valueCount = count.val3ue
+    let valueCount = count.value
     let newValueCount = Number(valueCount);
 
     add.addEventListener('click', ()=>{

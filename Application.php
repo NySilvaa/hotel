@@ -13,6 +13,12 @@
             $view = "Views\\".$url."View";
             $model = "Model\\".$url."Model";
 
+            if(!file_exists('Controllers/'.$url.'Controller.php')){
+                $class = "Controllers\\ErrorPageController";
+                $view = "Views\\ErrorPageView";
+                $model = "Model\\ErrorPageModel";
+            }
+
             $controller = new $class(new $view, new $model);
             $controller->index();    
             

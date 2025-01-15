@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS; ?>css/style.home.css">
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS; ?>css/style.headerAndFooter.css">
     <link rel="stylesheet" href="<?php echo chooseCSSForPage(); ?>">
+    <link rel="shortcut icon" href="<?php echo PATH_INTERATIONS; ?>images/ico/cisne.ico" type="image/x-icon">
     <title><?php 
     if(@$_GET['url'] == "hospedagem"){
         $listNameHotel = $hostModel->getHotelById()["Nome"];
@@ -30,13 +31,13 @@
     <header id="header">
         <div class="container">
             <nav class="navigation">
-                <figure class="logo"><a href="/hotel" class="txt-white"><i class='bx bxs-drink' ></i> <h3>Roro's Hotel</h3></a></figure>
+                <figure class="logo"><a href="/hotel" class="txt-white"><h3><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" stroke="#403027" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-origami"><path d="M12 12V4a1 1 0 0 1 1-1h6.297a1 1 0 0 1 .651 1.759l-4.696 4.025"/><path d="m12 21-7.414-7.414A2 2 0 0 1 4 12.172V6.415a1.002 1.002 0 0 1 1.707-.707L20 20.009"/><path d="m12.214 3.381 8.414 14.966a1 1 0 0 1-.167 1.199l-1.168 1.163a1 1 0 0 1-.706.291H6.351a1 1 0 0 1-.625-.219L3.25 18.8a1 1 0 0 1 .631-1.781l4.165.027"/></svg> Roro's Hotel</h3></a></figure>
                 
                 <ul id="nav-menu">
-                    <li><a href="<?php echo PATH_PAGES; ?>">Home</a></li>
-                    <li><a href="#" class="active">Rooms</a></li>
-                    <li><a href="<?php echo PATH_PAGES; ?>aboutUs/">About us</a></li>
-                    <li><a href="<?php echo PATH_PAGES; ?>register/" class="btn">Sign Up | Login</a></li>
+                    <li><a href="<?php echo PATH_PAGES; ?>" data-page="home">Home</a></li>
+                    <li><a href="<?php echo PATH_PAGES; ?>rooms/" data-page="rooms" >Rooms</a></li>
+                    <li><a href="<?php echo PATH_PAGES; ?>aboutUs/" data-page="aboutUs">About us</a></li>
+                    <li><a href="<?php echo PATH_PAGES; ?>register/" class="btn" data-page="register">Sign Up | Login</a></li>
                 </ul>
             </nav>
         </div><!-- /.container -->

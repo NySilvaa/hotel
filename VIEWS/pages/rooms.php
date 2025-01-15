@@ -26,7 +26,7 @@
                                 <input id="origin" class="input_field" type="text" name="origin" title="Inpit title" placeholder="Currently Location" value="SP - BRAZIL">
                             </div>
                             <div class="input_container">
-                                <label for="destiny" class="input_label">Para Onde Está Indo?</label>
+                                <label for="destiny-city" class="input_label">Para Onde Está Indo?</label>
                                 <input id="destiny-country" class="input_field destiny-country" type="text" name="destiny-country" title="Inpit title" placeholder="The Country">
                                 <input id="destiny-city" class="input_field destiny-location" type="text" name="destiny" title="Inpit title" placeholder="Your Destiny">
                                 <div class="div-teste">
@@ -81,9 +81,10 @@
                 <label for="person" class="book-title">Person</label>
                 <input type="text" id="person" name="person" placeholder="Choose the Count"  value="<?php 
                                     if(!isset($_POST['count-person']))
-                                        echo $_SESSION['count'];
+                                        echo (isset($_SESSION['count'])) ? $_SESSION['count'] : 1;
                                     else
-                                        echo recoverPost('count-person-field'); ?> Person"/>
+                                        echo recoverPost('count-person-field'); 
+                                    ?> Person"/>
 
                 <div class="modal">
                         <form class="form" method="post">
@@ -100,7 +101,7 @@
                         </div>
                             <button class="purchase--btn" name="count-person">Registrar <?php 
                                     if(!isset($_POST['count-person']))
-                                        echo $_SESSION['count'];
+                                        echo (isset($_SESSION['count'])) ? $_SESSION['count'] : 1;
                                     else
                                         echo recoverPost('count-person-field');
                             ?> Pessoas</button>
@@ -110,14 +111,14 @@
 
             <div class="data-book-box">
                 <label for="check-in" class="book-title">Check-in</label>
-                <input type="text" id="check-in" name="check-in" placeholder="Check-in Date" value="<?php echo $_SESSION['date-check-in']; ?>"/>
+                <input type="text" id="check-in" name="check-in" placeholder="Check-in Date" value="<?php echo (isset($_SESSION['date-check-in'])) ? $_SESSION['date-check-in'] : date('d/m/Y'); ?>"/>
 
                 <div id="calendar"></div>
             </div><!-- /.data-book-box -->
             
             <div class="data-book-box">
                 <label for="check-out" class="book-title">Check-out</label>
-                <input type="text" id="check-out" name="check-out" placeholder="Check-out Date" value="<?php echo $_SESSION['date-check-out']; ?>">
+                <input type="text" id="check-out" name="check-out" placeholder="Check-out Date" value="<?php echo (isset($_SESSION['date-check-out'])) ? $_SESSION['date-check-out'] : date('d/m/Y', time() + (60*60*24*30)); ?>"">
 
                 <div id="calendar"></div>
             </div><!-- /.data-book-box-->
@@ -156,7 +157,7 @@
             <div class="hotels-box">
                 <div class="hotels-img">
                     <figure><img src="<?php echo $value[5]; ?>" alt="Foto do Hotel" srcset=""></figure>
-                    <a href="#" class="favorite"><i class="bx bx-heart"></i></a>
+                    <a href="#" class="favorite"><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></a>
                 </div>
 
                 <div class="hotels-description">
@@ -172,7 +173,7 @@
                 </div>
 
                 <div class="btn-hotel">
-                    <a target="_blank" href="<?php echo PATH_PAGES; ?>hospedagem?<?php echo $value[6] ?>">Explorar Quarto</a>
+                    <a target="_blank" href="<?php echo PATH_PAGES; ?>hospedagem?<?php echo $value[6] ?>">Explorar Quarto <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-left: 2px;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bed-double"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v6"/><path d="M2 18h20"/></svg></a>
                 </div>
             </div><!-- /.hotels-box -->
             <?php } // FIM DO FOREACH
@@ -184,7 +185,6 @@
     
     <!-- TO DO: FAZER UM SISTEMA DE PAGINAÇÃO ---->
 </main>
-
 
 <!--
 
