@@ -44,7 +44,12 @@
 
 <?php if(@$_GET['url'] == 'register/'){ ?>
     <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.register.js"></script>
+    <script defer src="<?php echo PATH_INTERATIONS; ?>js/ajax.register.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<?php } ?>
+
+<?php if(@$_GET['url'] == "login/"){ ?>
+    <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.login.js"></script>
 <?php } ?>
 
 <?php if(@$_GET['url'] !== '' || @$_GET['url'] !== "home"){ ?>

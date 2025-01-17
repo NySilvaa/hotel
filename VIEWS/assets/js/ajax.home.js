@@ -31,47 +31,47 @@ const getDistanceToTop = (windowTop)=> {
         checksform.prepend(tooltipBook);
 
     }
-  }
+};
+
+$('#form-book').submit(function(e){
+    const dayCheckIn = document.getElementById('day-check-in');
+    const dateCheckIn = document.querySelector('[name=date-check-in]');
+    let monthAndYearCheckIn = monthCheckIn.innerText.split(" ");
+    dateCheckIn.setAttribute('value', `${dayCheckIn.innerText}/${monthAndYearCheckIn[0]}/${monthAndYearCheckIn[1]}`);
     
-    $('#form-book').submit(function(e){
-        const dayCheckIn = document.getElementById('day-check-in');
-        const dateCheckIn = document.querySelector('[name=date-check-in]');
-        let monthAndYearCheckIn = monthCheckIn.innerText.split(" ");
-        dateCheckIn.setAttribute('value', `${dayCheckIn.innerText}/${monthAndYearCheckIn[0]}/${monthAndYearCheckIn[1]}`);
-      
-        // ELEMENTOS DE CHECK-OUT
-        const dayCheckOut = document.getElementById('day-check-out');
-        const dateCheckOut = document.querySelector('[name=date-check-out]');
-        let monthAndYearCheckOut = monthCheckOut.innerText.split(' ');
-        dateCheckOut.setAttribute('value', `${dayCheckOut.innerText}/${monthAndYearCheckOut[0]}/${monthAndYearCheckOut[1]}`);
-        const optionSection = document.getElementById("select");
+    // ELEMENTOS DE CHECK-OUT
+    const dayCheckOut = document.getElementById('day-check-out');
+    const dateCheckOut = document.querySelector('[name=date-check-out]');
+    let monthAndYearCheckOut = monthCheckOut.innerText.split(' ');
+    dateCheckOut.setAttribute('value', `${dayCheckOut.innerText}/${monthAndYearCheckOut[0]}/${monthAndYearCheckOut[1]}`);
+    const optionSection = document.getElementById("select");
 
-        if(optionSection.value == "Escolha uma Opção"){
-            e.preventDefault();
-            getDistanceToTop(window.scrollY);
-            tooltipBook.style.opacity = 1;
+    if(optionSection.value == "Escolha uma Opção"){
+        e.preventDefault();
+        getDistanceToTop(window.scrollY);
+        tooltipBook.style.opacity = 1;
 
-            setTimeout(() => {
-                tooltipBook.style.opacity = 0;
-                tooltipBook.innerHTML = "";
-            }, 5000);
+        setTimeout(() => {
+            tooltipBook.style.opacity = 0;
+            tooltipBook.innerHTML = "";
+        }, 5000);
+    }
+    
+
+    $.ajax({
+        type: "Post",
+        url: "http://localhost/hotel/",
+        data: {
+            "dateCheckIn": dateCheckIn.getAttribute("value"),
+            "dateCheckOut": dateCheckOut.getAttribute("value")
+        },
+
+        success: function(data){
+            console.log("Deu certo");
+        }, 
+
+        error: function(){
+            console.log('Algo Falhou');
         }
-        
-
-        $.ajax({
-            type: "Post",
-            url: "http://localhost/hotel/",
-            data: {
-                "dateCheckIn": dateCheckIn.getAttribute("value"),
-                "dateCheckOut": dateCheckOut.getAttribute("value")
-            },
-
-            success: function(data){
-                console.log("Deu certo");
-            }, 
-
-            error: function(){
-                console.log('Algo Falhou');
-            }
-        })
     })
+});

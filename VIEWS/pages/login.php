@@ -9,13 +9,14 @@
     <div class="container">
         <section class="register-wp">
             <section class="forms" style="width: 50%; order: 2;">
-                <figure class=""><a href="/hotel" class="txt-white"><i class='bx bxs-drink' ></i> <h3>Roro's Hotel</h3></a></figure>
+                <figure class=""><a href="/hotel" class="txt-white"><svg style="vertical-align: middle; position: relative; top: -5px;" xmlns="http://www.w3.org/2000/svg" width="28" height="28" stroke="currentColor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-origami"><path d="M12 12V4a1 1 0 0 1 1-1h6.297a1 1 0 0 1 .651 1.759l-4.696 4.025"/><path d="m12 21-7.414-7.414A2 2 0 0 1 4 12.172V6.415a1.002 1.002 0 0 1 1.707-.707L20 20.009"/><path d="m12.214 3.381 8.414 14.966a1 1 0 0 1-.167 1.199l-1.168 1.163a1 1 0 0 1-.706.291H6.351a1 1 0 0 1-.625-.219L3.25 18.8a1 1 0 0 1 .631-1.781l4.165.027"/></svg> <h3>Roro's Hotel</h3></a></figure>
 
                 <h2 class="tittle-form">Login Page</h2>
                 <p class="desc-form">Do your Login and Have Access the User Page for Books</p>
 
                 <form class="form" method="post" id="formRegister">
                     <h3 style="margin-bottom: 20px;">Sign In</h3>
+                    <div class="form-box">
                     <div class="flex-column">
                             <label>E-mail</label>
                     </div>
@@ -23,19 +24,23 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         <input type="text" class="input" placeholder="Digite Seu E-mail" name="username" />
                     </div>
+                    </div>
 
-                    <div class="flex-column">
-                            <label>Senha</label>
-                        </div>
-                        <div class="inputForm">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            <input type="password" class="input" placeholder="Enter your Password"  name="password"/>
-                        </div>
+                    <div class="form-box">
+                    <div class="senha-field">
+                        <div class="flex-column"><label>Senha</label></div>
+                            <div class="inputForm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                <input type="password" class="input" placeholder="Enter your Password"  name="password" id="password"/>
+                            </div>
+                            <span id="eye-pass"><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></span>
+                    </div>
+                    </div>
 
                     <div class="flex-row">
                         <div>
-                        <input type="checkbox" id="check" />
-                        <label for="check" class="check"></label>
+                        <input type="checkbox" id="remember" />
+                        <label for="remember" class="check"></label>
                         <label>Remember me </label>
                         </div>
                         <span class="span">Forgot password?</span>

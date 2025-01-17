@@ -10,5 +10,4 @@ ItemsnavMenu.forEach(item =>{
         item.classList.remove('active')
     }else if(getAttrItem == url[url.length-2])
         item.classList.add('active');
-
 });

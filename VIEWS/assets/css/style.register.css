@@ -1,3 +1,15 @@
+.senha-field{position: relative;}
+
+.senha-field span#eye-pass,
+.senha-field span.eye-btn-pw{
+  display: inline-block;
+  position: absolute;
+  right: 10px; top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #403027;
+}
+
 section.register-wp{
   display: flex;
   justify-content: space-between;
@@ -67,16 +79,19 @@ p.desc-form{
   }
 }
 
-
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     padding: 30px;
     border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    & h3{width: 100%;}
   }
   
   .form button {align-self: flex-end;}
+
+  .flex-column{margin-top: 10px;}
 
   .flex-column > label {
     color: #403027;
@@ -151,7 +166,7 @@ p.desc-form{
     cursor: pointer;
   }
 
-  .flex-row input[type=checkbox]:checked ~ label.check:before{background-color: #8e644b;}
+  .flex-row input[type=checkbox]:checked ~ label.check:before{background-color: #8e644b; border-color: #533e31;}
   
   .span {
     font-size: 0.9rem;
@@ -172,6 +187,8 @@ p.desc-form{
     height: 50px;
     width: 100%;
     cursor: pointer;
+
+    &:hover{background-color: #554136;}
   }
   
   .p {
@@ -209,3 +226,7 @@ p.desc-form{
     }
   }
   
+  .form-box, p.line, p.p, .flex-row{width: 100%;}
+  .w70{width: 67%;}
+  .w30{width: 30%;}
+  .w50{width: 48%;}
