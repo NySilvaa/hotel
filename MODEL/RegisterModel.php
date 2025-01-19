@@ -4,8 +4,7 @@ namespace Model;
 
 use Model\HomeModel;
 
-class RegisterModel extends Model
-{
+class RegisterModel extends Model{
     private static $homeModel;
 
     public function generateFieldsForms()
@@ -17,22 +16,29 @@ class RegisterModel extends Model
             "Senha"
         ];
 
-        if (isset($_POST['count'])) {
-            //$_SESSION['respostas'][$_POST['count']] = $_POST['answer'];
-
-            if (count($questions) == (int)$_POST['count'] + 1)
-                die('Terminou o exame.');
-        }
-
         $index = 0;
 
         if (isset($_POST['count'])) {
+            $control = true;
             if ((int)$_POST['count'] == 0 && self::validateFieldsForms($_POST) !== false)
-                $index = (int)$_POST['count'] + 1;
+                $index++;
             else if ((int)$_POST['count'] == 1 && self::validateFieldsForms($_POST) !== false)
-                $index = (int)$_POST['count'] + 1;
+                $index =  (int)$_POST['count'] + 1;    
             else if ((int)$_POST['count'] == 2 && self::validateFieldsForms($_POST) !== false)
-                $index = (int)$_POST['count'] + 1;
+                $index =  (int)$_POST['count'] + 1;
+            else if ((int)$_POST['count'] == 3 && self::validateFieldsForms($_POST) !== false)
+                $index =  (int)$_POST['count'] + 1;
+            else{
+                $control = false;
+                $index = (int)$_POST['count'];
+            }
+
+            if (($control == true) && count($questions) == (int)$_POST['count'] + 1){
+                $_SESSION['register'] = true;
+                header('Location: '.PATH_PAGES.'login/');
+                die();
+            }
+                
         }
 
         return [$index, $questions];
@@ -43,7 +49,7 @@ class RegisterModel extends Model
         $fields = [
             "Dados Pessoais" => ["Nome", "CPF", "RG", "Data-de-Nascimento", "Gênero"],
             "Endereço" => ["CEP", "UF", "Cidade", "Bairro", "Logradouro", "Nº", "Complemento"],
-            "Dados de Contato" => ["E-mail", "Telefone Celular"],
+            "Dados de Contato" => ["E-mail", "Celular"],
             "Senha" => ["Criar Senha", "Repetir a Senha"]
         ];
 
@@ -58,7 +64,7 @@ class RegisterModel extends Model
 
             "Dados de Contato" => [
                 "E-mail" => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
-                "Telefone Celular" => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>'
+                "Celular" => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>'
             ]
         ];
 
@@ -75,10 +81,10 @@ class RegisterModel extends Model
             "Nº" => "Ex.: Nº 44",
             "Complemento" => "Ex.: Apt. Santa Maria, Bloco B12",
             "E-mail" => "Ex.: email@dominio.com",
-            "Telefone Celular" => "Ex.: (00) 0 0000-0000"
+            "Celular" => "Ex.: (00) 0 0000-0000"
         ];
 
-        foreach ($fields[$nameField] as $value) {
+        foreach ($fields[$nameField] as $key => $value) {
             switch ($nameField) {
                 case 'Dados Pessoais':
                     $id = str_replace(" ", "-", $value);
@@ -171,17 +177,46 @@ class RegisterModel extends Model
                     break;
 
                 case 'Senha':
-                    echo '
-                        <div class="senha-field">
-                            <div class="flex-column">
-                                <label>' . $value . ' </label>
+                        if($key == 0){
+                            echo '
+                            <div class="form-box" >
+                                <div class="senha-field">
+                                <div class="flex-column">
+                                    <label>' . $value . ' </label>
+                                </div>
+                                <div class="inputForm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                    <input type="password" class="input" name="Password" placeholder="Create your Password" />
+                                </div>
+                                <span class="eye-btn-pw"><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></span>
+                                </div>
+
+                                <span class="txt-pw-instruccion">Sua senha deve conter:</span>
+                                <ul id="instruccions-pw">
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> No mínimo 8 caracteres e no máximo 20</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Uma Letra maiúscula</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Uma Letra minúscula</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Pelo menos um número</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Pelo Menos um símbolo (Ex.: # / $ / @ / !)</li>
+                                </ul>
                             </div>
-                            <div class="inputForm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                                <input type="password" class="input" name="passwordRegister" placeholder="Create your Password" />
+                        ';
+                        }else{
+                            echo '
+                            <div class="form-box" >
+                                <div class="senha-field">
+                                <div class="flex-column">
+                                    <label>' . $value . ' </label>
+                                </div>
+                                <div class="inputForm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                    <input type="password" class="input" name="confirmPassword" placeholder="Create your Password" />
+                                </div>
+                                <span class="eye-btn-pw"><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></span>
+                                </div>
                             </div>
-                            <span class="eye-btn-pw"><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></span>
-                         </div>';
+                        ';
+                        }
                     break;
 
                 default:
@@ -198,12 +233,19 @@ class RegisterModel extends Model
         if (isset($post)) {
             foreach ($post as $key => $value) {
                 if ($key == 'count') {
-                    if ($value == 0)
-                        $this->validatePersonalData();
-                    else if ($value == 1)
-                        $this->validateAddressData();
-                    else if($value == 2)
-                        $this->validateContactData();
+                        if ($value == 0){
+                           if($this->validatePersonalData() == false)
+                                return false;
+                        }else if ($value == 1){
+                            if($this->validateAddressData() == false)
+                                return false;
+                        }else if($value == 2){
+                            if($this->validateContactData() == false)
+                                return false;
+                        }else if($value == 3){   
+                            if($this->validatePw() == false)
+                                return false;
+                        }
                 }
 
                 if (($key == 'Complemento' && $value == '') || $key == 'acao')
@@ -262,19 +304,19 @@ class RegisterModel extends Model
         $numberHouse = strip_tags($_POST['Nº']);
         $complemento = strip_tags($_POST['Complemento']);
 
-        if (strlen($uf) != 2 && strlen($uf) != 3) {
+        if (strlen($uf) !== 2 && strlen($uf) !== 3) {
             self::$homeModel->messageBook("error", "UF Inválida", "O valor digitado está incorreto");
             return false;
-        } else if (strlen($logradouro) < 3) {
+        }else if (strlen($logradouro) < 3) {
             self::$homeModel->messageBook('error', "Logradouro Inválido", "O valor inserido é muito curto.");
             return false;
-        } else if (($numberHouse != "S/N" || $numberHouse != "s/n") && (int)$numberHouse < 0) {
+        }else if ((int)$numberHouse < 0) {
             self::$homeModel->messageBook('error', 'Número Inválido', "Valores negativos não são permitidos");
             return false;
-        } else if (strlen($complemento) > 150) {
+        }else if (strlen($complemento) > 150) {
             self::$homeModel->messageBook('error', 'Complemento muito grande', "O valor inserido excede o limite permitido");
             return false;
-        } else
+        }else 
             return true;
     }
 
@@ -282,11 +324,48 @@ class RegisterModel extends Model
         self::$homeModel = new HomeModel();
 
         $email = strip_tags($_POST['E-mail']);
-        $phone = strip_tags($_POST['Telefone Celular']);
+        $phone = strip_tags($_POST['Celular']);
 
         if(preg_match("/[A-Za-z0-9-_]{1,}@[a-z]{1,}\.[a-z]{3}/", $email) == false){
             self::$homeModel->messageBook('error', "E-mail Inválido", "Digite o e-mail corretamente.");
             return false;
+        }else if(preg_match("/^\(\d{2}\) \d \d{4}-\d{4}$/", $phone) == false){
+            self::$homeModel->messageBook('error', 'Telefone Inválido',"Seu telefone foi inserido incorretamente");
+            return false;
+        }else{
+            $_SESSION['username'] = $email;
+            return true;
         }
+    }
+
+    private function validatePw(){
+        self::$homeModel = new HomeModel();
+        $pw = strip_tags($_POST['Password']);
+        $confirmPw = strip_tags($_POST['confirmPassword']);
+
+        if($pw !== $confirmPw){
+            self::$homeModel->messageBook('error', 'Senhas Diferentes', "Suas senhas estão diferentes");
+            return false;
+        }else if(strlen($pw) < 8){
+            self::$homeModel->messageBook('error', 'Senha Curta', "A senha escolhida é muito curta");
+            return false;
+        }else if(strlen($pw) > 20){
+            self::$homeModel->messageBook('error', 'Senha muito longa', 'Sua senha é muito grande');
+            return false;
+        }else if(!preg_match("/[A-Z]{1,}/",$pw)){
+            self::$homeModel->messageBook('error', "Senha Incorreta", "Sua Senha precisa ter uma letra maiúscula");
+            return false;
+        }else if(!preg_match("/[a-z]{1,}/", $pw)){
+            self::$homeModel->messageBook('error', "Senha Incorreta", "Sua Senha precisa ter uma letra minúscula");
+            return false;
+        }else if(!preg_match('/^(?=.*[!@#$%^&*()_+={}\[\]:;"\'<>,.?\/-]).+$/', $pw) ){
+            self::$homeModel->messageBook('error', "Senha Incorreta", "Sua Senha precisa ter um símbolo");
+            return false;
+        }else if(!preg_match("/[0-9]{1,}/", $pw)){
+            self::$homeModel->messageBook('error', "Senha Incorreta", "Sua Senha precisa ter um número");
+            return false;
+        }else
+            return true;
+
     }
 }

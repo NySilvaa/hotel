@@ -1,8 +1,14 @@
 <?php
     use \Model\RegisterModel;
+    use \Model\HomeModel;
 
         $registerModel = new RegisterModel();
         $generateFieldsForm = $registerModel->generateFieldsForms();
+
+        if(isset($_SESSION['register'])){
+            $homeModel = new HomeModel();
+            $homeModel->messageBook('success', 'Cadastro Feito c/ Sucesso', 'Realize o seu login');
+        }
 ?>
 
 <main id="register">
@@ -22,7 +28,7 @@
                     </div>
                     <div class="inputForm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        <input type="text" class="input" placeholder="Digite Seu E-mail" name="username" />
+                        <input type="text" class="input" placeholder="Digite Seu E-mail" name="username" value="<?php if(isset($_SESSION['username'])) echo $_SESSION['username']; ?>"/>
                     </div>
                     </div>
 

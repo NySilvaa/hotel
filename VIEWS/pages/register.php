@@ -1,11 +1,12 @@
 <?php
     use \Model\RegisterModel;
 
-        $registerModel = new RegisterModel();
-        $generateFieldsForm = $registerModel->generateFieldsForms();
+    $registerModel = new RegisterModel();
+    $generateFieldsForm = $registerModel->generateFieldsForms();
 
-        if(isset($_POST['acao']))
-            $registerModel->validateFieldsForms($_POST);
+    if(isset($_POST['acao']))
+        if($registerModel->validateFieldsForms($_POST) != false)
+            echo @$_POST['count'];
 ?>
 
 <main id="register">
@@ -17,8 +18,8 @@
                 <h2 class="tittle-form">Create Account</h2>
                 <p class="desc-form">Sign Up Now and Unlock Exclusive Access </p>
 
-                <div class="loading-bar" data-section="<?php echo $generateFieldsForm[0]; ?>" data-completude="25">
-                    <span></span><span></span><span></span><span></span>
+                <div class="loading-bar" data-section="<?php echo $generateFieldsForm[0]; ?>">
+                    <span data-completude="1"></span><span data-completude="2"></span><span data-completude="3"></span><span data-completude="4"></span>
                 </div>
 
                 <form class="form" method="post" id="formRegister">
@@ -102,7 +103,7 @@
                         Apple
                         </button>
                     </div>
-                    <input type="hidden" name="count" value="<?php echo $generateFieldsForm[0]; ?>" />
+                    <input type="hidden"  id="count" name="count" value="<?php echo $generateFieldsForm[0]; ?>" />
                 </form>
             </section>
 

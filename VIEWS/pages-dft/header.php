@@ -28,6 +28,10 @@
         ?></title>
 </head>
 <body> 
+<div class="box-loader">
+        <div class="loader"></div>
+    </div>
+
     <header id="header">
         <div class="container">
             <nav class="navigation">

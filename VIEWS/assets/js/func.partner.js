@@ -1,3 +1,12 @@
+window.onload = function(){
+    const boxLoader = document.querySelector('.box-loader');
+    boxLoader.style.display = 'flex';
+
+    setTimeout(() => {
+        boxLoader.style.display = 'none';
+    }, 2000);
+};
+
 const ItemsnavMenu = document.querySelectorAll("#nav-menu li a");
 const url = location.href.split("/");
 

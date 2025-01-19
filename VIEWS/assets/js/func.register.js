@@ -3,8 +3,11 @@ const loadingBar = document.querySelector('.loading-bar');
 const dots = document.querySelectorAll('.loading-bar span');
 const barBeforeLoading = document.styleSheets[3].cssRules[7].cssRules[0];
 const btnForm = document.getElementById('btnForm');
+const count = document.getElementById('count');
 
 function fillOutDots (currentStep){
+    let valueCount = count.value
+
     dots.forEach((dot, index)=>{
         if(index < currentStep){
             dot.classList.add('active');
@@ -13,19 +16,32 @@ function fillOutDots (currentStep){
     });
 
     if(currentStep != 1){
-        let contador = --currentStep;
-        barBeforeLoading.style.background = `linear-gradient(to right, #b38972 ${35 * contador}%, #afaeae 10%)`;
+        if(sessionStorage.getItem('controller') == valueCount)
+            sessionStorage.setItem("currentStep", currentStep--);
+        else{
+            let contador = --currentStep;
+            barBeforeLoading.style.background = `linear-gradient(to right, #b38972 ${35 * contador}%, #afaeae 10%)`;
+        }
     }
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
     let currentStep = sessionStorage.getItem("currentStep") || 1;
-
-    fillOutDots(currentStep);
+    
+        fillOutDots(currentStep);
     
     formRegister.addEventListener('submit', ()=>{
         const nextStep = parseInt(currentStep) + 1
         sessionStorage.setItem("currentStep", nextStep);
+        sessionStorage.setItem('controller', count.value)
+        btnForm.classList.add('sendForm');
+
+        const boxLoader = document.querySelector('.box-loader');
+        boxLoader.style.display = 'flex';
+    
+        setTimeout(() => {
+            boxLoader.style.display = 'none';
+        }, 2000);
     });
 
     let Currentlyvalue = String(currentStep)
@@ -53,6 +69,59 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 sessionStorage.setItem("currentStep", 1);
+
+// FUNÇÃO PARA REAJUSTAR A SEÇÃO, CASO O USUÁRIO QUEIRA ALTERAR ALGUM VALOR NO CAMPO DE FORMULARIO
+dots.forEach(item=>{
+    item.addEventListener('click', ()=>{
+        let attr = item.getAttribute('data-completude');
+
+        if(attr < count.value){
+            sessionStorage.setItem("currentStep", attr);
+            window.location.href = "http://localhost/hotel/register/";
+        }
+    });
+});
+
+// FUNÇÕES DE MÁSCARAS DOS FORMULÁRIOS
+$('#cpf').mask("999.999.999-99");
+$("#rg").mask("99.999.999-9");
+$('#data-de-nascimento').mask("99/99/9999");
+$("#celular").mask("(99) 9 9999-9999");
+$("#cep").mask("00.000-000");
+
+// VALIDAÇÃO DA SENHA DO USUÁRIO NO FRONT-END
+const pw = document.querySelector('[name=Password]');
+const requirementList = document.querySelectorAll("#instruccions-pw li");
+
+const requirements = [
+    {regex: /.{8,20}/, index: 0},
+    {regex: /[A-Z]{1,}/, index: 1},
+    {regex: /[a-z]{1,}/, index: 2},
+    {regex: /[0-9]{1,}/, index: 3},
+    {regex: /[^A-Za-z0-9]/, index: 4}
+];
+
+pw.addEventListener('keyup', (e)=>{
+    requirements.forEach(item =>{
+        const isValid = item.regex.test(e.target.value);
+        const requirementItem = requirementList[item.index];
+
+        if(isValid){
+            requirementItem.classList.add('valid');
+            requirementItem.firstElementChild.classList.remove('lucide-x');
+            requirementItem.firstElementChild.classList.add('lucide-check');
+            requirementItem.firstElementChild.style.color = "#0f0"
+            requirementItem.firstElementChild.innerHTML = `<path d="M20 6 9 17l-5-5"/>`
+        }else{
+            requirementItem.classList.remove('valid');
+            requirementItem.firstElementChild.classList.remove('lucide-check');
+            requirementItem.firstElementChild.classList.add('lucide-x');
+            requirementItem.firstElementChild.style.color = "#f00"
+            requirementItem.firstElementChild.innerHTML = `<path d="M18 6 6 18"/><path d="m6 6 12 12"/>`
+            e.preventDefault();
+        }
+    })
+});
 
 const inputLogradouro = document.getElementById('logradouro').parentNode.parentNode;
 const inputNumberHouse = document.getElementById('nº').parentNode.parentNode;
@@ -82,10 +151,3 @@ eyesPwBtn.forEach(item =>{
         }
     });
 });
-
-// FUNÇÕES DE MÁSCARAS DOS FORMULÁRIOS
-$('#cpf').mask("999.999.999-99");
-$("#rg").mask("99.999.999-9");
-$('#data-de-nascimento').mask("99/99/9999");
-$("#telefone-celular").mask("(99) 9 9999-9999");
-$("#cep").mask("00.000-000");

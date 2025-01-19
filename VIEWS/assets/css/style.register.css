@@ -74,6 +74,7 @@ p.desc-form{
     border-radius: 50%;
     background-color: #afaeae;
     z-index: 1;
+    cursor: pointer;
 
     &.active{background-color: #b38972;}
   }
@@ -225,8 +226,36 @@ p.desc-form{
       object-fit: cover;
     }
   }
+
+  span.txt-pw-instruccion{
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #6a645e;
+    margin: 15px 0 10px 0 ;
+    font-weight: bold;
+  }
+
+  span.txt-pw-instruccion ~ ul{
+    list-style: none;
+
+    & li{
+      font-size: 0.8rem;
+      margin-bottom: 7px;
+
+      & svg{color: #f00; vertical-align: middle;}
+    }
+
+    & li.valid{color: #8c8c8c; text-decoration: line-through;}
+
+  }
   
+/***** CLASSES AUXILIARES ******/
+
   .form-box, p.line, p.p, .flex-row{width: 100%;}
   .w70{width: 67%;}
   .w30{width: 30%;}
   .w50{width: 48%;}
+  #btnForm.sendForm{
+    cursor: auto;
+    background-color: #403027ac;
+  }
