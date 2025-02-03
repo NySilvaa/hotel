@@ -27,50 +27,70 @@ nav.hotel-tittle{
 
 section.img-hotel{
     display: flex;
-    gap: 12px;
+    gap: 10px;
+    position: relative;
 
     & figure{overflow: hidden;}
-}
 
-figure.img-main{
-    width: 50%;
+    & a.btn-img-hotel-complements{
+        position: absolute;
+        right: 40px; bottom: 40px;
+        padding: 8px 18px;
+        background-color: #ffeae4;
+        color: #8e644b;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        transition: 0.4s;
+        box-shadow: 2px 2px 4px #44434b9f;
+        display: none;
 
-    & img{
-        width: 100%;
-        height: 100%;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        cursor: pointer;
+        &:hover{background-color: #ebdcd8;}
     }
+
+    & a:first-of-type{
+        width: 50%;
+
+        figure.img-main{
+        
+        & img{
+            width: 100%;
+            height: 100%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            cursor: pointer;
+        }
+    }
+}
 }
 
 .img-hotel-complements{
-    display: flex;
-    flex-wrap: wrap;
     width: 50%;
-    gap: 12px;
 
-    & figure.img-complement{
-        width: 48%;
+    & .img-complements-box{
+        display: flex;
 
-        & img{
-            height: 100%;
-            transition: 0.4s;
-            cursor: pointer;
+        & a{
+            width: 50%;
 
-            &:hover{
-                scale: 1.05;
+            & img{
+                width: 98%;
+                transition: 0.4s;
+                cursor: pointer;
+    
+                &:hover{
+                    scale: 1.05;
+                }
             }
         }
 
-        &:nth-of-type(2){
+        &:first-of-type a:last-of-type figure img{
             border-top-right-radius: 20px;
         }
 
-        &:last-of-type{
+        &:last-of-type a:last-of-type figure img{
             border-bottom-right-radius: 20px;
         }
-        
+
     }
 }
 
@@ -127,12 +147,16 @@ h3.tittle-info-hotel{
     padding: 30px 10px;
 
     & figure{
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-color: #44434b;
         margin-right: 5px;
         vertical-align: middle;
+        overflow: hidden;
+        
+        & img{
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
     }
 
     & figure, & p{display: inline-block;}
@@ -303,6 +327,30 @@ h3.tittle-info-hotel{
     }
 }
 
+.precificacao-box{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    & a{
+        color: #313131;
+        text-decoration: underline;
+    }
+
+    & .prizeFinal{
+        width: 100%;
+        margin-top: 25px;
+        border-top: 1px solid #818181;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 25px;
+        font-weight: bold;
+    }
+}
+
 .box-aviso-info{
     margin-top: 40px;
     border: 2px solid #aaa;
@@ -399,4 +447,10 @@ section.avaliacoes{
     }
 
     & a{color: #403027; text-decoration: underline;}
+}
+
+.star-half-rotate{
+    position: relative;
+    left: -19px;
+    transform: rotateY(180deg);
 }

@@ -16,13 +16,19 @@
             </nav>
 
             <section class="img-hotel">
-                <figure class="img-main"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure>
+                <a href="<?php echo $dataHotel["Img"][0]; ?>" data-fancybox="gallery" data-caption="Caption #1"><figure  class="img-main"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure></a>
                <div class="img-hotel-complements">
-                    <figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure>
-                    <figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure>
-                    <figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure>
-                    <figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure>
+                    <div class="img-complements-box">
+                        <a href="<?php echo $dataHotel["Img"][0]; ?>" data-fancybox="gallery" data-caption="Caption #2"><figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure></a>
+                        <a href="<?php echo $dataHotel["Img"][0]; ?>" data-fancybox="gallery" data-caption="Caption #3"><figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure></a>
+                    </div>    
+
+                    <div class="img-complements-box">
+                        <a href="<?php echo $dataHotel["Img"][0]; ?>" data-fancybox="gallery" data-caption="Caption #4"><figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure></a>
+                        <a href="<?php echo $dataHotel["Img"][0]; ?>" data-fancybox="gallery" data-caption="Caption #5"><figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure></a>
+                    </div>
                </div>
+               <a href="#" class="btn-img-hotel-complements">Visualizar mais imagens</a>
             </section>
 
             <div class="hotel-description">
@@ -31,14 +37,14 @@
 
                 <div class="classification">
                     <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#403027" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg> <?php echo $dataHotel["Classificacao"].",0"; ?> ° </span>
-                    <a href="#"><?php echo count($dataHotel["Avaliacoes"])." Comentários"; ?></a>
+                    <a href="#comentarios"><?php echo count($dataHotel["Avaliacoes"])." Comentários"; ?></a>
                 </div>
             </div><!-- /.hotel-description -->
 
             <section class="sessao-info-hotel">
                 <div class="info-hotel">
                     <div class="user-info section-description-hotel">
-                        <figure class="pic-profile"><img src="" alt="" sizes="" srcset=""></figure>
+                        <figure class="pic-profile"><img src="<?php echo PATH_INTERATIONS; ?>images/profile/profile1.png" alt="" sizes="" srcset=""></figure>
                         <p class="name">Alberto Andrade <br> <span>SuperHost: 4 Anos Hospedando</span></p>
                         
                     </div><!-- /.user-info -->
@@ -139,10 +145,21 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
                             </a>
                         </div><!-- /.info-user -->
-                        
-                        <span class="aviso"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg> Estas datas não estão disponíveis</span>
 
+                        
+                        <!-- <span class="aviso"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg> Estas datas não estão disponíveis</span> -->
+                        
                         <button type="submit">Realizar Reserva</button>
+                        
+                        <div class="precificacao-box">
+                            <a href="#" class="prizePerNights">R$230,00 x 3 noites</a>
+                            <span class="prizeHalf">R$ 1.122</span>
+
+                            <div class="prizeFinal">
+                                <p>Total Sem Impostos</p>
+                                <span>R$ 1.122</span>
+                            </div>
+                        </div>
                     </section>
 
                     <div class="box-aviso-info">
@@ -157,7 +174,7 @@
         </div><!-- /.container -->        
     </section>
 
-    <section class="avaliacoes">
+    <section class="avaliacoes" id="comentarios">
         <div class="container">
             <h2 class="avaliacoes-tittle"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg> <?php echo $dataHotel["Classificacao"].",0 ° ".count($dataHotel["Avaliacoes"])." Comentários"; ?></h2>
 
@@ -177,8 +194,8 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#55331f" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#55331f" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#55331f" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-                        </span>
+                                <span class="final-star"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#55531f" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-half"><path d="M12 18.338a2.1 2.1 0 0 0-.987.244L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.12 2.12 0 0 0 1.597-1.16l2.309-4.679A.53.53 0 0 1 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-half star-half-rotate"><path d="M12 18.338a2.1 2.1 0 0 0-.987.244L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.12 2.12 0 0 0 1.597-1.16l2.309-4.679A.53.53 0 0 1 12 2"/></svg></span>
+                            </span>
                             <span class="data">agosto de 2023</span>
                             <span class="periodo">Ficou duas noites</span>
 

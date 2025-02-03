@@ -233,7 +233,9 @@ span.count-hotels{
     object-fit: cover;
   }
 
-    a.favorite{
+    button.favorite{
+      border: 0;
+      cursor: pointer;
       display: block;
       width: 35px;
       height: 35px;
@@ -241,7 +243,7 @@ span.count-hotels{
       border-radius: 50%;
       font-size: 1.2rem;
       text-align: center;
-      line-height: 38px;
+      line-height: 36px;
       position: absolute;
       left: 20px; top: 20px;
       color: #8e644b;

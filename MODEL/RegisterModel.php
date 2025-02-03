@@ -34,9 +34,16 @@ class RegisterModel extends Model{
             }
 
             if (($control == true) && count($questions) == (int)$_POST['count'] + 1){
-                $_SESSION['register'] = true;
-                header('Location: '.PATH_PAGES.'login/');
-                die();
+                if($this->registerDB()){
+                    // Deu certo o cadastro
+                    $_SESSION['register'] = true;
+                    header('Location: '.PATH_PAGES.'login/');
+                    die();
+                }else{
+                    self::$homeModel = new HomeModel();
+                    self::$homeModel->messageBook("error", "Cadastro não realizado", "Ocorreu um erro ao registrar-se.");
+                    return false;
+                }
             }
                 
         }
@@ -285,11 +292,18 @@ class RegisterModel extends Model{
             return false;
         }
 
-        if (strtotime($dataDeNascimento) < strtotime($datePrevious) || strtotime($dataDeNascimento) >= strtotime($dateNext)) {
+        if (strtotime($dataDeNascimento) >= strtotime($dateNext)) {
             self::$homeModel->messageBook('error', "Data Inválida", "Sua data de nascimento foi inserida incorretamente");
             return false;
         }
 
+        $_SESSION['data_user'] = [
+                "Name" => $name,
+                "CPF" => $cpf,
+                "RG" => $rg,
+                "Data de Nascimento" => $dataDeNascimento,
+                "Genero" => $genero
+        ];
         return true;
     }
 
@@ -316,8 +330,18 @@ class RegisterModel extends Model{
         }else if (strlen($complemento) > 150) {
             self::$homeModel->messageBook('error', 'Complemento muito grande', "O valor inserido excede o limite permitido");
             return false;
-        }else 
+        }else {
+            $_SESSION['endereco'] = [
+                    "CEP" => $cep,
+                    "UF" => $uf,
+                    "Cidade" => $cidade,
+                    "Logradouro" => $logradouro,
+                    "Number House" => $numberHouse,
+                    "Complemento" => $complemento
+            ];
+
             return true;
+        }
     }
 
     private function validateContactData(){
@@ -334,6 +358,10 @@ class RegisterModel extends Model{
             return false;
         }else{
             $_SESSION['username'] = $email;
+            $_SESSION['contato'] = [
+                    "Email" => $email,
+                    "Phone" => $phone
+            ];
             return true;
         }
     }
@@ -364,8 +392,50 @@ class RegisterModel extends Model{
         }else if(!preg_match("/[0-9]{1,}/", $pw)){
             self::$homeModel->messageBook('error', "Senha Incorreta", "Sua Senha precisa ter um número");
             return false;
-        }else
+        }else{
+            $_SESSION['senha'] = ["Senha" => md5($pw)];
             return true;
+        }
 
+    }
+
+    private function registerDB(){
+        $_SESSION['user'] = [
+            $_SESSION['data_user'],
+            $_SESSION['endereco'],
+            $_SESSION['contato'],
+            $_SESSION['senha']
+        ];
+
+        $arr = [];
+
+        foreach ($_SESSION['user'] as $key => $value) {
+            if($key == 0)
+                $arr = $value;
+            
+            if($key == 1)
+                $arr["Endereco"] = $value;
+
+            if($key == 2)
+                $arr["Meios_contato"] = $value;
+
+            if($key == 3)
+                $arr["Senha"] = $_SESSION['user'][3]["Senha"];
+                
+        }
+
+        $collection = parent::connectionDB()->countrys->selectCollection('users');
+        $resultado = $collection->insertOne($arr);
+
+        if ($resultado->getInsertedCount() > 0) {
+            $verificacao = $collection->findOne(['Name' => $arr["Name"]]);
+            $_SESSION['user'] = "";
+            $arr = [];
+            if($verificacao)
+                return true;
+            else
+                return false;
+        } else 
+            return false;
     }
 }

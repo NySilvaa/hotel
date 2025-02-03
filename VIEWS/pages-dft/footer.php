@@ -40,6 +40,7 @@
 
 <?php if(@$_GET['url'] == 'rooms/'){ ?>
     <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.rooms.js"></script>
+    <script defer src="<?php echo PATH_INTERATIONS; ?>js/ajax.rooms.js"></script>
 <?php } ?>
 
 <?php if(@$_GET['url'] == 'register/'){ ?>
@@ -50,6 +51,15 @@
 
 <?php if(@$_GET['url'] == "login/"){ ?>
     <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.login.js"></script>
+<?php } ?>
+
+<?php if(@$_GET['url'] == "aboutUs/"){ ?>
+    <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.aboutUs.js"></script>
+<?php } ?>
+
+<?php if(@$_GET['url'] == "hospedagem"){ ?>
+    <script defer src="<?php echo PATH_INTERATIONS; ?>js/func.hospedagem.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <?php } ?>
 
 <?php if(@$_GET['url'] !== '' || @$_GET['url'] !== "home"){ ?>

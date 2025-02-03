@@ -1,4 +1,26 @@
-window.onload = ()=>{
+    // CHANGE MONTH FROM THE CHECK-IN AND CHECK-OUT SECTION
+    const changeMonthChecksSection = ()=>{
+        const fieldCheckIn = document.getElementById('check-in');
+        const fieldCheckOut = document.getElementById('check-out');
+
+        const monthCheckInValue = fieldCheckIn.value.split("/");
+        const monthCheckOutValue = fieldCheckOut.value.split("/");
+
+        let newMonthCheck = "";
+
+        if(monthCheckInValue[1].length == 1){
+            newMonthCheck = `${monthCheckInValue[0]}/0${monthCheckInValue[1]}/${monthCheckInValue[2]}`;
+            fieldCheckIn.value = newMonthCheck;
+        }
+        
+        if(monthCheckOutValue[1].length == 1){
+            newMonthCheck = `${monthCheckOutValue[0]}/0${monthCheckOutValue[1]}/${monthCheckOutValue[2]}`;
+            fieldCheckOut.value = newMonthCheck;
+        }   
+    };
+
+    changeMonthChecksSection();
+    
     let control = true;
 
     const favoriteBook = ()=>{
@@ -61,8 +83,6 @@ window.onload = ()=>{
         }, 600);    
 
     };
-
-    // let listOption = "";
 
     const chooseCountry = ()=>{
         const fieldCountry = document.getElementById('destiny-country');
@@ -165,4 +185,94 @@ window.onload = ()=>{
             })
     };
 
-}
+    // FUNÇÕES DE FILTRO PARA OS DESTINOS (PAÍS E CIDADE)
+    const itemsLocation= document.querySelectorAll("#list-country li");
+    const listCountryUl = document.getElementById('list-country');
+    const destinyCountryField = document.getElementById('destiny-country');
+    const destinyCityField = document.getElementById('destiny-city');
+
+    const listCountry = ()=>{
+        let countrysNameAttr = [];
+
+        itemsLocation.forEach(element =>{
+            // PARA PEGAR APENAS OS NOMES DOS PAÍSES QUE VÃO ESTAR DENTRO DESSE ATRIBUTO
+            countrysNameAttr.push(element.getAttribute('data-country').trim());
+        });
+    
+        function fillListCoutry (list = countrysNameAttr){
+            listCountryUl.innerHTML = "";
+    
+            itemsLocation.forEach(el =>{
+                for (let i = 0; i < list.length; i++) {
+                    let listItems = document.createElement('li');
+    
+                    if(el.getAttribute('data-country') == list[i]){
+                        listItems.innerHTML = list[i];
+                        listCountryUl.appendChild(el);
+                    }
+                }
+            })
+        }
+    
+        function inputHandlerCountry() {
+            const filteredList = countrysNameAttr.filter(el => {
+                const listItem = el.toLowerCase();
+                const searchWord = destinyCountryField.value.toLowerCase();
+        
+                return listItem.includes(searchWord);
+               });
+        
+               fillListCoutry(filteredList);
+        }
+
+        destinyCountryField.addEventListener('input', ()=>{
+            fillListCoutry();
+            inputHandlerCountry();
+        });
+    };
+
+    const listCity = ()=>{
+       setTimeout(() => {
+        const itemsLocationCity= document.querySelectorAll("#list-country li");
+        const listCityUl = document.getElementById('list-country');
+        let cityNameAttr = [];
+
+        itemsLocationCity.forEach(element =>{
+            cityNameAttr.push(element.getAttribute('data-country').trim());
+        });
+
+        function fillListCity (list = cityNameAttr){
+            listCityUl.innerHTML = "";
+    
+            itemsLocationCity.forEach(el =>{
+                for (let i = 0; i < list.length; i++) {
+                    let listItems = document.createElement('li');
+                    
+                    if(el.getAttribute('data-country') == list[i]){
+                        listItems.innerHTML = list[i];
+                        listCityUl.appendChild(el);
+                    }
+                }
+            });
+        }
+    
+        function inputHandlerCity() {
+            const filteredList = cityNameAttr.filter(el => {
+                const listItem = el.toLowerCase();
+                const searchWord = destinyCityField.value.toLowerCase();
+        
+                return listItem.includes(searchWord);
+               });
+        
+               fillListCity(filteredList);
+        }
+
+        destinyCityField.addEventListener('input', ()=>{
+            fillListCity();
+            inputHandlerCity();
+        });
+       }, 700);
+    };
+
+    destinyCountryField.addEventListener('focus', listCountry);
+    destinyCityField.addEventListener('focus', listCity);

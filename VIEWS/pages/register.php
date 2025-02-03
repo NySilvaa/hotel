@@ -5,8 +5,8 @@
     $generateFieldsForm = $registerModel->generateFieldsForms();
 
     if(isset($_POST['acao']))
-        if($registerModel->validateFieldsForms($_POST) != false)
-            echo @$_POST['count'];
+        if($registerModel->validateFieldsForms($_POST) !== false){
+        }
 ?>
 
 <main id="register">

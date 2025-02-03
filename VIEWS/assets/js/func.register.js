@@ -68,8 +68,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 });
 
-sessionStorage.setItem("currentStep", 1);
-
 // FUNÇÃO PARA REAJUSTAR A SEÇÃO, CASO O USUÁRIO QUEIRA ALTERAR ALGUM VALOR NO CAMPO DE FORMULARIO
 dots.forEach(item=>{
     item.addEventListener('click', ()=>{

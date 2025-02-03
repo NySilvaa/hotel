@@ -155,19 +155,35 @@ p.desc-form{
   
   .flex-row > input[type=checkbox]{display: none;}
   
-  .flex-row label.check::before{
-    content: "";
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 3px;
-    border: 1px solid #8c8c8c;
-    vertical-align: middle;
-    margin-top: -1px;
-    cursor: pointer;
-  }
+  .flex-row label.check{
+      & svg{
+        display: none;
+        color: #fff;
+        position: absolute;
+        left: 0;
+        top: 55%;
+        cursor: pointer;
+        transform: translateY(-50%);
+      }
 
-  .flex-row input[type=checkbox]:checked ~ label.check:before{background-color: #8e644b; border-color: #533e31;}
+      &::before{
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+        border: 1px solid #8c8c8c;
+        vertical-align: middle;
+        margin-top: -1px;
+        cursor: pointer;
+      }
+}
+
+  .flex-row input[type=checkbox]:checked ~ label.check{
+    & svg{display: inline-block;}
+
+    &::before{background-color: #8e644b; border-color: #533e31;}
+  }
   
   .span {
     font-size: 0.9rem;
@@ -259,3 +275,4 @@ p.desc-form{
     cursor: auto;
     background-color: #403027ac;
   }
+

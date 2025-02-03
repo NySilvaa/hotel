@@ -1,6 +1,7 @@
 <?php
-    use \Model\RegisterModel;
-    use \Model\HomeModel;
+        use \Model\RegisterModel;
+        use \Model\HomeModel;
+        use Model\LoginModel;
 
         $registerModel = new RegisterModel();
         $generateFieldsForm = $registerModel->generateFieldsForms();
@@ -8,6 +9,17 @@
         if(isset($_SESSION['register'])){
             $homeModel = new HomeModel();
             $homeModel->messageBook('success', 'Cadastro Feito c/ Sucesso', 'Realize o seu login');
+        }
+
+        if(isset($_POST['sign_in'])){
+            $loginModel = new LoginModel();
+            if($loginModel->signInUser()){
+                header("Location: ".PATH_PAGES."userPage/");
+                die();
+            }else{
+                $homeModel = new HomeModel();
+                $homeModel->messageBook("error", "Cadastro Inválido", "E-mail ou Senha estão incorretos");
+            }
         }
 ?>
 
@@ -46,12 +58,12 @@
                     <div class="flex-row">
                         <div>
                         <input type="checkbox" id="remember" />
-                        <label for="remember" class="check"></label>
+                        <label for="remember" class="check" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg></label>
                         <label>Remember me </label>
                         </div>
                         <span class="span">Forgot password?</span>
                     </div>
-                    <button class="button-submit">Sign In</button>
+                    <button class="button-submit" name="sign_in">Sign In</button>
                     <p class="p">Don't have an account? <a href="<?php echo PATH_PAGES; ?>register/" class="span">Sign Up</a></p>
                     <p class="p line">Or With</p>
 

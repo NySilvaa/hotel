@@ -9,10 +9,9 @@
 
 section.bg-entrance{
     width: 97%;
-    min-height: 100vh;
-    background-image: url("../images/bg-about-entrance.jpg");
     background-size: 100% 100%;
     padding: 2%;
+    transition: 0.4s;
     margin: 0 auto;
 }
 
@@ -25,6 +24,7 @@ section.bg-entrance{
         color: #55331f;
         margin-bottom: 30px;
         font-family: Qairo, Arial, Helvetica, sans-serif;
+      transition: 0.4s;
     }
 }
 
@@ -219,6 +219,7 @@ button {
         color: #8e644b;
         font-size: 1.6rem;
         margin-top: 150px;
+      transition: 0.4s;
     }
 
     & .section-below-card{
