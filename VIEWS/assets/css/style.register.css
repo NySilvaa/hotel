@@ -276,3 +276,24 @@ p.desc-form{
     background-color: #403027ac;
   }
 
+  /****** MEDIAS QUERIES *******/
+
+  @media (max-width: 1100px){
+    section.register-wp{width: 95%;}
+  }
+
+  @media (max-width: 820px){
+    section.register-wp{flex-direction: column;}
+
+    section.bg-form-video, section.forms, section.bg-form-video video{width: 100%!important;}
+    section.bg-form-video{order: 1;}
+    section.forms{order: 2;}
+
+    header#header .container .navigation ul#nav-menu li:not(:last-of-type){display: none;}
+
+    .loading-bar::before {left: 55px;}
+  }
+
+  @media (max-width: 688px){
+    .loading-bar::before {left: 40px;}
+  }

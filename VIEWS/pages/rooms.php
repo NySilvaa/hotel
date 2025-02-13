@@ -99,7 +99,7 @@ $rooms = new RoomsModel();
                                 </div>
                             </div>
                         </div>
-                        <button class="purchase--btn" name="findOutDestiny">Verificar Lugares Disponíveis</button>
+                        <button type="submit" class="purchase--btn" name="findOutDestiny">Verificar Lugares Disponíveis</button>
                     </form>
                 </div>
             </div><!-- /.data-book-box -->
@@ -275,83 +275,4 @@ $rooms = new RoomsModel();
             ?>
         </div><!-- /.hotels-wp -->
     </div><!-- /.container -->
-
-    <!-- TO DO: FAZER UM SISTEMA DE PAGINAÇÃO ---->
 </main>
-
-<!--
-
-```json
-{
-  "nome": "Hotel Exemplo",
-  "descricao": "Um hotel luxuoso no coração da cidade.",
-  "endereco": {
-    "rua": "Rua das Flores",
-    "numero": 123,
-    "bairro": "Centro",
-    "cidade": "São Paulo",
-    "pais": "Brasil",
-    "cep": "01000-000",
-    "latitude": -23.55052,
-    "longitude": -46.633308
-  },
-  "contato": {
-    "telefone": "+55 11 98765-4321",
-    "email": "contato@hotelexemplo.com"
-  },
-  "disponibilidade": true,
-  "quartos": [
-    {
-      "tipo": "Casal",
-      "preco": 250,
-      "disponiveis": 10,
-      "descricao": "Quarto para casal com cama king size."
-    },
-    {
-      "tipo": "Família",
-      "preco": 400,
-      "disponiveis": 5,
-      "descricao": "Quarto para família com 2 camas queen size."
-    }
-  ],
-  "amenidades": ["Wi-Fi gratuito", "Piscina", "Academia", "Café da manhã incluso"],
-  "avaliacoes": {
-    "media": 4.5,
-    "comentarios": [
-      {
-        "cliente": "João Silva",
-        "comentario": "Ótima estadia!",
-        "nota": 5
-      },
-      {
-        "cliente": "Maria Oliveira",
-        "comentario": "Muito confortável.",
-        "nota": 4
-      }
-    ]
-  },
-  "politicas": {
-    "checkin": "14:00",
-    "checkout": "12:00",
-    "cancelamento": "Gratuito até 24 horas antes da chegada.",
-    "animais": "Permitido (custo adicional)."
-  },
-  "classificacao": 4,
-  "moeda": "BRL",
-  "imagens": [
-    "link_para_imagem1.jpg",
-    "link_para_imagem2.jpg"
-  ],
-  "proximidades": [
-    {
-      "nome": "Museu da Cidade",
-      "distancia": "1 km"
-    },
-    {
-      "nome": "Praia Central",
-      "distancia": "500 m"
-    }
-  ],
-  "metodos_pagamento": ["Cartão de Crédito", "PIX", "Dinheiro"]
-}
--->

@@ -23,6 +23,21 @@ nav.hotel-tittle{
         
         & svg{vertical-align: top;}
     }
+
+    & button{
+        display: inline-block;
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #55331f;
+        margin: 0 12px;
+
+        &:hover{color: #8e644b;}
+        
+        & svg{vertical-align: top;}
+    }
 }
 
 section.img-hotel{

@@ -7,6 +7,8 @@
 
 /***** INICIO DA SESSÃO DE ENTRADA *****/
 
+body{overflow-x: hidden;}
+
 section.bg-entrance{
     width: 97%;
     background-size: 100% 100%;
@@ -57,7 +59,7 @@ section.bg-entrance{
     }
 }
 
-button {
+button.learnMore {
     position: relative;
     padding: 15px 45px;
     background: #fec195;
@@ -70,7 +72,7 @@ button {
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
   }
   
-  button:hover {
+  button.learnMore:hover {
     border: 1px solid #f3b182;
     background: linear-gradient(
       85deg,
@@ -239,7 +241,7 @@ button {
 
 /******* INICIO DA SESSÃO DE AVALIAÇÃO E VALORES DA EMPRESA *******/
 
-  section.our-value{margin-top: 180px;}
+  section.our-value{margin-top: 130px;}
 
 .our-value-wp{
   justify-content: center;
@@ -435,10 +437,11 @@ button {
 .opinion-wp{
   margin-top: 40px;
   gap: 15px;
+  height: 500px;
 }
 
 .previous, .next{
-  flex: 0.2;
+  width: 20%;
 
   & a{
     display: inline-block;
@@ -482,11 +485,11 @@ button {
 }
 
 .card-opinion-show{
-  flex: 0.6; 
   border-radius: 40px; 
   overflow: hidden; 
   gap: 15px;
   background-color: #fff;
+  width: 60%;; 
 }
 
 .card-opinion-show .img-profile{
@@ -696,4 +699,207 @@ button {
     color: #ffffff;
   }
 
+  .name-profile-mobile-device, .date-profile-mobile-device{
+    display: none;
+  }
+
   /****** FIM DA SESSÃO DE CONTATO *******/
+
+  /*  MEDIAS QUERIES */
+  @media (max-width: 1578px){
+    .card-opinion-show{width: 50%; margin: 0 20px;}
+    .card-opinion-show .img-profile h3{
+      font-size: 1.3rem;
+    }
+
+    .card-opinion-show .txt-profile p{
+      font-size: 1.4rem;
+    }
+
+    .tooltip{min-width: 250px;}
+
+    .previous .card-opinion, .next .card-opinion {
+      min-width: 270px;
+      min-height: 180px;
+    }
+  }
+
+  @media (max-width: 1280px){
+    .btn-contact a.contact-cta {
+          width: 100px;
+          height: 100px;
+          font-size: 1rem;
+          line-height: 100px;
+      }
+
+      .previous{margin-right: 20px;}
+      .opinion-wp{padding: 2%;}
+
+      .completion{padding: 0 20px;}
+
+      .card-opinion-show .txt-profile p{
+        font-size: 1.1rem;
+        margin-top: 20px;
+      }
+
+      .tooltip-container{
+        display: none;
+      }
+
+      .name-profile-mobile-device{
+        color: #8e644b;
+      }
+
+      .date-profile-mobile-device{color: #5F5D6B;}
+
+      .name-profile-mobile-device, .date-profile-mobile-device{
+        display: block;
+      }
+
+      .card-details{
+        width: 350px;
+      }
+  }
+
+  @media (max-width: 1200px){
+    .previous .card-opinion, .next .card-opinion {
+      min-width: 240px;
+      min-height: 0;
+  }
+
+  .card-opinion-show{
+    flex-direction: column;
+    margin-right: 0;
+  }
+
+  .card-opinion-show .img-profile{
+    width: 120px;
+    height: 120px;
+    position: relative;
+    left: 50%; top: 20px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 40px;
+  }
+
+  .card-opinion-show .txt-profile{width: 100%; padding: 20px; }
+  .txt-profile svg{display: none;}
+  }
+
+  @media(max-width: 1010px){
+    .img-highlight, .description-highlight{
+      width: 50%;
+    }
+
+    .img-descriptions-highlights{
+      flex-wrap:wrap;
+    
+      & figure{
+        width: 45%; 
+      }
+    }
+
+    .description-highlight .img-descriptions-highlights figure img {
+      height: 200px;
+      }
+
+      .description-highlight h2{font-size: 2.5rem;}
+
+      .description-highlight p{font-size: 1.4rem;}
+
+      .completion h2{font-size: 3.5rem;}
+      .completion p{font-size: 1.4rem;}
+      .previous .card-opinion, .next .card-opinion{
+        min-width: 0;
+        width: 200px;
+      }
+
+      .txt-tittle-section{font-size: 2rem;}
+      .txt-chamada-entrance h2{font-size: 4.5rem;}
+
+  }
+
+  @media (max-width: 870px){
+    .opinion-wp{display: block; height: auto; margin-top: 110px;}
+
+    .card-opinion-show, .next, .previous{width: 100%; }
+
+    .card-opinion-show{ margin: 0; margin-top: 20px;}
+    .next .card-opinion, .previous .card-opinion{width: 100%; position: static;}
+
+    .next a{left: auto; right: 0; bottom: -80px;}
+    .previous a{position: absolute; float: auto; right: auto; left: 0; top: -60px;}
+
+    .experience .container{display: block;}
+    .img-highlight, .description-highlight{
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    .description-highlight{min-height: 600px;}
+  }
+
+  @media (max-width: 800px){
+    .card-details{
+      position: static; 
+      width: 100%;
+    padding: 25px 20px;
+    clip-path: none;
+    min-height: 0;
+    
+    & h3{
+      margin-top: 70px;
+    }
+
+    & .section-below-card{margin-top: 20px;}
+    }
+
+    section.our-value{margin-top: 70px;}
+
+    .txt-chamada-entrance h2{font-size: 4rem;}
+    
+  header#header .container .navigation {
+          & ul#nav-menu {
+              & li:not(:last-of-type) {
+                display: none;
+              }
+          }
+  }
+
+  .our-value-wp{
+    display: block;
+    text-align: center;
+  }
+
+  .image-section {
+    margin: 30px auto;
+    
+    & figure.bg{display: inline-block;}
+
+    & .card-zoom{left: 70px;}
+    }
+
+    .completion a{position: static; margin-top: 50px;}
+  }
+
+  @media (max-width: 680px){
+    .description-highlight .img-descriptions-highlights{display: block; position: static; margin-top: 40px;}
+    .description-highlight .img-descriptions-highlights figure{
+      width: 100%; margin: 10px auto;
+    
+      & img{
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .img-descriptions-highlights{margin-bottom: 40px;}
+
+    .card-cookie{width: 100%;}
+
+    .txt-chamada-entrance h2{font-size: 3.5rem;}
+    .popup{width: 100%;}
+
+    .image-section .card-zoom{left: 40px;}
+  }
+    

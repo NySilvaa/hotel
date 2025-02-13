@@ -1,9 +1,37 @@
 <?php 
     use Model\HospedagemModel;
+    use Model\RoomsModel;
     $host = new HospedagemModel();
     $dataHotel = $host->getHotelById();
+
+    $rooms = new RoomsModel();
+
+    $idHotel = '';
+
+    foreach ($_GET as $key => $value) {
+        if($key !== 'url')
+            $idHotel = $key;
+    }
 ?>
 <body>
+<section id="testeJson">
+    <?php
+        if(isset($_POST['hotel_id'])){
+            $hotelId = json_decode($rooms->favoriteHotel());
+            echo '<input type="hidden" name="status" value="'.$hotelId->status.'" />';
+
+            if($hotelId->status == 'added')
+                $homeModel->messageBook('success', "Hotel Salvo com Sucesso","Acesse sua User Page p/ verificar os seus hotéis salvos");
+            else if($hotelId->status == 'removed')
+                $homeModel->messageBook('success', "Hotel Removido com Sucesso","Salve novos hotéis para visitá-los depois");
+            else if($hotelId->status == "error"){
+                echo "<script>location.href = 'http://localhost/hotel/login/'</script>";
+                die();
+            }
+        }
+    ?>
+</section>
+
     <section class="hotel">
         <div class="container">
             <nav class="hotel-tittle">
@@ -11,7 +39,7 @@
                 
                 <div class="btn-actions-tittle">
                     <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg> Compartilhar</a>
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> Salvar</a>
+                    <button type="submit" class="favorite"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> Favoritar</button>
                 </div><!-- /.btn-actions-tittle -->
             </nav>
 
@@ -171,6 +199,8 @@
                     <a href="#" target="_blank" rel="noopener noreferrer" class="denuncia"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flag"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg> Denunciar Abuso</a>
                 </div><!-- /.info-check -->
             </section>
+
+            <input type="hidden" name="hotel" id="hotel_id" value="<?php echo $idHotel; ?>">
         </div><!-- /.container -->        
     </section>
 

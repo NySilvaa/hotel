@@ -70,6 +70,68 @@
         }
     }
 
+    function chooseJSForPage(){
+        $url = explode("/", @$_GET['url'])[0];
+
+        switch ($url) {
+            case '':
+                return '
+                   <script defer src="'.PATH_INTERATIONS.'js/ajax.home.js"></script>
+                    <script defer src="'.PATH_INTERATIONS.'js/func.home.js"></script>
+                      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                      <script> AOS.init(); </script>
+                ';
+                break;
+
+            case 'home':
+                return '
+                    <script defer src="'.PATH_INTERATIONS.'js/ajax.home.js"></script>
+                    <script defer src="'.PATH_INTERATIONS.'js/func.home.js"></script>
+                    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                      <script> AOS.init(); </script>
+                ';
+                break;
+
+            case 'rooms':
+                return '
+                    <script defer src="'.PATH_INTERATIONS.'js/func.rooms.js"></script>
+                    <script defer src="'.PATH_INTERATIONS.'js/ajax.rooms.js"></script>
+                ';
+                break;
+
+            case 'register':
+                return '
+                     <script defer src="'.PATH_INTERATIONS.'js/func.register.js"></script>
+                    <script defer src="'.PATH_INTERATIONS.'js/ajax.register.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+                ';
+                break;
+
+            case 'login':
+                return '<script defer src="'.PATH_INTERATIONS.'js/func.login.js"></script>';
+                break;
+
+            case 'aboutUs':
+                return '<script defer src="'.PATH_INTERATIONS.'js/func.aboutUs.js"></script>
+                            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                            <script> AOS.init(); </script>
+                ';
+                break;
+
+            case 'hospedagem':
+                return '
+                    <script defer src="'.PATH_INTERATIONS.'js/func.hospedagem.js"></script>
+                    <script defer src="'.PATH_INTERATIONS.'js/ajax.hospedagem.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+                ';
+                break;
+            
+            default:
+                # code...
+                break;
+        };
+    }
+
     define('PATH_INTERATIONS', 'http://localhost/hotel/Views/assets/');
     define('PATH_PAGES', 'http://localhost/hotel/');
 

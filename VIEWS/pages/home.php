@@ -16,6 +16,7 @@
     <link rel="shortcut icon" href="<?php echo PATH_INTERATIONS; ?>images/ico/cisne.ico" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.home.css">
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS;?>css/style.headerAndFooter.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Home | Explore as nossas diversas opções</title>
 </head>
 <body> 
@@ -27,6 +28,8 @@
            }
         }
     ?>
+
+    <div class="box-loader"><div class="loader"></div></div>
 
     <section class="menu-below">
         <a href="#" class="book-accomodation txt-white" id="book-accomodation">Book Accommodation <i class="bx bx-bookmark"></i></a>
@@ -44,7 +47,7 @@
         <a href="#" class="hamburguer"><i class='bx bx-menu'></i></a>
     </section>
 
-    <main id="entrada">
+    <main id="entrada" data-aos="fade-in" data-aos-offset="200" data-aos-delay="50">
         <video src="<?php echo PATH_INTERATIONS;?>images/bg-video.mp4" autoplay muted loop></video>
         <div class="overlay"></div>
 
@@ -127,7 +130,7 @@
         </div><!-- /.container -->  
     </main>
 
-    <section class="diferenciais" id="ourRooms">
+    <section class="diferenciais" id="ourRooms" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50">
         <div class="container">
             <button class="btn-left-our-rooms"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button>
             <button class="btn-right-our-rooms"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
@@ -207,27 +210,27 @@
         </div><!--container-->
     </section>
 
-   <section class="room-highlight" id="filials">
+   <section class="room-highlight" id="filials" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
     <div class="container">
         <div class="room-highlight-top">
-            <div class="bg-highlight">
+            <div class="bg-highlight" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50">
                 <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
             </div>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            <p data-aos="fade-left" data-aos-offset="200" data-aos-delay="50">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Dolorum quasi asperiores sunt rerum aut delectus, 
                 fuga itaque expedita perspiciatis molestiae animi quia.</p>
         </div><!-- /.room-highlight-top -->
         
         <div class="main-highlight">
-            <div class="txt-highlight">
+            <div class="txt-highlight" data-aos="fade-down" data-aos-offset="200" data-aos-delay="50">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque aliquid alias vel consequatur placeat repellendus consequuntur et ut minima voluptatem, inventore earum molestias voluptates excepturi magnam quisquam sed? Repellendus, voluptatibus!</p>
                 <a href="#" class="txt-white">Book Now <i class='bx bx-bookmark' ></i></a>
                 <a href="#">Explore the room <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
             </div>
 
             <div class="bg-main1">
-                <div class="bg-main-wp">
+                <div class="bg-main-wp" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
                     <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img5.jpg" alt=""></figure>
                 </div>
             </div>
@@ -237,13 +240,13 @@
 
    <section class="about-us" id="sustainability">
         <div class="container">
-            <div class="box-about-us">
+            <div class="box-about-us" data-aos="fade-right" data-aos-offset="200"cdata-aos-delay="50">
                 <h2 class="txt-white">Sustainability</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ex qui numquam tempore dicta velit repudiandae nemo, vel molestiae soluta odio! Asperiores, minima laboriosam consectetur consequuntur illo a error provident!</p>
                 <a href="<?php echo PATH_PAGES; ?>aboutUs/" class="btn">Read More <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-left:2px;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></a>
             </div>
 
-            <div class="box-about-us">
+            <div class="box-about-us" data-aos="fade-left" data-aos-offset="200" data-aos-delay="50">
                 <h2>Sustainability</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ex qui numquam tempore dicta velit repudiandae nemo, vel molestiae soluta odio! Asperiores, minima laboriosam consectetur consequuntur illo a error provident!</p>
                 <a href="<?php echo PATH_PAGES; ?>aboutUs/" class="btn">Read More <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-left:2px;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></a>
@@ -251,14 +254,14 @@
         </div>
    </section>
 
-   <section class="video-promotional" id="events">
+   <section class="video-promotional" id="events" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
     <div class="container">
         <div class="video-promotional-wp">
             <video src="<?php echo PATH_INTERATIONS;?>images/bg-video2.mp4" autoplay muted loop width="90%"></video>
-            <p>Experiences</p>
+            <p data-aos="fade-down" data-aos-offset="200" data-aos-delay="50">Experiences</p>
 
-            <h2 class="txt-white">Experience the better from summer</h2>
-            <a href="<?php echo PATH_PAGES; ?>rooms/" class="btn">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
+            <h2 class="txt-white" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50">Experience the better from summer</h2>
+            <a href="<?php echo PATH_PAGES; ?>rooms/" class="btn" data-aos="fade-right" data-aos-offset="200" data-aos-delay="100">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
         </div>
         <!-- /.video-promotional-wp -->
     </div>
@@ -266,8 +269,8 @@
 
    <section class="img-grattitude" id="meetingRooms">
         <div class="container">
-            <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
-            <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img5.jpg" alt="" srcset=""></figure>
-            <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
+            <figure data-aos="fade-up" data-aos-offset="200" data-aos-delay="50"><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
+            <figure data-aos="fade-down" data-aos-offset="200" data-aos-delay="50"><img src="<?php echo PATH_INTERATIONS; ?>images/img5.jpg" alt="" srcset=""></figure>
+            <figure data-aos="fade-right" data-aos-offset="200" data-aos-delay="50"><img src="<?php echo PATH_INTERATIONS; ?>images/img3.jpg" alt="" srcset=""></figure>
         </div>
    </section>

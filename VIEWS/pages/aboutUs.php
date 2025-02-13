@@ -1,10 +1,10 @@
-<section class="bg-entrance pos-relative">
+<section class="bg-entrance pos-relative" data-aos="fade-in" data-aos-offset="200" data-aos-delay="50">
     <div class="container">
         <div class="logomarca"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" stroke="#fff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-origami"><path d="M12 12V4a1 1 0 0 1 1-1h6.297a1 1 0 0 1 .651 1.759l-4.696 4.025"/><path d="m12 21-7.414-7.414A2 2 0 0 1 4 12.172V6.415a1.002 1.002 0 0 1 1.707-.707L20 20.009"/><path d="m12.214 3.381 8.414 14.966a1 1 0 0 1-.167 1.199l-1.168 1.163a1 1 0 0 1-.706.291H6.351a1 1 0 0 1-.625-.219L3.25 18.8a1 1 0 0 1 .631-1.781l4.165.027"/></svg></div>
         <div class="txt-chamada-entrance">
             <h2 id="txt-banner"></h2>
 
-            <button>
+            <button class="learnMore" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
             Learn More
             <div class="icon-1">
                 <svg
@@ -66,12 +66,12 @@
             </button>
         </div>
 
-        <div class="btn-contact">
+        <div class="btn-contact" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50">
             <a href="#contact" class="contact-cta">Contact</a>
             <a href="#contact" class="contact-cta"><svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></a>
         </div>
 
-        <div class="card-details">
+        <div class="card-details" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
             <a href="#" class="back" id="btn-slide-banner"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
 
             <h3 id="description-banner"></h3>
@@ -83,17 +83,17 @@
     </div>
 </section>
 
-<section class="our-value">
+<section class="our-value" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
     <div class="container">
         <h2 class="our-value-tittle txt-tittle-section">Every Journey is Unique</h2>
 
         <div class="our-value-wp d-flex">
-            <div class="rather-section">
+            <div class="rather-section" data-aos="fade-down" data-aos-offset="200" data-aos-delay="50">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#ffc400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
                 <p class="rather">4.7</p>
             </div>
 
-            <div class="image-section pos-relative">
+            <div class="image-section pos-relative" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
                 <figure class="bg"></figure>
                 <div class="card-zoom">
                     <figure class="img-zoom"></figure>
@@ -107,7 +107,7 @@
                 </div>
             </div>
 
-            <div class="completion d-flex pos-relative">
+            <div class="completion d-flex pos-relative" data-aos="fade-left" data-aos-offset="200" data-aos-delay="50">
                 <h2>84%</h2>
                 <p>From Concept to Completion</p>
 
@@ -119,7 +119,7 @@
 
 <section class="experience mg-section">
     <div class="container d-flex">
-        <div class="img-highlight">
+        <div class="img-highlight" data-aos="fade-left" data-aos-offset="200" data-aos-delay="50">
             <div class="img-highlight-top">
                 <nav class="d-flex">
                     <div class="category">
@@ -133,87 +133,88 @@
             </div>
         </div><!-- /.img-highlight -->
 
-        <div class="description-highlight pos-relative">
+        <div class="description-highlight pos-relative" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50">
             <h2>One Experience <br> Out of Normal</h2>
             <p>Check Our Recommendations of the Best Rooms</p>
 
             <div class="img-descriptions-highlights d-flex pos-absolute">
-                <figure><img src="<?php echo PATH_INTERATIONS; ?>images/bg-about1.jpg" alt="" srcset=""></figure>
-                <figure><img src="<?php echo PATH_INTERATIONS; ?>images/bg-about2.jpg" alt="" srcset=""></figure>
-                <figure><img src="<?php echo PATH_INTERATIONS; ?>images/bg-about3.jpg" alt="" srcset=""></figure>
-                <figure><img src="<?php echo PATH_INTERATIONS; ?>images/bg-about4.jpg" alt="" srcset=""></figure>
+                <figure data-aos="fade-up" data-aos-offset="200" data-aos-delay="50"><img src="<?php echo PATH_INTERATIONS; ?>images/bg-about1.jpg" alt="" srcset=""></figure data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
+                <figure data-aos="fade-up" data-aos-offset="200" data-aos-delay="100"><img src="<?php echo PATH_INTERATIONS; ?>images/bg-about2.jpg" alt="" srcset=""></figure data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
+                <figure data-aos="fade-up" data-aos-offset="200" data-aos-delay="150"><img src="<?php echo PATH_INTERATIONS; ?>images/bg-about3.jpg" alt="" srcset=""></figure data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
+                <figure data-aos="fade-up" data-aos-offset="200" data-aos-delay="200"><img src="<?php echo PATH_INTERATIONS; ?>images/bg-about4.jpg" alt="" srcset=""></figure>
             </div>
         </div><!-- /.description-highlight -->
     </div><!-- /.container -->
 </section>
 
-<section class="opinions mg-section">
+<section class="opinions mg-section" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
     <div class="container">
         <h2 class="txt-tittle-section">Listen What Talking About Us</h2>
 
         <div class="opinion-wp d-flex pos-relative">
-            <div class="previous">
-                <div class="card-opinion pos-absolute">
+            <div class="previous card-teste" >
+                <div class="card-opinion pos-absolute" data-aos="fade-left" data-aos-offset="200" data-aos-delay="50">
                     <figure class="img-profile"><img src="<?php echo PATH_INTERATIONS;?>images/profile/profile1.png" alt="" srcset=""></figure>
                     <h3 class="name-profile">José Nunes</h3>
                     <span class="date-pub">22/11/2013</span>
                 </div>
 
-                <a href="#" class="previous-btn"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></a>
+                <a href="#" class="previous-btn" data-aos="fade-left" data-aos-offset="200" data-aos-delay="50"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></a>
             </div>
 
-            <div class="card-opinion-show d-flex">
+            <div class="card-opinion-show d-flex  card-teste" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
                 <div class="img-profile d-flex">
-                    <div class="data-profile-img">
-                        <div class="tooltip-container pos-relative">
-                            <span class="tooltip pos-absolute d-flex">
-                                <span>
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="tooltip-icon">
-                                    <defs>
-                                    <linearGradient id="gradient" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#96a1e8"></stop>
-                                        <stop offset="100%" stop-color="#5061be"></stop>
-                                    </linearGradient>
-                                    </defs>
-                                    <path
-                                    fill="#55331f"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
-                                    ></path>
-                                </svg>
+                        <div class="data-profile-img">
+                            <div class="tooltip-container pos-relative">
+                                <span class="tooltip pos-absolute d-flex">
+                                    <span>
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="tooltip-icon">
+                                        <defs>
+                                        <linearGradient id="gradient" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#96a1e8"></stop>
+                                            <stop offset="100%" stop-color="#5061be"></stop>
+                                        </linearGradient>
+                                        </defs>
+                                        <path
+                                        fill="#55331f"
+                                        d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+                                        ></path>
+                                    </svg>
+                                    </span>
+                                    <span class="tooltip-lines d-flex">
+                                        <h3 class="name-profile">Sabrina de Jesus</h3>
+                                        <span class="date-pub">11/09/2023</span>
+                                    </span>
                                 </span>
-                                <span class="tooltip-lines d-flex">
-                                    <h3 class="name-profile">Sabrina de Jesus</h3>
-                                    <span class="date-pub">11/09/2023</span>
-                                </span>
-                            </span>
-                        </div><!--tooltip-container-->
-                    </div><!-- /.data-profile-img -->
-                </div>
+                            </div><!--tooltip-container-->
+                        </div><!-- /.data-profile-img -->
+                    </div>
 
-                <div class="txt-profile">
-                <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" stroke="#aaa" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg>
-                    <p>"It Was the Better Experience that I lived in my Life. The reception is outstanding and the food too. I'll come always who I could!"</p>
-                </div>
+                    <div class="txt-profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" stroke="#aaa" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg>
+                        <h2 class="name-profile-mobile-device">Sabrina de Jesus</h2>
+                        <span class="date-profile-mobile-device">11/09/2023</span>
+                        <p>"It Was the Better Experience that I lived in my Life. The reception is outstanding and the food too. I'll come always who I could!"</p>
+                    </div>
             </div>
 
-            <div class="next pos-relative">
-                <div class="card-opinion">
+            <div class="next pos-relative card-teste" >
+                <div class="card-opinion" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50">
                     <figure class="img-profile"><img src="<?php echo PATH_INTERATIONS;?>images/profile/profile3.png" alt="" srcset=""></figure>
                     <h3 class="name-profile">Marcos Andrade</h3>
                     <span class="date-pub">22/11/2013</span>
                 </div>
 
-                <a href="#" class="next-btn pos-absolute"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                <a href="#" class="next-btn pos-absolute" data-aos="fade-right" data-aos-offset="200" data-aos-delay="50"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </div>
         </div>
-    </div>
-    <!-- /.container -->
+    </div><!-- /.container -->
 </section>
 
-<section class="contact mg-section" id="contact">
+<section class="contact mg-section" id="contact" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
     <div class="container">
         <h2 class="txt-tittle-section">Receive our News First of Whole</h2>
 

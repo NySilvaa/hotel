@@ -15,6 +15,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS; ?>css/style.home.css">
     <link rel="stylesheet" href="<?php echo PATH_INTERATIONS; ?>css/style.headerAndFooter.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="<?php echo chooseCSSForPage(); ?>">
     <?php if(@$_GET['url'] == 'hospedagem'){ ?>
         <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>

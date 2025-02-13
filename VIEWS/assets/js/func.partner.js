@@ -20,3 +20,12 @@ ItemsnavMenu.forEach(item =>{
     }else if(getAttrItem == url[url.length-2])
         item.classList.add('active');
 });
+
+const allowBtnCookie = document.querySelector('.acceptButton');
+
+allowBtnCookie.addEventListener('click', (e)=>{
+    e.preventDefault();
+
+    const cardCookie = $('.card-cookie-wp');
+    cardCookie.fadeOut();
+});

@@ -6,34 +6,30 @@ const btnForm = document.getElementById('btnForm');
 const count = document.getElementById('count');
 
 function fillOutDots (currentStep){
-    let valueCount = count.value
-
     dots.forEach((dot, index)=>{
         if(index < currentStep){
             dot.classList.add('active');
         }else
         dot.classList.remove('active');
     });
-
+    
+    dots[0].classList.add('active')
     if(currentStep != 1){
-        if(sessionStorage.getItem('controller') == valueCount)
-            sessionStorage.setItem("currentStep", currentStep--);
-        else{
             let contador = --currentStep;
             barBeforeLoading.style.background = `linear-gradient(to right, #b38972 ${35 * contador}%, #afaeae 10%)`;
-        }
     }
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    let currentStep = sessionStorage.getItem("currentStep") || 1;
+    let currentStep = sessionStorage.getItem("currentStep") || 0;
     
-        fillOutDots(currentStep);
+    fillOutDots(currentStep);
     
     formRegister.addEventListener('submit', ()=>{
-        const nextStep = parseInt(currentStep) + 1
-        sessionStorage.setItem("currentStep", nextStep);
-        sessionStorage.setItem('controller', count.value)
+        const count = document.getElementById('count');
+        const nextStep = parseInt(count.value) + 1;
+        sessionStorage.setItem('controller', Number(nextStep))
+        sessionStorage.setItem("currentStep", sessionStorage.getItem('controller'));
         btnForm.classList.add('sendForm');
 
         const boxLoader = document.querySelector('.box-loader');
@@ -47,23 +43,24 @@ document.addEventListener("DOMContentLoaded", ()=>{
     let Currentlyvalue = String(currentStep)
 
     switch (Currentlyvalue) {
-        case "1":
+        case "0":
             btnForm.innerText = "Start Sign Up";    
         break;
 
-        case "2":
+        case "1":
             btnForm.innerText = "You're Going Well";    
         break;
 
-        case "3":
+        case "2":
             btnForm.innerText = "Almost There...";    
         break;
 
-        case "4":
+        case "3":
             btnForm.innerText = "Finish Sign Up";    
         break;
     
         default:
+            btnForm.innerText = "Create Account";
             break;
     }
 });
@@ -87,8 +84,18 @@ $('#data-de-nascimento').mask("99/99/9999");
 $("#celular").mask("(99) 9 9999-9999");
 $("#cep").mask("00.000-000");
 
-// VALIDAÇÃO DA SENHA DO USUÁRIO NO FRONT-END
-const pw = document.querySelector('[name=Password]');
+// FUNÇÃO PARA CORRIGIR O VALOR DA LABEL DE DATA DE NASCIMENTO
+const labels = document.querySelectorAll('.flex-column label');
+
+for (let i = 0; i < labels.length; i++) {
+    if(labels[i].innerText == "Data-de-Nascimento")
+        labels[i].innerText = "Data de Nascimento";
+    else
+        continue;
+}
+
+// VALIDAÇÃO DA SENHA DO USUÁRIO
+const pw = document.querySelector('[name=Password]') || "";
 const requirementList = document.querySelectorAll("#instruccions-pw li");
 
 const requirements = [
@@ -99,37 +106,51 @@ const requirements = [
     {regex: /[^A-Za-z0-9]/, index: 4}
 ];
 
-pw.addEventListener('keyup', (e)=>{
-    requirements.forEach(item =>{
-        const isValid = item.regex.test(e.target.value);
-        const requirementItem = requirementList[item.index];
+if(pw !== ""){
+    const pw = document.querySelector('[name=Password]');
 
-        if(isValid){
-            requirementItem.classList.add('valid');
-            requirementItem.firstElementChild.classList.remove('lucide-x');
-            requirementItem.firstElementChild.classList.add('lucide-check');
-            requirementItem.firstElementChild.style.color = "#0f0"
-            requirementItem.firstElementChild.innerHTML = `<path d="M20 6 9 17l-5-5"/>`
-        }else{
-            requirementItem.classList.remove('valid');
-            requirementItem.firstElementChild.classList.remove('lucide-check');
-            requirementItem.firstElementChild.classList.add('lucide-x');
-            requirementItem.firstElementChild.style.color = "#f00"
-            requirementItem.firstElementChild.innerHTML = `<path d="M18 6 6 18"/><path d="m6 6 12 12"/>`
-            e.preventDefault();
-        }
-    })
-});
+    pw.addEventListener('keyup', (e)=>{
+        requirements.forEach(item =>{
+            const isValid = item.regex.test(e.target.value);
+            const requirementItem = requirementList[item.index];
+    
+            if(isValid){
+                requirementItem.classList.add('valid');
+                requirementItem.firstElementChild.classList.remove('lucide-x');
+                requirementItem.firstElementChild.classList.add('lucide-check');
+                requirementItem.firstElementChild.style.color = "#0f0"
+                requirementItem.firstElementChild.innerHTML = `<path d="M20 6 9 17l-5-5"/>`
+            }else{
+                requirementItem.classList.remove('valid');
+                requirementItem.firstElementChild.classList.remove('lucide-check');
+                requirementItem.firstElementChild.classList.add('lucide-x');
+                requirementItem.firstElementChild.style.color = "#f00"
+                requirementItem.firstElementChild.innerHTML = `<path d="M18 6 6 18"/><path d="m6 6 12 12"/>`
+                e.preventDefault();
+            }
+        })
+    });
+}
 
-const inputLogradouro = document.getElementById('logradouro').parentNode.parentNode;
-const inputNumberHouse = document.getElementById('nº').parentNode.parentNode;
-const inputCep = document.getElementById('cep').parentNode.parentNode;
-const inputUf = document.getElementById('uf').parentNode.parentNode;
+const inputLogradouro = document.getElementById('logradouro') || "";
+const inputNumberHouse = document.getElementById('nº') || "";
+const inputCep = document.getElementById('cep') || "";
+const inputUf = document.getElementById('uf') || "";
 
-inputLogradouro.classList.add('w70');
-inputNumberHouse.classList.add('w30');
-inputCep.classList.add('w50');
-inputUf.classList.add('w50');
+const verifyExistValueAdress = ()=>{
+    if(inputLogradouro !== "")
+        inputLogradouro = inputLogradouro.parentNode.parentNode;
+
+    if(inputNumberHouse !== "")
+        inputNumberHouse = inputNumberHouse.parentNode.parentNode;
+
+    if(inputCep !== "")
+        inputCep = inputCep.parentNode.parentNode;
+
+    if(inputUf !== "")
+        inputUf = inputUf.parentNode.parentNode;
+}
+verifyExistValueAdress();
 
 const eyesPwBtn = document.querySelectorAll(".eye-btn-pw");
 let control = true;

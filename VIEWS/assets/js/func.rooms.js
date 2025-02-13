@@ -84,6 +84,13 @@
 
     };
 
+    const disabledBtn = (controleBtn)=>{
+        const purchaseBtn = document.querySelector('.purchase--btn');
+
+        purchaseBtn.disabled = (controleBtn) ? true : false;
+    };
+    disabledBtn(true);
+
     const chooseCountry = ()=>{
         const fieldCountry = document.getElementById('destiny-country');
         const fieldCity = document.getElementById('destiny-city');
@@ -131,29 +138,6 @@
             // })
     };
 
-    // const showCity = (country)=>{
-    //     const citiesByCountry = {
-    //         "Brasil": ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
-    //         "Estados Unidos": ["Nova York", "Los Angeles", "Chicago", "Houston"],
-    //         "Canadá": ["Toronto", "Montreal", "Vancouver", "Calgary"],
-    //         "Argentina": ["Buenos Aires", "Córdoba", "Rosario", "Mendoza"],
-    //         "China": ["Pequim", "Xangai", "Cantão", "Shenzhen"],
-    //         "Japão": ["Tóquio", "Osaka", "Kyoto", "Yokohama"],
-    //         "Alemanha": ["Berlim", "Munique", "Hamburgo", "Colônia"],
-    //         "França": ["Paris", "Marselha", "Lyon", "Nice"],
-    //         "Itália": ["Roma", "Milão", "Veneza", "Florença"],
-    //         "Espanha": ["Madrid", "Barcelona", "Valência", "Sevilha"],
-    //         "Reino Unido": ["Londres", "Manchester", "Birmingham", "Glasgow"],
-    //         "Rússia": ["Moscou", "São Petersburgo", "Novosibirsk", "Cazã"],
-    //         "Índia": ["Nova Delhi", "Mumbai", "Calcutá", "Bangalore"],
-    //         "Austrália": ["Sydney", "Melbourne", "Brisbane", "Perth"],
-    //         "África do Sul": ["Cidade do Cabo", "Johannesburgo", "Durban", "Pretória"],
-    //         "México": ["Cidade do México", "Guadalajara", "Monterrey", "Puebla"]
-    //     };
-
-    //     chooseCity()
-    // };
-
     const chooseCity = ()=>{
         const locationField = document.getElementById('location');
         const destinyCity = document.getElementById('destiny-city');
@@ -169,6 +153,7 @@
                     destinyCity.value = element.innerText;
                     locationField.setAttribute('value', element.innerText);
                     element.parentNode.innerText = '';
+                    disabledBtn(false);
                 })
             })
 
@@ -180,6 +165,7 @@
                         destinyCity.value = element.innerText;
                         locationField.setAttribute('value', element.innerText);
                         element.parentNode.innerText = '';
+                        disabledBtn(false);
                     })
                 })
             })
