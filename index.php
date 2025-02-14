@@ -132,6 +132,23 @@
         };
     }
 
+    function setCookieUser (){
+        if(isset($_COOKIE['cookie-user'])){
+            return 'style="display:none;"';
+        }else{
+            if(isset($_POST['cookie'])){
+                if($_POST['cookie'] === 'selected'){
+                    // USUÁRIO PERMITE O USO DE COOKIES
+                    setcookie('cookie-user', 'selected', time() + (60*60*24*3));
+                    return 'style="display:none;"';
+                }else if($_POST['cookie'] === 'decline'){
+                    // USUÁRIO NÃO QUER O USO DE COOKIES
+                    return 'style="display:none;"';
+                }
+            }
+        }    
+    }
+
     define('PATH_INTERATIONS', 'http://localhost/hotel/Views/assets/');
     define('PATH_PAGES', 'http://localhost/hotel/');
 

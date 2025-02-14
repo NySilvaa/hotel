@@ -52,7 +52,7 @@ const changeSlideBanner = ()=>{
 
 let x = setInterval(() => {
     changeSlideBanner();
-}, 3000);
+}, 2500);
 
 btnSlideBanner.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -101,5 +101,4 @@ const changeImgDescriptionHighlight = ()=>{
        }
     });
 }
-
 changeImgDescriptionHighlight();

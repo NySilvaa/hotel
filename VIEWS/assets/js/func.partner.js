@@ -22,10 +22,32 @@ ItemsnavMenu.forEach(item =>{
 });
 
 const allowBtnCookie = document.querySelector('.acceptButton');
+const declineBtnCookie = document.querySelector('.declineButton');
+
+const setCookieAjax = (cookieValue) =>{
+    let pathUrl = location.href;
+
+    $.ajax({
+        type: "POST",
+        url: pathUrl,
+        data: {"cookie": cookieValue}, 
+        success: function(response){
+            let secao = $(response)[38];
+
+            if(secao.getAttribute('class') == 'card-cookie-wp')
+                $('.card-cookie-wp').html(secao);
+            else
+                alert("Ocorreu um erro ao selecionar a opção de cookie, pedimos que desconsidere temporariamente.");
+        }
+    })
+};
 
 allowBtnCookie.addEventListener('click', (e)=>{
     e.preventDefault();
+    setCookieAjax("selected");
+});
 
-    const cardCookie = $('.card-cookie-wp');
-    cardCookie.fadeOut();
+declineBtnCookie.addEventListener('click', (e)=>{
+    e.preventDefault();
+    setCookieAjax("decline");
 });
