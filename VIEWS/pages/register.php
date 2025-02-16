@@ -103,6 +103,7 @@
                         Apple
                         </button>
                     </div>
+                    <input type="hidden" name="validate" id="validate" value="<?php if(isset($_POST['acao'])){echo $generateFieldsForm[2];} ?>">
                     <input type="hidden"  id="count" name="count" value="<?php echo $generateFieldsForm[0]; ?>" />
                 </form>
             </section>

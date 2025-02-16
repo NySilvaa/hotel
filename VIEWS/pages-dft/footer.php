@@ -11,7 +11,7 @@
 </div>
 </div>
 
-<footer data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
+<footer>
    <div class="container">
     <h2>Facilities</h2>
     <div class="box-facilities">

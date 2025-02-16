@@ -17,9 +17,9 @@ class RegisterModel extends Model{
         ];
 
         $index = 0;
+        $control = true;
 
         if (isset($_POST['count'])) {
-            $control = true;
             if ((int)$_POST['count'] == 0 && self::validateFieldsForms($_POST) !== false)
                 $index++;
             else if ((int)$_POST['count'] == 1 && self::validateFieldsForms($_POST) !== false)
@@ -44,11 +44,10 @@ class RegisterModel extends Model{
                     self::$homeModel->messageBook("error", "Cadastro não realizado", "Ocorreu um erro ao registrar-se.");
                     return false;
                 }
-            }
-                
+            } 
         }
 
-        return [$index, $questions];
+        return [$index, $questions, $control];
     }
 
     public function createFieldsForms($nameField)
@@ -239,6 +238,9 @@ class RegisterModel extends Model{
 
         if (isset($post)) {
             foreach ($post as $key => $value) {
+                if($key == 'validate')
+                    continue;
+
                 if ($key == 'count') {
                         if ($value == 0){
                            if($this->validatePersonalData() == false)

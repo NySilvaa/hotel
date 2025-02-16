@@ -17,13 +17,13 @@
              'December'
           ];
 
-        public function valuesInvalid($post){    
+        
+          public function valuesInvalid($post){    
             $valor = 0;
             
             foreach ($post as $key => $value) {
                 if($key == "prices")
                 continue;
-          
 
                 if($value == ''){
                     self::messageBook('error', 'Valores Inválidos', 'Valores vazios não são permitidos');
@@ -105,6 +105,99 @@
                     </div>
                 </div>
             ';
+        }
+
+        public function listHotelsSectionOurRooms(){
+            $controller = parent::connectionDB();
+
+            $db = $controller->countrys;
+            $collection = $db->hotels;
+
+            function generateRandomNumber(){
+                return rand(0, 63);
+            }
+
+            $citys = [
+                "COPACABANA",
+                "FERNANDO DE NORONHA",
+                "SANTOS",
+                "GRAMADO",
+                "NEW YORK",
+                "LOS ANGELES",
+                "TORONTO",
+                "VANCOUVER",
+                "MONTREAL",
+                "CALGARY",
+                "BUENOS AIRES",
+                "CÓRDOBA",
+                "ROSARIO",
+                "MENDOZA",
+                "PEQUIM",
+                "SHANGHAI",
+                "GUANGZHOU",
+                "SHENZHEN",
+                "TÓQUIO",
+                "OSAKA",
+                "KYOTO",
+                "NAGOYA",
+                "BERLIM",
+                "MUNIQUE",
+                "FRANKFURT",
+                "HAMBURGO",
+                "PARIS",
+                "LYON",
+                "MARSELHA",
+                "BORDEAUX",
+                "ROMA",
+                "MILÃO",
+                "VENEZA",
+                "FLORENÇA",
+                "MADRI",
+                "BARCELONA",
+                "SEVILHA",
+                "VALÊNCIA",
+                "LONDRES",
+                "EDIMBURGO",
+                "MANCHESTER",
+                "BELFAST",
+                "MOSCOU",
+                "SÃO PETERSBURGO",
+                "NOVOSIBIRSK",
+                "ECATERIMBURGO",
+                "NOVA DÉLHI",
+                "MUMBAI",
+                "BANGALORE",
+                "JAIPUR",
+                "SYDNEY",
+                "MELBOURNE",
+                "BRISBANE",
+                "PERTH",
+                "CIDADE DO CABO",
+                "JOANESBURGO",
+                "DURBAN",
+                "PRETÓRIA",
+                "CIDADE DO MÉXICO",
+                "GUADALAJARA",
+                "MONTERREY",
+                "CANCÚN",
+                "CHICAGO",
+                "MIAMI"
+            ];
+
+            $arr = [];
+
+            for ($i=0; $i < 10; $i++) { 
+                $randomNumber = generateRandomNumber();
+                $citysRandom = $citys[$randomNumber];
+
+                $cursor = $collection->find(["cidade" => $citysRandom]);
+
+                foreach ($cursor as $documents) {
+                    $arr[$documents["pais"]] = [$documents["_id"], $documents["nome"], $documents["imagens"][0], $documents["avaliacoes"]["media"], $documents["preco"]];
+                }
+            }
+            
+            return $arr;
         }
     }
 

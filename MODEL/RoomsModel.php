@@ -4,9 +4,6 @@ namespace Model;
 
 class RoomsModel extends Model
 {
-    // Senha do Banco de dados MongoDb = eIY52oWFtaI3Psze
-    // User do Banco de dados MongoDB = nysilva003
-
     public function querysDataBase()
     {
         return parent::connectionDB();
@@ -56,7 +53,7 @@ class RoomsModel extends Model
         $citys = $controller->countrys->selectCollection('hotels')->find(['cidade' => trim($city)]);
         $newCitys = [];
         foreach ($citys as $value) {
-            $newCitys[] = [$value["nome"], $value['endereco']['rua'], $value['pais'], $value['classificacao'], $value['disponibilidade'], $value['imagens'][0], $value["_id"]];
+            $newCitys[] = [$value["nome"], $value['endereco']['rua'], $value['pais'], $value['classificacao'], $value['disponibilidade'], $value['imagens'][0], $value["_id"], $value["preco"], $value["avaliacoes"]["media"]];
         }
 
         if (count($newCitys) !== 0) {

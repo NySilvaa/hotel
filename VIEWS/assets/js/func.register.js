@@ -3,42 +3,47 @@ const loadingBar = document.querySelector('.loading-bar');
 const dots = document.querySelectorAll('.loading-bar span');
 const barBeforeLoading = document.styleSheets[3].cssRules[7].cssRules[0];
 const btnForm = document.getElementById('btnForm');
-const count = document.getElementById('count');
 
 function fillOutDots (currentStep){
     dots.forEach((dot, index)=>{
-        if(index < currentStep){
-            dot.classList.add('active');
-        }else
-        dot.classList.remove('active');
+        (index <= currentStep) ? dot.classList.add('active') : dot.classList.remove('active');
     });
-    
-    dots[0].classList.add('active')
-    if(currentStep != 1){
-            let contador = --currentStep;
-            barBeforeLoading.style.background = `linear-gradient(to right, #b38972 ${35 * contador}%, #afaeae 10%)`;
+
+    if(currentStep >= 1){
+        let contador = currentStep;
+        barBeforeLoading.style.background = `linear-gradient(to right, #b38972 ${35 * contador}%, #afaeae 10%)`;
     }
 }
+//sessionStorage.setItem("currentStep", 0);
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    let currentStep = sessionStorage.getItem("currentStep") || 0;
+    const currentStep = sessionStorage.getItem("currentStep") || 0;
     
     fillOutDots(currentStep);
     
     formRegister.addEventListener('submit', ()=>{
+        const validateVariable = document.getElementById('validate').value || "";
         const count = document.getElementById('count');
-        const nextStep = parseInt(count.value) + 1;
-        sessionStorage.setItem('controller', Number(nextStep))
-        sessionStorage.setItem("currentStep", sessionStorage.getItem('controller'));
-        btnForm.classList.add('sendForm');
 
-        const boxLoader = document.querySelector('.box-loader');
-        boxLoader.style.display = 'flex';
-    
-        setTimeout(() => {
-            boxLoader.style.display = 'none';
-        }, 2000);
+            if(validateVariable == 1){
+                // DADOS VALIDADOS COM SUCESSO
+                let nextStep = "Teste";
+                alert(nextStep)
+                sessionStorage.setItem("currentStep", nextStep);
+                btnForm.classList.add('sendForm');
+        
+                const boxLoader = document.querySelector('.box-loader');
+                boxLoader.style.display = 'flex';
+            
+                setTimeout(() => {
+                    boxLoader.style.display = 'none';
+                }, 2000);
+            }
+        
     });
+
+    document.getElementById('validate').value = "";
+    console.log(sessionStorage.getItem('currentStep'))
 
     let Currentlyvalue = String(currentStep)
 
@@ -132,10 +137,10 @@ if(pw !== ""){
     });
 }
 
-const inputLogradouro = document.getElementById('logradouro') || "";
-const inputNumberHouse = document.getElementById('nº') || "";
-const inputCep = document.getElementById('cep') || "";
-const inputUf = document.getElementById('uf') || "";
+let inputLogradouro = document.getElementById('logradouro') || "";
+let inputNumberHouse = document.getElementById('nº') || "";
+let inputCep = document.getElementById('cep') || "";
+let inputUf = document.getElementById('uf') || "";
 
 const verifyExistValueAdress = ()=>{
     if(inputLogradouro !== "")

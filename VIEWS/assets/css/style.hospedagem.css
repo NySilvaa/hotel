@@ -73,6 +73,8 @@ section.img-hotel{
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
             cursor: pointer;
+            max-height: 400px;
+            min-height: 398px;
         }
     }
 }
@@ -91,6 +93,8 @@ section.img-hotel{
                 width: 98%;
                 transition: 0.4s;
                 cursor: pointer;
+                max-height: 198px;
+                min-height: 196px;
     
                 &:hover{
                     scale: 1.05;
@@ -100,6 +104,7 @@ section.img-hotel{
 
         &:first-of-type a:last-of-type figure img{
             border-top-right-radius: 20px;
+            max-height: 196px;
         }
 
         &:last-of-type a:last-of-type figure img{
@@ -466,6 +471,6 @@ section.avaliacoes{
 
 .star-half-rotate{
     position: relative;
-    left: -19px;
+    left: -23px;
     transform: rotateY(180deg);
 }

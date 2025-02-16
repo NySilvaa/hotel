@@ -2,6 +2,7 @@
     use \Model\HomeModel;
 
     $homeModel = new HomeModel();
+    $listHotelsOurRooms = $homeModel->listHotelsSectionOurRooms();
 ?>
 
 <!DOCTYPE html>
@@ -135,77 +136,24 @@
             <button class="btn-left-our-rooms"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button>
             <button class="btn-right-our-rooms"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
            <div class="diferenciais-wrapper">
-                <div class="box-diferenciais">
-                    <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
-                    </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
-                </div><!-- /.box-diferenciais -->
 
+           <?php foreach ($listHotelsOurRooms as $value) {
+            # code...
+           ?>
                 <div class="box-diferenciais">
                     <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
+                        <figure><img src="<?php echo $value[2]; ?>" alt="" srcset=""></figure>
                     </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
-                </div><!-- /.box-diferenciais -->
+                    <h2><?php echo $value[1]; ?></h2>
+                    <span class="priceOurRooms"><b>R$ <?php echo $value[4].",00" ?></b> por noite</span> <span class="avaliacoes" style="float: right; margin-right: 50px; display: inline-block;"><svg style="vertical-align: middle; position: relative; top: -3px;" xmlns="http://www.w3.org/2000/svg" 
+                        width="20" height="20" viewBox="0 0 24 24" fill="#ffc400" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star">
+                        <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1.294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 
+                            0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg> <?php echo $value[3] ?> </span>
 
-                <div class="box-diferenciais">
-                    <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
-                    </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
+                            <br>
+                    <a href="<?php echo PATH_PAGES."hospedagem?".$value[0]; ?>" target="_blank">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
                 </div><!-- /.box-diferenciais -->
-
-                <div class="box-diferenciais">
-                    <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img4.jpg " alt="" srcset=""></figure>
-                    </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
-                </div><!-- /.box-diferenciais -->
-
-                <div class="box-diferenciais">
-                    <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
-                    </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
-                </div><!-- /.box-diferenciais -->
-
-                <div class="box-diferenciais">
-                    <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
-                    </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
-                </div><!-- /.box-diferenciais -->
-
-                <div class="box-diferenciais">
-                    <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img4.jpg " alt="" srcset=""></figure>
-                    </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
-                </div><!-- /.box-diferenciais -->
-
-                <div class="box-diferenciais">
-                    <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img2.jpg " alt="" srcset=""></figure>
-                    </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
-                </div><!-- /.box-diferenciais -->
-
-                <div class="box-diferenciais">
-                    <div class="box-diferenciais--img">
-                        <figure><img src="<?php echo PATH_INTERATIONS; ?>images/img1.jpg " alt="" srcset=""></figure>
-                    </div>
-                    <h2>Our Rooms</h2>
-                    <a href="#">Explore <svg style="vertical-align: middle; margin-left:2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></a>
-                </div><!-- /.box-diferenciais -->
+            <?php }; ?>
            </div><!-- /.diferenciais-wrapper -->   
         </div><!--container-->
     </section>
