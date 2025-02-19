@@ -74,8 +74,8 @@ class RoomsModel extends Model
 
         if ($hotel_id != 0) {
             // USER ESTÁ LOGADO, VAMOS VERIFICAR SE ELE JÁ TINHA FAVORITADO ESSE HOTEL ANTES, OU SE É A PRIMEIRA VEZ
-            $idUser = $_SESSION['id_user'];
             $homeModel = new HomeModel();
+            $idUser = $_SESSION['id_user'];
 
             $newIdUser = '';
             foreach ($idUser as $value) 

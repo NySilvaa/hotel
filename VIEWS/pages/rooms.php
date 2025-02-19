@@ -178,7 +178,7 @@ $rooms = new RoomsModel();
         if (isset($_SESSION['count-hotels'])) { ?>
             <h2 class="hotels--title">Hotels in <p><?php echo recoverPost('destiny'); ?></p>
             </h2>
-            <span class="count-hotels">Foram encontrados <p><?php echo 4; ?></p> Premium Hotels</span>
+            <span class="count-hotels">Foram encontrados <p><?php echo count($rooms->listHotels($_SESSION['destiny'])); ?></p> Premium Hotels</span>
         <?php  } ?>
 
         <div class="hotels-wp" <?php if (!isset($_SESSION['count-hotels']) && !isset($_POST['destiny'])) {
@@ -255,10 +255,7 @@ $rooms = new RoomsModel();
                                     <h3 class="tittle-name-hotel"><?php echo $value[0]; ?></h3>
                                     <p class="location-hotel"><?php echo $value[1] . " - " . $value[2]; ?></p>
                                     <div class="classification">
-                                        <?php
-                                        for ($i = 0; $i < (int)$value[3]; $i++)
-                                            echo '<span class="stars"><i class="bx bxs-star"></i></span>';
-                                        ?>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; position:relative; top: -3px;" width="20" height="20" fill="#ffc400" viewBox="0 0 24 24" fill="none" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg></span>
                                     </div>
                                     <p class="visitors">(1219 Visitantes)</p>
                                 </div>
