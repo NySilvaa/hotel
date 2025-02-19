@@ -19,6 +19,12 @@
     <?php if(@$_GET['url'] == 'hospedagem'){ ?>
         <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
     <?php } ?>
+    <?php if(@$_GET['url'] == 'savedHotels/'){ ?>
+        <link rel="stylesheet"href="<?php echo PATH_INTERATIONS;?>css/style.savedHotels.css"/>
+    <?php } ?>
+    <?php if(@$_GET['url'] == 'books/'){ ?>
+        <link rel="stylesheet"href="<?php echo PATH_INTERATIONS;?>css/style.books.css"/>
+    <?php } ?>
     <link rel="shortcut icon" href="<?php echo PATH_INTERATIONS; ?>images/ico/cisne.ico" type="image/x-icon">
     <title><?php 
     if(@$_GET['url'] == "hospedagem"){

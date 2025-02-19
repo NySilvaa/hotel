@@ -64,6 +64,18 @@
                 return PATH_INTERATIONS."css/style.hospedagem.css";
             break;
 
+            case 'userPage':
+                return PATH_INTERATIONS."css/style.userPage.css";
+            break;
+
+            case 'savedHotels':
+                return PATH_INTERATIONS."css/style.userPage.css";
+            break;
+
+            case 'books':
+                return PATH_INTERATIONS."css/style.userPage.css";
+            break;
+
             default:
                 return PATH_INTERATIONS."css/style.error-page.css";
             break;

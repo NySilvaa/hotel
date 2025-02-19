@@ -56,7 +56,7 @@
                         <a href="<?php echo $dataHotel["Img"][0]; ?>" data-fancybox="gallery" data-caption="Caption #5"><figure class="img-complement"><img src="<?php echo $dataHotel["Img"][0]; ?>" alt="" srcset=""></figure></a>
                     </div>
                </div>
-               <a href="#" class="btn-img-hotel-complements">Visualizar mais imagens</a>
+               <a href="#" class="btn-img-hotel-complements"  <?php echo (count($dataHotel["Img"]) > 4) ? 'style="display: inline-block;"' : 'style="display: none;"'; ?>>Visualizar mais imagens</a>
             </section>
 
             <div class="hotel-description">
@@ -162,12 +162,12 @@
                         <div class="info-user">
                             <a href="#" class="check-in">
                                 <span>Check-in</span>
-                                <p class="date-check-in-user">12/01/2025</p>
+                                <p class="date-check-in-user"><?php echo (isset($_SESSION["date-check-in"])) ? $_SESSION["date-check-in"] : "dd/mm/aaaa"; ?></p>
                             </a>
 
                             <a href="#" class="check-out">
                                 <span>Check-out</span>
-                                <p class="date-check-out-user">12/02/2025</p>
+                                <p class="date-check-out-user"><?php echo (isset($_SESSION["date-check-out"])) ? $_SESSION["date-check-out"] : "dd/mm/aaaa"; ?></p>
                             </a>
 
                             <a href="#" class="host">
@@ -223,13 +223,12 @@
                         </div><!-- /.coments-box-top -->
 
                         <div class="coments-box-description">
-                            <span class="stars"><?php $host->addStarBasedByOpinion($value["nota"]); ?></span>
+                            <span class="stars"><?php $host->addStarsBasedByOpinion($value["nota"]); ?></span>
                             <span class="data">agosto de 2023</span>
                             <span class="periodo">Ficou duas noites</span>
 
                             <p><?php echo $value["comentario"] ?> </p>
                                 <br>
-                            <!-- <a href="#">Mostrar mais</a> -->
                         </div>
                         <!-- /.coments-box-description -->
                         
@@ -239,5 +238,4 @@
         </div><!-- /.container -->
         
     </section>
-
 </body>

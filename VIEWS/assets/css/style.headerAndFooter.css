@@ -3,6 +3,7 @@ header#header{
     border-bottom: 2px solid #d4c7bc;
 
     & .container .navigation{
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;

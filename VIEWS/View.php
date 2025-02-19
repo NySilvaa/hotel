@@ -14,13 +14,21 @@
                         include('pages-dft/'.self::DEFAULT_FOOTER);
                 }else{
                     // OUTRA PÁGINA QUE NECESSITA DE UM HEADER E UM FOOTER
-                        if($header == null)
-                            include('pages-dft/'.self::DEFAULT_HEADER);
+                       if(@$_GET['url'] == "userPage/" || @$_GET['url'] == "savedHotels/" || @$_GET["url"] == "books/"){
+                            if($header == null)
+                                include('pages-dft/'.self::DEFAULT_HEADER);
 
+                            include("pages-dft/asideUserPage.php");
                             include('pages/'.$body.'.php');
+                       }else{
+                            if($header == null)
+                                include('pages-dft/'.self::DEFAULT_HEADER);
 
-                        if($footer == null)
-                            include('pages-dft/'.self::DEFAULT_FOOTER);  
+                                include('pages/'.$body.'.php');
+
+                            if($footer == null)
+                                include('pages-dft/'.self::DEFAULT_FOOTER);  
+                       }
             }
         }
     }
