@@ -135,11 +135,11 @@
                     <script defer src="'.PATH_INTERATIONS.'js/func.hospedagem.js"></script>
                     <script defer src="'.PATH_INTERATIONS.'js/ajax.hospedagem.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
                 ';
                 break;
             
             default:
-                # code...
                 break;
         };
     }

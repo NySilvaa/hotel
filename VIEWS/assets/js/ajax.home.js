@@ -59,7 +59,7 @@ $('#form-book').submit(function(e){
     
 
     $.ajax({
-        type: "Post",
+        type: "POST",
         url: "http://localhost/hotel/",
         data: {
             "dateCheckIn": dateCheckIn.getAttribute("value"),

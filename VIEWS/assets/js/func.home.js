@@ -520,7 +520,6 @@ btnRightOurRooms.addEventListener('click', ()=>{
   moveSlide(1);
 });
 
-
 btnLeftOurRooms.addEventListener('click', ()=>{
   moveSlide(-1);
 });

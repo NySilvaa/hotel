@@ -1401,6 +1401,7 @@ section.video-promotional{
 
     @media (max-width: 680px){
       main#entrada video{width: 300%;}
+      .box-diferenciais{width: 100%;}
       section.video-promotional h2{display: none;}
       .bg-main-wp figure img {width: 400px;}
       section.video-promotional .video-promotional-wp{height: 350px; margin: 0 auto;}

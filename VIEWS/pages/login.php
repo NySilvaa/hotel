@@ -5,6 +5,7 @@
 
         $registerModel = new RegisterModel();
         $generateFieldsForm = $registerModel->generateFieldsForms();
+        $homeModel = new HomeModel();
 
         if(isset($_SESSION['register'])){
             $homeModel = new HomeModel();
@@ -17,10 +18,12 @@
                 header("Location: ".PATH_PAGES."userPage/");
                 die();
             }else{
-                $homeModel = new HomeModel();
                 $homeModel->messageBook("error", "Cadastro Inválido", "E-mail ou Senha estão incorretos");
             }
         }
+
+        if(isset($_SESSION["bookPendent"]))
+            $homeModel->messageBook("success", "Falta apenas um passo", "Faça o login para realizar a sua reserva");
 ?>
 
 <main id="register">
