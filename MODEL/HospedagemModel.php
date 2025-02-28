@@ -155,5 +155,18 @@
                 die();
             }
         }
+
+        public function verifyFavoriteHotel($hotelId){
+            if(isset($_SESSION["id_user"])){
+                $controller = parent::connectionDB()->countrys;
+                $collection = $controller->selectCollection("hotels_saved_by_user");
+                $idUser = strip_tags($_SESSION["id_user"]);
+
+                $cursor = $collection->countDocuments(["User_id" => $idUser, "Hotel_id" => $hotelId]);
+
+                return ($cursor > 0) ? true : false;
+            }else
+                return false;
+        }
     }
 ?>

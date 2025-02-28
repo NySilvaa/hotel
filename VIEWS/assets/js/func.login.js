@@ -14,3 +14,28 @@ eyePwBtn.addEventListener('click', ()=>{
         control = true;
     }
 });
+
+const formLogin = document.getElementById("formRegister");
+
+formLogin.addEventListener("submit", ()=>{
+    const btnSignIn = document.getElementById("sign_in");
+
+    btnSignIn.innerHTML = `
+        <div class="spinner-wp">
+            <div class="spinner center">
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+                <div class="spinner-blade"></div>
+            </div>
+        </div>
+    `;
+});

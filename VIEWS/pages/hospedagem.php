@@ -18,7 +18,7 @@ foreach ($_GET as $key => $value) {
 ?>
 
 <body>
-    <section id="testeJson">
+    <section id="favorite-section">
         <?php
         if (isset($_POST['hotel_id'])) {
             $hotelId = json_decode($rooms->favoriteHotel());
@@ -33,31 +33,30 @@ foreach ($_GET as $key => $value) {
                 die();
             }
         }?>
-</section>
+    </section>
 
-<div class="book">
-    <?php 
-        if(isset($_POST["Check-in"])){
-            if($host->bookHotel())
-                $homeModel->messageBook("success", "Reserva Efetuada com Sucesso", "Confira na sua User Page demais informações");
-        }
-        
-    ?> 
-</div><!--book-->
+    <section class="book">
+        <?php 
+            if(isset($_POST["Check-in"])){
+                if($host->bookHotel())
+                    $homeModel->messageBook("success", "Reserva Efetuada com Sucesso", "Confira na sua User Page demais informações");
+            }
+        ?> 
+    </section><!--book-->
 
-<div class="loading-book-wp">
- <div class="hourglassBackground">
-      <div class="hourglassContainer">
-        <div class="hourglassCurves"></div>
-        <div class="hourglassCapTop"></div>
-        <div class="hourglassGlassTop"></div>
-        <div class="hourglassSand"></div>
-        <div class="hourglassSandStream"></div>
-        <div class="hourglassCapBottom"></div>
-        <div class="hourglassGlass"></div>
-      </div>
-    </div>
-</div>
+    <div class="loading-book-wp">
+        <div class="hourglassBackground">
+            <div class="hourglassContainer">
+                <div class="hourglassCurves"></div>
+                <div class="hourglassCapTop"></div>
+                <div class="hourglassGlassTop"></div>
+                <div class="hourglassSand"></div>
+                <div class="hourglassSandStream"></div>
+                <div class="hourglassCapBottom"></div>
+                <div class="hourglassGlass"></div>
+            </div>
+            </div>
+    </div><!--loading-book-wp-->
 
     <section class="hotel">
         <div class="container">
@@ -175,9 +174,17 @@ foreach ($_GET as $key => $value) {
                             <polyline points="16 6 12 2 8 6" />
                             <line x1="12" x2="12" y1="2" y2="15" />
                         </svg> Compartilhar</a>
-                    <button type="submit" class="favorite"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart">
-                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                        </svg> Favoritar</button>
+                    <button type="submit" class="favorite">
+                        <?php if(!$host->verifyFavoriteHotel($idHotel)){ ?>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                            </svg> Favoritar
+                        <?php }else{ ?>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-off"><line x1="2" y1="2" x2="22" y2="22"/><path d="M16.5 16.5 12 21l-7-7c-1.5-1.45-3-3.2-3-5.5a5.5 5.5 0 0 1 2.14-4.35"/>
+                                <path d="M8.76 3.1c1.15.22 2.13.78 3.24 1.9 1.5-1.5 2.74-2 4.5-2A5.5 5.5 0 0 1 22 8.5c0 2.12-1.3 3.78-2.67 5.17"/>
+                            </svg> Desfavoritar
+                        <?php } ?>
+                    </button>
                 </div><!-- /.btn-actions-tittle -->
             </nav>
 

@@ -138,6 +138,26 @@
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
                 ';
                 break;
+
+            case "books":
+                return '
+                    <script defer src="'. PATH_INTERATIONS .'js/func.userPatnerPage.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                    <script defer src="'. PATH_INTERATIONS .'js/ajax.books.js"></script>
+                ';
+                break;
+
+            case "userPage":
+                return '<script defer src="'.PATH_INTERATIONS .'js/func.userPatnerPage.js"></script>';
+                break;
+
+            case "savedHotels":
+                return '
+                    <script defer src="'.PATH_INTERATIONS.'js/func.userPatnerPage.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                    <script defer src="'.PATH_INTERATIONS.'js/ajax.savedHotels.js"></script>
+                ';
+                break;
             
             default:
                 break;

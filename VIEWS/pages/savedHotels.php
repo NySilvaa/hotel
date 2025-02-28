@@ -1,8 +1,34 @@
 <?php
     use Model\SavedHotelsModel;
+    use Model\HomeModel;
+
+    $homeModel = new HomeModel();
     $savedHotels = new SavedHotelsModel();
     $hotelsSavedByUser = $savedHotels->getHotelsSavedByUser();
 ?>
+
+<div class="desfavoritar-hotel">
+    <?php
+        if(isset($_POST["unfavorite"])){
+            if($savedHotels->unfavoriteHotel())
+                $homeModel->messageBook("success", "Remoção Feita c/ Sucesso", "Busque por novas opções no site");
+        }
+    ?>
+</div><!-- /.cancel-book -->
+
+<div class="desfavoritar-hotel-wp">
+    <div class="card card-desfavoritar-hotel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>
+        <p class="cancel-heading">Remover dos Favoritos.</p>
+        <p class="cancel-description">Você Realmente Quer Desfavoritar esse Hotel?</p>
+
+        <div class="buttonContainer">
+            <button class="btn-accept-cancel">Desfavoritar Hotel</button>
+        <button class="btn-back-cancel">Voltar</button>
+        </div>
+    </div><!--cancelar-book-->
+</div><!-- /.cancelar-book-wp -->
+
 <section class="info-user">
     <div class="container">
         <h2 class="tittle-main"><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; position:relative; top: -4px;" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hotel"><path d="M10 22v-6.57"/><path d="M12 11h.01"/><path d="M12 7h.01"/><path d="M14 15.43V22"/><path d="M15 16a5 5 0 0 0-6 0"/><path d="M16 11h.01"/><path d="M16 7h.01"/><path d="M8 11h.01"/><path d="M8 7h.01"/><rect x="4" y="2" width="16" height="20" rx="2"/></svg> Hoteis Salvos</h2>
@@ -57,4 +83,4 @@
 </section>
 </main>
 
-<script defer src="<?php echo PATH_INTERATIONS;?>js/func.userPatnerPage.js"></script>
+<?php echo chooseJSForPage(); ?>

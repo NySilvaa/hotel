@@ -246,4 +246,4 @@
     </section>
 </main>
 
-<script defer src="<?php echo PATH_INTERATIONS;?>js/func.userPatnerPage.js"></script>
+<?php echo chooseJSForPage(); ?>

@@ -1,5 +1,6 @@
 <?php
     namespace Model;
+    use Model\HomeModel;
 
     class SavedHotelsModel extends Model{
         public function getHotelsSavedByUser(){
@@ -38,6 +39,33 @@
                 return $dataHotel;
             }else
                 return 0;
+        }
+
+        public function unfavoriteHotel(){
+            $controller = parent::connectionDB()->countrys;
+            $collection = $controller->selectCollection("hotels_saved_by_user");
+            $hotelId = strip_tags($_POST["hotel_id"]);
+            $idUser = strip_tags($_SESSION["id_user"]);
+
+            $cursor = $collection->countDocuments(["Hotel_id" => $hotelId, "User_id" => $idUser]);
+            $homeModel = new HomeModel();
+
+            if($cursor == 0){
+                // FALHOU
+                $homeModel->messageBook("error", "Erro ao remover dos favoritos", "Tente novamente mais tarde");
+                return false;
+            }else{
+                // ENCONTROU O REGISTRO, PODEMOS DELETAR
+                  $deleteResult = $collection->deleteOne(["Hotel_id" => $hotelId, "User_id" => $idUser]);
+                  
+                  if ($deleteResult->getDeletedCount() > 0) {
+                      // HOTEL DELETADO COM SUCESSO
+                      return true;
+                  } else {
+                      $homeModel->messageBook('error', "Erro ao Desfavoritar", "Tente novamente mais tarde");
+                      return false;
+                  }
+            }
         }
     }
 ?>

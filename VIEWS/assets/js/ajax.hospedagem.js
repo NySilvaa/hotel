@@ -11,7 +11,7 @@ $('.favorite').click(function() {
         success: function (response){
             let newSection = $(response)[29].innerHTML.trim();
             
-            $("#testeJson").html(newSection);
+            $("#favorite-section").html(newSection);
             
             let inputHid = document.getElementsByName('status')[0];
             
@@ -34,13 +34,14 @@ $('.favorite').click(function() {
 
 $(".finishOrder").click(function(e){
     e.preventDefault();
+
     const checkInConfirmationValue = document.getElementById("check-in-confirmation-value").value;
     const checkOutConfirmationValue = document.getElementById("check-out-confirmation-value").value;
     const personConfirmationValue = document.getElementById("person-confirmation-value").value;
     const nightsConfirmationValue = document.getElementById("nights-confirmation-value").value;
     const prizeFinalConfirmationValue = document.getElementById("prize-final-confirmation-value").value;
     const hotelId = document.getElementById("hotel_id").getAttribute("value");
-    const infoBooks = document.querySelector('.info-books');
+    const loadingBookWp = document.querySelector(".loading-book-wp");
 
     $(".finishOrder").html(`
         <div class="spinner-wp">
@@ -61,7 +62,7 @@ $(".finishOrder").click(function(e){
         </div>
     `);
 
-    $(".loading-book-wp").css("display", "flex");
+    loadingBookWp.style.display = "flex";
     
     $.ajax({
         url: urlPathFinishOrder,
@@ -77,13 +78,22 @@ $(".finishOrder").click(function(e){
         success: function(response){
             let sectionFinishOrder = $(response)[31];
             $(".book").html(sectionFinishOrder.innerHTML);
+
+            const infoBooks = $('.info-books');
+            const cardMessageStatus = $(".card-message");
+            
+            infoBooks.css("height", "0px");
+            infoBooks.css("opacity", "0");
+
             $(".card-confirmation-wp").css("display", "none");
-            infoBooks.style.height = "0px";
-            infoBooks.style.opacity = 0;
-            $(".loading-book-wp").css("display", "none");
+            loadingBookWp.style.display = "none";
+
+            setTimeout(() => {
+                cardMessageStatus.fadeOut();
+            }, 4000);
             
         }, error: function(data){
             alert("Algo falhou ao tentar efetuar a sua reserva. Tente recarregar a página e repetir o processo.");
         }
-    })
-})
+    });
+});

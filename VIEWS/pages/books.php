@@ -53,7 +53,7 @@
                 foreach ($books as $key => $value) { ?>
                     <div class="hotels-box">
                         <div class="hotels-img">
-                            <figure><img src="<?php echo $booksModel->getHotelsBookedByUser($value[0])[$key][1]; ?>" alt="Foto do Hotel" srcset=""></figure>
+                            <a href="<?php echo PATH_PAGES."hospedagem?".$booksModel->getHotelsBookedByUser($value[0])[$key][0]; ?>" target="_blank"><figure><img src="<?php echo $booksModel->getHotelsBookedByUser($value[0])[$key][1]; ?>" alt="Foto do Hotel" srcset=""></figure></a>
                         </div>
 
                         <div class="hotels-description">
@@ -88,6 +88,4 @@
 </section>
 </main>
 
-<script defer src="<?php echo PATH_INTERATIONS;?>js/func.userPatnerPage.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script defer src="<?php echo PATH_INTERATIONS;?>js/ajax.books.js"></script>
+<?php echo chooseJSForPage(); ?>
