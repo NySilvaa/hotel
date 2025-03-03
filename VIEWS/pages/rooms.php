@@ -7,9 +7,10 @@ use Model\HospedagemModel;
 $homeModel = new HomeModel();
 $rooms = new RoomsModel();
 $host = new HospedagemModel();
+
 ?>
 
-<section id="testeJson">
+<section id="favorite-hotel">
     <?php
         if(isset($_POST['hotel_id'])){
             $hotelId = json_decode($rooms->favoriteHotel());

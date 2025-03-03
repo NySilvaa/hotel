@@ -1,25 +1,35 @@
 <?php
     namespace Model;
     use Model\HomeModel;
+    use MongoDB\BSON\ObjectId;
 
     class SavedHotelsModel extends Model{
         public function getHotelsSavedByUser(){
-            $idUser = $_SESSION['id_user'];
+            if(isset($_SESSION["id_user"])){
+                $idUser = $_SESSION["id_user"];
+                return $this->methodGetHotelsSaved($idUser);
+            
+            }else if(isset($_COOKIE["id_user"]) && $_COOKIE["id_user"] !== ""){
+                $idUser = $_COOKIE["id_user"];
+                return $this->methodGetHotelsSaved($idUser);
+            
+            }else
+                return 0;
+        }
 
-            $newIdUser = '';
-            foreach ($idUser as $value) 
-                $newIdUser = $value;
+        private function methodGetHotelsSaved($idFromUser){
+            $idUser = $idFromUser;
                 
             $controller = parent::connectionDB();
             $collection = $controller->countrys->selectCollection('hotels_saved_by_user');
-            $cursor = $collection->countDocuments(["User_id" => $newIdUser]);
+            $cursor = $collection->countDocuments(["User_id" => new ObjectId($idUser)]);
 
             if($cursor > 0){
                 // USUÁRIO JÁ SALVOU ALGUM HOTEL ANTES, ENTÃO VAMOS PUXÁ-LOS
-                $idUserWhoSavedHotel = $collection->find(["User_id" => $newIdUser]);
+                $idUserWhoSavedHotel = $collection->find(["User_id" => new ObjectId($idUser)]);
                 $idHotel = [];
 
-                foreach ($idUserWhoSavedHotel as $key => $value){
+                foreach ($idUserWhoSavedHotel as $value){
                     $idHotel[] = [$value["Hotel_id"]];
                 }
 
@@ -37,17 +47,29 @@
                 }
 
                 return $dataHotel;
+            }
+        }
+
+        public function unfavoriteHotel(){
+            if(isset($_SESSION["id_user"])){
+                $idUser = $_SESSION["id_user"];
+                return $this->methodUnfavoriteHotelByUser($idUser);
+            
+            }else if(isset($_COOKIE["id_user"]) && $_COOKIE["id_user"] !== ""){
+                $idUser = $_COOKIE["id_user"];
+                return $this->methodUnfavoriteHotelByUser($idUser);
+            
             }else
                 return 0;
         }
 
-        public function unfavoriteHotel(){
+        private function methodUnfavoriteHotelByUser($idFromUser){
             $controller = parent::connectionDB()->countrys;
             $collection = $controller->selectCollection("hotels_saved_by_user");
             $hotelId = strip_tags($_POST["hotel_id"]);
-            $idUser = strip_tags($_SESSION["id_user"]);
+            $idUser = $idFromUser;
 
-            $cursor = $collection->countDocuments(["Hotel_id" => $hotelId, "User_id" => $idUser]);
+            $cursor = $collection->countDocuments(["Hotel_id" => $hotelId, "User_id" => new ObjectId($idUser)]);
             $homeModel = new HomeModel();
 
             if($cursor == 0){
@@ -56,10 +78,11 @@
                 return false;
             }else{
                 // ENCONTROU O REGISTRO, PODEMOS DELETAR
-                  $deleteResult = $collection->deleteOne(["Hotel_id" => $hotelId, "User_id" => $idUser]);
+                  $deleteResult = $collection->deleteOne(["Hotel_id" => $hotelId, "User_id" => new ObjectId($idUser)]);
                   
                   if ($deleteResult->getDeletedCount() > 0) {
                       // HOTEL DELETADO COM SUCESSO
+                        $homeModel->messageBook("success", "Remoção Feita c/ Sucesso", "Busque por novas opções no site");
                       return true;
                   } else {
                       $homeModel->messageBook('error', "Erro ao Desfavoritar", "Tente novamente mais tarde");

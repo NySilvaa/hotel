@@ -45,8 +45,14 @@ btnAcceptUnfavorite.addEventListener("click", (e)=>{
         url: "http://localhost/hotel/savedHotels/",
         data: {"hotel_id": hotel_id, "unfavorite": true},
         success: function(response){
-           let section = $(response)[29]["children"][1];
-           $(".cancel-book").html(section.innerHTML);
+           let section = $(response)[30]["children"][2];
+
+          $(".desfavoritar-hotel").html(section.innerHTML);
+          const cardMsg = $(".card-message");
+
+          setTimeout(() => {
+            cardMsg.fadeOut();
+          }, 4000);
 
            cardUnfavoriteWp.style.display = "none";
 

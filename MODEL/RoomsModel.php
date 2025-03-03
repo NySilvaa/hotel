@@ -1,6 +1,6 @@
 <?php
-
 namespace Model;
+use MongoDB\BSON\ObjectId;
 
 class RoomsModel extends Model
 {
@@ -65,33 +65,39 @@ class RoomsModel extends Model
 
     public function favoriteHotel()
     {
-        if (!isset($_SESSION['id_user'])) {
+        if(isset($_SESSION["id_user"])){
+            $idUser = $_SESSION["id_user"];
+            return $this->methodFavorite($idUser);
+
+        }else if((isset($_COOKIE["id_user"]) && $_COOKIE["id_user"] !== "")){
+            $idUser = $_COOKIE["id_user"];
+            return $this->methodFavorite($idUser);
+
+        }else{
             $data = json_encode(['status' => 'error', 'message' => 'Usuario nao encontrado']);
             return $data;
         }
+    }
 
+    private function methodFavorite($idByUser){
         $hotel_id = isset($_POST['hotel_id']) ? $_POST['hotel_id'] : 0;
 
         if ($hotel_id != 0) {
             // USER ESTÁ LOGADO, VAMOS VERIFICAR SE ELE JÁ TINHA FAVORITADO ESSE HOTEL ANTES, OU SE É A PRIMEIRA VEZ
             $homeModel = new HomeModel();
-            $idUser = $_SESSION['id_user'];
-
-            $newIdUser = '';
-            foreach ($idUser as $value) 
-                $newIdUser = $value;
+            $idUser = $idByUser;
                 
             $db = parent::connectionDB();
             $collection = $db->countrys->selectCollection('hotels_saved_by_user');
-            $docsExists = $collection->countDocuments(["User_id" => $newIdUser]);
+            $docsExists = $collection->countDocuments(["User_id" => new ObjectId($idUser)]);
 
             if($docsExists > 0){
                 // POSSUI REGISTROS
-                $searchHotelById = $collection->countDocuments(["User_id" => $newIdUser, "Hotel_id" => $hotel_id]);
+                $searchHotelById = $collection->countDocuments(["User_id" => new ObjectId($idUser), "Hotel_id" => $hotel_id]);
 
                 if($searchHotelById > 0){
                     // ESSE HOTEL JÁ FOI SALVO, DEVEMOS TIRAR O FAVORITO
-                    $deleteResult = $collection->deleteOne(["User_id" => $newIdUser, "Hotel_id" => $hotel_id]);
+                    $deleteResult = $collection->deleteOne(["User_id" => new ObjectId($idUser), "Hotel_id" => $hotel_id]);
                     if ($deleteResult->getDeletedCount() > 0) {
                         // HOTEL DELETADO COM SUCESSO
                         $data = json_encode(['status' => 'removed', 'message' => 'Hotel Removido com Sucesso']);
@@ -103,7 +109,7 @@ class RoomsModel extends Model
                 }else{
                     // O USER VAI SALVÁ-LO PELA PRIMEIRA VEZ
                       $dataToSave = date("d/m/Y");
-                      $dataSaveUser = ["User_id" => $newIdUser, "Hotel_id" => $hotel_id, "Data_salvamento" => $dataToSave];
+                      $dataSaveUser = ["User_id" => new ObjectId($idUser), "Hotel_id" => $hotel_id, "Data_salvamento" => $dataToSave];
                       $insertData = $collection->insertOne($dataSaveUser);
                   
                       if ($insertData->getInsertedCount() > 0) {
@@ -119,7 +125,7 @@ class RoomsModel extends Model
             }else{
                 // SERÁ O PRIMEIRO HOTEL QUE O USER VAI FAVORITAR
                   $dataToSave = date("d/m/Y");
-                  $dataSaveUser = ["User_id" => $newIdUser, "Hotel_id" => $hotel_id, "Data_salvamento" => $dataToSave];
+                  $dataSaveUser = ["User_id" => new ObjectId($idUser), "Hotel_id" => $hotel_id, "Data_salvamento" => $dataToSave];
                   $insertData = $collection->insertOne($dataSaveUser);
               
                   if ($insertData->getInsertedCount() > 0) {
@@ -138,20 +144,4 @@ class RoomsModel extends Model
     }
 }
 
-/*
-    COLEÇÃO DAS RESERVAS
-    
-    {
-  "user_id": "user123",
-  "hotel_id": "hotel456",
-  "check_in": "2025-03-01T14:00:00",
-  "check_out": "2025-03-07T11:00:00",
-  "status": "confirmada",
-  "payment_status": "pago",
-  "payment_method": "cartão",
-  "guest_count": 2,
-  "special_requests": "Cama extra",
-  "created_at": "2025-01-31T10:00:00"
-}
-
-    */
+?>

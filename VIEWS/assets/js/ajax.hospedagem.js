@@ -9,9 +9,9 @@ $('.favorite').click(function() {
         type: "POST",
         data: {hotel_id: hotelId},
         success: function (response){
-            let newSection = $(response)[29].innerHTML.trim();
+            let newSection = $(response)[30];
             
-            $("#favorite-section").html(newSection);
+            $("#favorite-section").html(newSection.innerHTML);
             
             let inputHid = document.getElementsByName('status')[0];
             

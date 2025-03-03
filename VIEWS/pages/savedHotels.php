@@ -9,10 +9,8 @@
 
 <div class="desfavoritar-hotel">
     <?php
-        if(isset($_POST["unfavorite"])){
-            if($savedHotels->unfavoriteHotel())
-                $homeModel->messageBook("success", "Remoção Feita c/ Sucesso", "Busque por novas opções no site");
-        }
+        if(isset($_POST["unfavorite"]))
+            $savedHotels->unfavoriteHotel();
     ?>
 </div><!-- /.cancel-book -->
 
@@ -84,3 +82,6 @@
 </main>
 
 <?php echo chooseJSForPage(); ?>
+
+</body>
+</html>

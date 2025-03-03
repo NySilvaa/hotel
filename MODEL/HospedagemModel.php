@@ -162,7 +162,15 @@
                 $collection = $controller->selectCollection("hotels_saved_by_user");
                 $idUser = strip_tags($_SESSION["id_user"]);
 
-                $cursor = $collection->countDocuments(["User_id" => $idUser, "Hotel_id" => $hotelId]);
+                $cursor = $collection->countDocuments(["User_id" => new ObjectId($idUser), "Hotel_id" => $hotelId]);
+
+                return ($cursor > 0) ? true : false;
+            }else if((isset($_COOKIE["id_user"]) && $_COOKIE["id_user"] !== "")){
+                $controller = parent::connectionDB()->countrys;
+                $collection = $controller->selectCollection("hotels_saved_by_user");
+                $idUser = strip_tags($_COOKIE["id_user"]);
+
+                $cursor = $collection->countDocuments(["User_id" => new ObjectId($idUser), "Hotel_id" => $hotelId]);
 
                 return ($cursor > 0) ? true : false;
             }else

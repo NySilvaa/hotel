@@ -8,7 +8,7 @@
             $controller = parent::connectionDB();
             $collection = $controller->countrys->selectCollection("books_user_hotels");
 
-            $idUser = strip_tags($_SESSION["id_user"]);
+            $idUser = (isset($_COOKIE["id_user"])) ? strip_tags($_COOKIE["id_user"]) : strip_tags($_SESSION["id_user"]);
 
             $cursor = $collection->countDocuments(["User_id" => $idUser]);
 
@@ -43,7 +43,7 @@
             $controller = parent::connectionDB()->countrys;
             $collection = $controller->selectCollection("books_user_hotels");
             $hotelId = strip_tags($_POST["hotel_id"]);
-            $idUser = strip_tags($_SESSION["id_user"]);
+            $idUser = (isset($_COOKIE["id_user"])) ? strip_tags($_COOKIE["id_user"]) : strip_tags($_SESSION["id_user"]);
 
             $cursor = $collection->countDocuments(["Hotel_id" => $hotelId, "User_id" => $idUser]);
             $homeModel = new HomeModel();

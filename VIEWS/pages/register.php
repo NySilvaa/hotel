@@ -25,9 +25,7 @@
                 <form class="form" method="post" id="formRegister">
                     <h3 ><?php  echo $generateFieldsForm[1][$generateFieldsForm[0]]; ?></h3>
 
-                    <?php
-                            $registerModel->createFieldsForms($generateFieldsForm[1][$generateFieldsForm[0]]);
-                    ?>
+                    <?php $registerModel->createFieldsForms($generateFieldsForm[1][$generateFieldsForm[0]]); ?>
 
                     <button class="button-submit" id="btnForm" name="acao"></button>
                     <p class="p">Already have an account? <a href="<?php echo PATH_PAGES; ?>login/" class="span">Sign In</a></p>

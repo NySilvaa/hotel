@@ -20,19 +20,20 @@ foreach ($_GET as $key => $value) {
 <body>
     <section id="favorite-section">
         <?php
-        if (isset($_POST['hotel_id'])) {
-            $hotelId = json_decode($rooms->favoriteHotel());
-            echo '<input type="hidden" name="status" value="' . $hotelId->status . '" />';
+            if (isset($_POST['hotel_id'])) {
+                $hotelId = json_decode($rooms->favoriteHotel());
+                echo '<input type="hidden" name="status" value="' . $hotelId->status . '" />';
 
-            if ($hotelId->status == 'added')
-                $homeModel->messageBook('success', "Hotel Salvo com Sucesso", "Acesse sua User Page p/ verificar os seus hotéis salvos");
-            else if ($hotelId->status == 'removed')
-                $homeModel->messageBook('success', "Hotel Removido com Sucesso", "Salve novos hotéis para visitá-los depois");
-            else if ($hotelId->status == "error") {
-                echo "<script>location.href = 'http://localhost/hotel/login/'</script>";
-                die();
+                if ($hotelId->status == 'added')
+                    $homeModel->messageBook('success', "Hotel Salvo com Sucesso", "Acesse sua User Page p/ verificar os seus hotéis salvos");
+                else if ($hotelId->status == 'removed')
+                    $homeModel->messageBook('success', "Hotel Removido com Sucesso", "Salve novos hotéis para visitá-los depois");
+                else if ($hotelId->status == "error") {
+                    echo "<script>location.href = 'http://localhost/hotel/login/'</script>";
+                    die();
+                }
             }
-        }?>
+        ?>
     </section>
 
     <section class="book">
@@ -55,7 +56,7 @@ foreach ($_GET as $key => $value) {
                 <div class="hourglassCapBottom"></div>
                 <div class="hourglassGlass"></div>
             </div>
-            </div>
+        </div>
     </div><!--loading-book-wp-->
 
     <section class="hotel">
@@ -124,7 +125,7 @@ foreach ($_GET as $key => $value) {
                                 <p class="date-card-confirmation">Monday, 4th May</p>
                                 <p class="temperature">24°C</p>
                             </div>
-                        </div>
+                        </div><!--weather-info-->
 
                         <div class="forecast">
                             <div class="info-order">
@@ -160,7 +161,7 @@ foreach ($_GET as $key => $value) {
                             <div>
                                 <button class="finishOrder" type="submit" name="finishOrder">Finalizar Pedido</button>
                             </div>
-                        </div>
+                        </div><!--forecast-->
                     </section>
                 </div><!--card-confirmation-->
             </div><!-- /.card-confirmation-wp -->
@@ -486,7 +487,7 @@ foreach ($_GET as $key => $value) {
                 </div><!-- /.info-check -->
             </section>
 
-            <input type="hidden" name="hotel" id="hotel_id" value="<?php echo $idHotel; ?>">
+            <input type="hidden" name="hotel" id="hotel_id" value="<?php echo $idHotel; ?>" />
         </div><!-- /.container -->
     </section>
 
@@ -498,8 +499,9 @@ foreach ($_GET as $key => $value) {
 
             <div class="coments">
                 <?php
-                $comentarios = $dataHotel["Avaliacoes"]["comentarios"];
-                foreach ($comentarios as $key => $value) {
+                    $comentarios = $dataHotel["Avaliacoes"]["comentarios"];
+
+                    foreach ($comentarios as $value) {
                 ?>
                     <div class="coments-box">
                         <div class="coments-box-top">
@@ -514,13 +516,9 @@ foreach ($_GET as $key => $value) {
 
                             <p><?php echo $value["comentario"] ?> </p>
                             <br>
-                        </div>
-                        <!-- /.coments-box-description -->
-
+                        </div><!-- /.coments-box-description -->
                     </div><!-- /.coments-box -->
                 <?php } ?>
             </div><!-- /.coments -->
         </div><!-- /.container -->
-
     </section>
-</body>

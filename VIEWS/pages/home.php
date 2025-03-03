@@ -138,7 +138,6 @@
            <div class="diferenciais-wrapper">
 
            <?php foreach ($listHotelsOurRooms as $value) {
-            # code...
            ?>
                 <div class="box-diferenciais">
                     <div class="box-diferenciais--img">

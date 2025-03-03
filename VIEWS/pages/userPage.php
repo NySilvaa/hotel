@@ -247,3 +247,6 @@
 </main>
 
 <?php echo chooseJSForPage(); ?>
+
+</body>
+</html>

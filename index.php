@@ -22,6 +22,14 @@
         $url = explode("/", $_GET["url"])[0];
 
         switch ($url) {
+            case "":
+                return "Seja Bem-vindo ao Nosso site. Faça uma reserva e Aproveite! | Roro's Hotel";
+            break;
+
+            case "home":
+                return "Seja Bem-vindo ao Nosso site. Faça uma reserva e Aproveite! | Roro's Hotel";
+            break;
+
             case 'rooms':
                 return "Encontre o hotel perfeito para sua estadia. Conforto e localização ideal para você! | Roro's Hotel";
             break;
@@ -33,10 +41,26 @@
             case 'login':
                 return "Entre na sua conta para acessar suas reservas e preferências. | Roro's Hotel";
             break;
-            
+
+            case "aboutUs":
+                return "Sobre nós - Conheça Nossa História e Nossa Missão | Roro's Hotel";
+            break;
+
+            case "userPage":
+                return "Início - Bem-vindo de volta à sua conta! | Roro's Hotel";
+            break;
+
+            case "savedHotels":
+                return "Hotéis Salvos - Confira suas opções favoritas | Roro's Hotel";
+            break;
+
+            case "books":
+                return "Minhas Reservas - Suas reservas passadas e futuras | Roro's Hotel";
+            break;
+
             default:
-                return "Seja Bem-vindo ao Nosso site. Faça uma reserva e Aproveite! | Roro's Hotel";
-                break;
+                return "Página Não Encontrada - Oops! Não encontramos o que você procurou. | Roro's Hotel";
+            break;
         }
     }
 
@@ -45,39 +69,45 @@
 
         switch ($url) {
             case 'rooms':
-                return PATH_INTERATIONS."css/style.rooms.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.rooms.css" />';
             break;
 
             case 'login':
-                return PATH_INTERATIONS."css/style.register.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.register.css" />';
             break;
 
             case 'register':
-                return PATH_INTERATIONS."css/style.register.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.register.css" />';
             break;
 
             case 'aboutUs':
-                return PATH_INTERATIONS."css/style.aboutus.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.aboutus.css" />';
             break;
 
             case 'hospedagem':
-                return PATH_INTERATIONS."css/style.hospedagem.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.hospedagem.css" />
+                    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+                ';
             break;
 
             case 'userPage':
-                return PATH_INTERATIONS."css/style.userPage.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.userPage.css" />';
             break;
 
             case 'savedHotels':
-                return PATH_INTERATIONS."css/style.userPage.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.userPage.css" />
+                        <link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.savedHotels.css" />
+                ';
             break;
 
             case 'books':
-                return PATH_INTERATIONS."css/style.userPage.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.userPage.css" />
+                     <link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.books.css" />
+                ';
             break;
 
             default:
-                return PATH_INTERATIONS."css/style.error-page.css";
+                return '<link rel="stylesheet" href="'.PATH_INTERATIONS.'css/style.error-page.css" />';
             break;
         }
     }
@@ -88,10 +118,10 @@
         switch ($url) {
             case '':
                 return '
-                   <script defer src="'.PATH_INTERATIONS.'js/ajax.home.js"></script>
+                    <script defer src="'.PATH_INTERATIONS.'js/ajax.home.js"></script>
                     <script defer src="'.PATH_INTERATIONS.'js/func.home.js"></script>
-                      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-                      <script> AOS.init(); </script>
+                    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                    <script> AOS.init(); </script>
                 ';
                 break;
 
@@ -100,7 +130,7 @@
                     <script defer src="'.PATH_INTERATIONS.'js/ajax.home.js"></script>
                     <script defer src="'.PATH_INTERATIONS.'js/func.home.js"></script>
                     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-                      <script> AOS.init(); </script>
+                    <script> AOS.init(); </script>
                 ';
                 break;
 
@@ -124,9 +154,10 @@
                 break;
 
             case 'aboutUs':
-                return '<script defer src="'.PATH_INTERATIONS.'js/func.aboutUs.js"></script>
-                            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-                            <script> AOS.init(); </script>
+                return '
+                    <script defer src="'.PATH_INTERATIONS.'js/func.aboutUs.js"></script>
+                    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                    <script> AOS.init(); </script>
                 ';
                 break;
 
@@ -144,11 +175,16 @@
                     <script defer src="'. PATH_INTERATIONS .'js/func.userPatnerPage.js"></script>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                     <script defer src="'. PATH_INTERATIONS .'js/ajax.books.js"></script>
+                    <script defer src="'.PATH_INTERATIONS .'js/func.userPage.js"></script>
                 ';
                 break;
 
             case "userPage":
-                return '<script defer src="'.PATH_INTERATIONS .'js/func.userPatnerPage.js"></script>';
+                return '
+                    <script defer src="'.PATH_INTERATIONS .'js/func.userPatnerPage.js"></script>
+                    <script defer src="'.PATH_INTERATIONS .'js/func.userPage.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                ';
                 break;
 
             case "savedHotels":
@@ -156,6 +192,7 @@
                     <script defer src="'.PATH_INTERATIONS.'js/func.userPatnerPage.js"></script>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                     <script defer src="'.PATH_INTERATIONS.'js/ajax.savedHotels.js"></script>
+                    <script defer src="'.PATH_INTERATIONS .'js/func.userPage.js"></script>
                 ';
                 break;
             

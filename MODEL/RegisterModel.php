@@ -1,8 +1,7 @@
 <?php
 
-namespace Model;
-
-use Model\HomeModel;
+    namespace Model;
+    use Model\HomeModel;
 
 class RegisterModel extends Model{
     private static $homeModel;
@@ -441,3 +440,5 @@ class RegisterModel extends Model{
             return false;
     }
 }
+
+?>
