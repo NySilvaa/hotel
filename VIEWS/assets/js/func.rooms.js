@@ -53,21 +53,21 @@
             let input = item.childNodes[3]
             
             input.addEventListener('click', ()=>{
-            let modal = input.parentNode.lastElementChild;
-            hideModal(modal);
+                let modal = input.parentNode.lastElementChild;
+                hideModal(modal);
 
-                if(control){
-                    modal.classList.toggle('show');
-                    fieldCountry.focus();
-                    chooseCountry();
-                    control = false;
-                }else{
-                    modal.classList.toggle('show');
-                    control = true;
-                }
+                    if(control){
+                        modal.classList.toggle('show');
+                        fieldCountry.focus();
+                        chooseCountry();
+                        control = false;
+                    }else{
+                        modal.classList.toggle('show');
+                        control = true;
+                    }
             })
 
-        })
+        });
     };
     showModal();
 
@@ -81,7 +81,6 @@
             modal.addEventListener('click', (e)=>{e.stopPropagation()});
             modal.parentNode.addEventListener('click', (e)=>{e.stopPropagation()});
         }, 600);    
-
     };
 
     const disabledBtn = (controleBtn)=>{

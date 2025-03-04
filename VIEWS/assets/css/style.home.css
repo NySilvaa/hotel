@@ -430,6 +430,7 @@ main#entrada .container{
     & .date{
         padding: 20px 25px 10px 25px;
         background-color: #fff;
+        cursor: pointer;
 
         & h3{
             font-size: 3rem;

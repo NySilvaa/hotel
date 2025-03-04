@@ -76,7 +76,8 @@ $(".finishOrder").click(function(e){
             "Prize_Final": prizeFinalConfirmationValue
         },
         success: function(response){
-            let sectionFinishOrder = $(response)[31];
+            let sectionFinishOrder = $(response)[32];
+
             $(".book").html(sectionFinishOrder.innerHTML);
 
             const infoBooks = $('.info-books');

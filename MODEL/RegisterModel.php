@@ -280,8 +280,8 @@ class RegisterModel extends Model{
         $cpfMatch = preg_match("/[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}/", $cpf);
         $rgMatch = preg_match('/[0-9]{2}\.[0-9]{3}\.[0-9]{3}-[0-9]{1}/', $rg);
 
-        $datePrevious = '1920-01-01';
-        $dateNext = '2024-01-01';
+        $dateFormated = explode("/", $dataDeNascimento);
+        $dateNew = implode("-", array_reverse($dateFormated));
 
         if (count($nameSplit) < 2) {
             self::$homeModel->messageBook('error', 'Nome Inválido', "Você deve inserir o seu nome completo");
@@ -293,8 +293,8 @@ class RegisterModel extends Model{
             return false;
         }
 
-        if (strtotime($dataDeNascimento) >= strtotime($dateNext)) {
-            self::$homeModel->messageBook('error', "Data Inválida", "Sua data de nascimento foi inserida incorretamente");
+        if(strtotime($dateNew) <= strtotime("1920-01-01") || strtotime($dateNew) >= strtotime("2020-01-01")){
+            self::$homeModel->messageBook("error", "Datas Inválidas", "Sua data de nascimento está incorreta");
             return false;
         }
 

@@ -14,36 +14,28 @@ function fillOutDots (currentStep){
         barBeforeLoading.style.background = `linear-gradient(to right, #b38972 ${35 * contador}%, #afaeae 10%)`;
     }
 }
-//sessionStorage.setItem("currentStep", 0);
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    const currentStep = sessionStorage.getItem("currentStep") || 0;
+    let currentStep = sessionStorage.getItem("currentStep") || 0;
+
+    console.log(currentStep)
     
     fillOutDots(currentStep);
     
     formRegister.addEventListener('submit', ()=>{
-        const validateVariable = document.getElementById('validate').value || "";
         const count = document.getElementById('count');
 
-            if(validateVariable == 1){
-                // DADOS VALIDADOS COM SUCESSO
-                let nextStep = "Teste";
-                alert(nextStep)
-                sessionStorage.setItem("currentStep", nextStep);
-                btnForm.classList.add('sendForm');
-        
-                const boxLoader = document.querySelector('.box-loader');
-                boxLoader.style.display = 'flex';
-            
-                setTimeout(() => {
-                    boxLoader.style.display = 'none';
-                }, 2000);
-            }
+        sessionStorage.setItem("currentStep", Number(count.value)+1);
+        btnForm.classList.add('sendForm');
+
+        const boxLoader = document.querySelector('.box-loader');
+        boxLoader.style.display = 'flex';
+    
+        setTimeout(() => {
+            boxLoader.style.display = 'none';
+        }, 2000);
         
     });
-
-    document.getElementById('validate').value = "";
-    console.log(sessionStorage.getItem('currentStep'))
 
     let Currentlyvalue = String(currentStep)
 

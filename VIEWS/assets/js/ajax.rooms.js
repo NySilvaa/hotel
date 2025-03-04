@@ -9,7 +9,7 @@ $(document).ready(function (){
             type: "POST",
             data: {hotel_id: hotelId},
             success: function (response){
-                let newSection = $(response)[27].innerHTML.trim();
+                let newSection = $(response)[28].innerHTML.trim();
 
                 $("#favorite-hotel").html(newSection);
 

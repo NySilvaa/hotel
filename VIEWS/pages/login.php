@@ -23,6 +23,9 @@
     if(isset($_SESSION["bookPendent"]))
         $homeModel->messageBook("success", "Falta apenas um passo", "Faça o login para realizar a sua reserva");
 
+    if(isset($_SESSION["favoritePageRooms"]))
+        $homeModel->messageBook("success", "Falta apenas um passo", "Faça o login para favoritar o hotel");
+
     if(isset($_SESSION["id_user"])){
         header("Location: ".PATH_PAGES."userPage/");
         die();

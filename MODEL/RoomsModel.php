@@ -139,6 +139,7 @@ class RoomsModel extends Model
             }
         }else{
             $data = json_encode(['status' => 'error', 'message' => 'Usuario nao encontrado']);
+            $_SESSION["favoritePageRooms"] = true;
             return $data;
         }
     }

@@ -26,6 +26,8 @@
                         $control = false;
                 }
 
+                unset($_SESSION["favoritePageRooms"]);
+                unset($_SESSION["bookPendent"]);
             }
 
             return ($control) ? true : false;

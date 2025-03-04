@@ -4,10 +4,8 @@
     class userPageModel extends Model{
         public function logoutUser(){
             if(isset($_GET["logout"])){
+                setcookie("id_user", "", -1, "/", "", true, true);
                 session_destroy();
-                setcookie("id_user", "", [
-                    "expires" => -1
-                ]);
                 header("Location: ".PATH_PAGES."login/");
                 die();
             }

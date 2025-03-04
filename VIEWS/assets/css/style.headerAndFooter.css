@@ -215,7 +215,7 @@ footer{
 .loader {
   height: 25px;
   aspect-ratio: 4;
-  --_g: no-repeat radial-gradient(farthest-side, #4319ec 90%, #3604ff);
+  --_g: no-repeat radial-gradient(farthest-side, #8e644b 90%, #aa6e4b);
   background:
     var(--_g) left,
     var(--_g) right;
@@ -231,7 +231,7 @@ footer{
   margin: auto;
   border-radius: 50%;
   transform-origin: -100% 50%;
-  background: #2600fff8;
+  background: #aa6e4b;
   animation: l49 1s infinite linear;
 }
 .loader:after {

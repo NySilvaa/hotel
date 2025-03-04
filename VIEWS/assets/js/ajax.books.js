@@ -46,7 +46,7 @@ btnAcceptCancel.addEventListener("click", (e)=>{
         url: "http://localhost/hotel/books/",
         data: {"hotel_id": hotel_id},
         success: function(response){
-           let section = $(response)[29]["childNodes"][3];
+           let section = $(response)[30]["childNodes"][3];
            $(".cancel-book").html(section);
 
            cardCancelWp.style.display = "none";

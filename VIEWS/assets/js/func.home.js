@@ -516,10 +516,6 @@ const updateSlide = ()=>{
   ourRoomsWp.style.transform = `translateX(${-slideWidth * controlerSlide}px)`;
 }
 
-btnRightOurRooms.addEventListener('click', ()=>{
-  moveSlide(1);
-});
+btnRightOurRooms.addEventListener('click', ()=>{moveSlide(1);});
 
-btnLeftOurRooms.addEventListener('click', ()=>{
-  moveSlide(-1);
-});
+btnLeftOurRooms.addEventListener('click', ()=>{moveSlide(-1);});
